@@ -22,7 +22,6 @@ Daraufhin kann das Spiel gestartet werden.
 VERWENDETE ASSETS:
 - SteamVR Plugin
 - ProBuilder
-- ProGrids
 - Texturen:
   > 
 - Assets:

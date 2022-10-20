@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MapLearning.unity
     guid: 4b0a5af45f1629945bce6a8f0603b79b
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 77984e46b7dc13c48b618e90ccda046e, type: 2}
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 50c6812bba1bf7548aeda6c65b01bb32, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 280b794d4678fcb47835e5751693c821, type: 2}

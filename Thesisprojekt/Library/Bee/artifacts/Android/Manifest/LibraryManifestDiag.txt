@@ -1,0 +1,6 @@
+Using template 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/PlaybackEngines/AndroidPlayer\Apk\UnityManifest.xml'
+
+android.hardware.vulkan.version was added because:
+	One of the graphics devices was Vulkan
+supports-gl-texture elements added because:
+	TextureSupport was not set to generic

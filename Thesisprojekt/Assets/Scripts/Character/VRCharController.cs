@@ -22,25 +22,28 @@ public class VRCharController : MonoBehaviour
         
     }
 
-    //method to update the feedback value via _____
+    //method to update the feedback value via right trigger button
     private void GiveFeedback()
     {
         //TODO GameManager-Methoden nutzen!
     }
 
-    //method to move the VR character via _____
+
+    //method to move the VR character via right thumbstick
     private void Walk()
     {
 
     }
 
-    //method to update the feedback value via _____
+
+    //method to push e.g. a button by pressing the A button
     private void Push()
     {
 
     }
 
-    //method to update the feedback value via _____
+
+    //method to grab something via the right grip button
     private void Grab()
     {
 

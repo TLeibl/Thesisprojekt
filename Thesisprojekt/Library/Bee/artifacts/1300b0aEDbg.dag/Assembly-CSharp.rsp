@@ -374,7 +374,6 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.SpatialTracking.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
--analyzer:"Assets/VR/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll"
 "Assets/Scripts/Character/VRCharController.cs"
 "Assets/Scripts/GameManager.cs"
 -langversion:9.0

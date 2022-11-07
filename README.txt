@@ -3,6 +3,10 @@ Verteilte Therapieumgebung in Virtual Reality [Thesis-Projekt]
 
 Tabea Leibl[204105]
 
+
+=======
+CONTROLS:
+
 =======
 DEMOVIDEO:
 
@@ -21,6 +25,7 @@ Daraufhin kann das Spiel gestartet werden.
 =======
 VERWENDETE ASSETS:
 - SteamVR Plugin
+- Oculus Integration: https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
 - ProBuilder
 - Texturen:
   > 

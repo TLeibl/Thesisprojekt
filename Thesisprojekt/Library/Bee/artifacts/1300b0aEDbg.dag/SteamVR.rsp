@@ -121,7 +121,6 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
--define:OPENVR_XR_API
 -define:UNITY_LEGACY_INPUT_HELPERS
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
@@ -342,7 +341,6 @@
 -r:"C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll"
 -r:"C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/SteamVR_Windows_EditorHelper.ref.dll"
--r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.XR.OpenVR.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.SpatialTracking.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.UI.ref.dll"

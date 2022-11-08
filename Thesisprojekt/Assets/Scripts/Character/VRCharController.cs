@@ -437,20 +437,6 @@ public class VRCharController : MonoBehaviour
 	}
 
 
-	//method to push e.g. a button by pressing the A button
-	private void Push()
-	{
-		//TODO Push
-	}
-
-
-	//method to grab something via the right grip button
-	private void Grab()
-	{
-		//TODO Grab
-	}
-
-
 
 	//--------------------------------------UPDATE--------------------------------------
 

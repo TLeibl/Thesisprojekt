@@ -24,9 +24,9 @@ Daraufhin kann das Spiel gestartet werden.
 
 =======
 VERWENDETE ASSETS:
-- SteamVR Plugin
 - Oculus Integration: https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
 - ProBuilder
+- Animation Rigging
 - Texturen:
   > 
 - Assets:

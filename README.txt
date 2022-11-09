@@ -27,9 +27,12 @@ VERWENDETE ASSETS:
 - Oculus Integration: https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
 - ProBuilder
 - Animation Rigging
+- ReadyPlayerMe SDK
+- Avatare und Animationen:
+  > ReadyPlayerMe Avatar
+  > ReadyPlayerMe Walking-Animation
+  > Mixamo Idle-Animation: https://www.mixamo.com/#/?page=1&query=idle&type=Motion%2CMotionPack 
 - Texturen:
-  > 
-- Assets:
   > 
 - Audio:
   > 

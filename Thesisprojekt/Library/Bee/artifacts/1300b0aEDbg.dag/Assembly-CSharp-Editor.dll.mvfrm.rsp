@@ -1,4 +1,10 @@
+Library\Bee\artifacts\mvdfrm\Unity.Animation.Rigging.Editor.ref.dll_6BE69A0EBF3ADF9B.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Animation.Rigging.ref.dll_68205B0EDAEC3176.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Burst.Editor.ref.dll_5A34C03BE9958AEC.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Burst.ref.dll_5EB081D692B2C515.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.EditorCoroutines.Editor.ref.dll_139783C22DD5D328.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Mathematics.Editor.ref.dll_735FBEC2F1662886.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Mathematics.ref.dll_AEA6B4BCAB1E95DB.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Performance.Profile-Analyzer.Editor.ref.dll_0325D8536A3DFD38.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.PlasticSCM.Editor.ref.dll_EBB1919501649DC3.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.ProBuilder.AddOns.Editor.ref.dll_8F3342DB5D266E09.mvfrm
@@ -126,6 +132,11 @@ Library\Bee\artifacts\mvdfrm\Unity.Android.Gradle.dll_047BD5D32368DA5A.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Android.Types.dll_66653E128564E282.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEditor.Android.Extensions.dll_C5CA8556EA6982DA.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEditor.WindowsStandalone.Extensions.dll_84DBE5ADE5D2F34E.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Burst.Cecil.dll_6A4123F97D767CE3.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Burst.Cecil.Mdb.dll_5592271FE5AE60E0.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Burst.Cecil.Pdb.dll_6CE49F8F64636263.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Burst.Cecil.Rocks.dll_4FBF3434CE245CE3.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Burst.Unsafe.dll_A65EFB3FB33BB9C0.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Plastic.Antlr3.Runtime.dll_CC64CD4AA9D223EC.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Plastic.Newtonsoft.Json.dll_8FAF55548404F489.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.VisualScripting.IonicZip.dll_5375AD291C81E943.mvfrm

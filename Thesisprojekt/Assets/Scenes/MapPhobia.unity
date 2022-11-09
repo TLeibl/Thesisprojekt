@@ -654,6 +654,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5687781458658791936, guid: e37118cc43883cd49a1e148c1f37aba3, type: 3}
   m_PrefabInstance: {fileID: 5687781457796510065}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1564755438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9173975432562651117, guid: e1949a7f29d114d459f315b3819dfb2d, type: 3}
+  m_PrefabInstance: {fileID: 1660188940574541206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1564755443 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6561398398650556848, guid: e1949a7f29d114d459f315b3819dfb2d, type: 3}
+  m_PrefabInstance: {fileID: 1660188940574541206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1564755444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564755438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec73b56301a5a9041850fcf3d1cc8f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1564755443}
+  leftFootPositionWeight: 0.95
+  rightFootPositionWeight: 0.926
+  leftFootRotationWeight: 0.837
+  rightFootRotationWeight: 0.823
+  footOffset: {x: 0, y: 0, z: 0}
+  raycastLeftOffset: {x: 0, y: 0, z: 0}
+  raycastRightOffset: {x: 0, y: 0, z: 0}
 --- !u!43 &1672061192
 Mesh:
   m_ObjectHideFlags: 0
@@ -947,6 +977,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6561398398650556848, guid: e1949a7f29d114d459f315b3819dfb2d, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: ba5173a85368a4f4eb45fbc497be292c, type: 2}
+    - target: {fileID: 6561398398650556848, guid: e1949a7f29d114d459f315b3819dfb2d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6f20de53fc2d0b94e8b23f95c069f3d8, type: 2}
     - target: {fileID: 9173975432562651117, guid: e1949a7f29d114d459f315b3819dfb2d, type: 3}
       propertyPath: m_Name
       value: Avatar

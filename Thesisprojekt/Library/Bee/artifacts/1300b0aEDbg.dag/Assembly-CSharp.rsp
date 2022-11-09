@@ -419,6 +419,7 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VoiceSDK.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/WebView.ref.dll"
 "Assets/Scripts/Character/AvatarController.cs"
+"Assets/Scripts/Character/LowerBodyAnimation.cs"
 "Assets/Scripts/Character/VRCharController.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/VR/Oculus/SampleFramework/Core/CustomHands/Scripts/Hand.cs"

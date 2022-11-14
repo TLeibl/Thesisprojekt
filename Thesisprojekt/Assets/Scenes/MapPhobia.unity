@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 1115956345}
   - component: {fileID: 1115956344}
   - component: {fileID: 1115956343}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TestFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,21 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6561398398650556848, guid: e1949a7f29d114d459f315b3819dfb2d, type: 3}
   m_PrefabInstance: {fileID: 1660188940574541206}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1564755444
+--- !u!114 &1564755445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564755438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5dd1ba2258d0db44944450f866cc139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {fileID: -1680190386980627800, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  animator: {fileID: 1564755443}
+--- !u!114 &1564755450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -677,20 +691,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1564755443}
-  leftFootPositionWeight: 0.95
-  rightFootPositionWeight: 0.926
-  leftFootRotationWeight: 0.837
-  rightFootRotationWeight: 0.823
-  footOffset: {x: 0, y: 0, z: 0}
-  raycastLeftOffset: {x: 0, y: 0, z: 0}
-  raycastRightOffset: {x: 0, y: 0, z: 0}
+  leftFootPosWeight: 1
+  rightFootPosWeight: 1
+  leftFootRotWeight: 0.867
+  rightFootRotWeight: 0.867
+  footOffset: {x: 0, y: 0.13, z: 0}
+  raycastOffsetLeft: {x: 0, y: 0.5, z: 0}
+  raycastOffsRight: {x: 0, y: 0.5, z: 0}
 --- !u!43 &1672061192
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28930
+  m_Name: pb_Mesh29592
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

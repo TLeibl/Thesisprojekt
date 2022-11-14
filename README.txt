@@ -24,6 +24,7 @@ Daraufhin kann das Spiel gestartet werden.
 
 =======
 VERWENDETE ASSETS:
+- Unity Input System, TextMeshPro, UI
 - Oculus Integration: https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
 - ProBuilder
 - Animation Rigging

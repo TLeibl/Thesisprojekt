@@ -15,7 +15,7 @@ C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
 -logFile
 Logs/AssetImportWorker3.log
 -srvPort
-1077
+18033
 Successfully changed project path to: C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
 C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,8 +47,8 @@ C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 310.33 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.55 ms.
+Refreshing native plugins compatible for Editor in 336.76 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.62 ms.
 Initialize engine version: 2021.3.11f1 (0a5ca18544bf)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt/Assets
@@ -64,54 +64,54 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56464
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56484
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.007375 seconds.
+Registered in 0.007610 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 128.36 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.17 ms.
+Refreshing native plugins compatible for Editor in 123.48 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.27 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.762 seconds
+- Completed reload, in  0.604 seconds
 Domain Reload Profiling:
-	ReloadAssembly (763ms)
-		BeginReloadAssembly (121ms)
+	ReloadAssembly (604ms)
+		BeginReloadAssembly (59ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (474ms)
-			LoadAssemblies (119ms)
+		EndReloadAssembly (456ms)
+			LoadAssemblies (57ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (85ms)
+			SetupTypeCache (91ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (24ms)
-			SetupLoadedEditorAssemblies (315ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (296ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (48ms)
+				InitializePlatformSupportModulesInManaged (45ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (129ms)
+				RefreshPlugins (124ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (80ms)
-				ProcessInitializeOnLoadMethodAttributes (57ms)
+				ProcessInitializeOnLoadAttributes (85ms)
+				ProcessInitializeOnLoadMethodAttributes (40ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.009221 seconds.
+Registered in 0.007899 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\admin\Dropbox\Thesisprojekt\Thesisprojekt\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\admin\Dropbox\Thesisprojekt\Thesisprojekt\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 133.11 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
+Refreshing native plugins compatible for Editor in 267.01 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
 Package Manager log level set to [2]
 [XR] OculusXRPlugin: registering subsystems
 [XR] Unable to register display lifecyle provider: [1]
@@ -119,44 +119,44 @@ Package Manager log level set to [2]
 [XR] Unable to register input lifecyle provider: [1]
 [XR] OVRP version 1.78.0
 Mono: successfully reloaded assembly
-- Completed reload, in  1.408 seconds
+- Completed reload, in  2.200 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1409ms)
-		BeginReloadAssembly (211ms)
+	ReloadAssembly (2201ms)
+		BeginReloadAssembly (289ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (133ms)
-		EndReloadAssembly (1087ms)
-			LoadAssemblies (94ms)
+			CreateAndSetChildDomain (148ms)
+		EndReloadAssembly (1729ms)
+			LoadAssemblies (159ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (262ms)
+			SetupTypeCache (263ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (75ms)
-			SetupLoadedEditorAssemblies (612ms)
+			RebuildScriptCaches (73ms)
+			SetupLoadedEditorAssemblies (1249ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
+				InitializePlatformSupportModulesInManaged (22ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (133ms)
-				BeforeProcessingInitializeOnLoad (122ms)
-				ProcessInitializeOnLoadAttributes (305ms)
-				ProcessInitializeOnLoadMethodAttributes (34ms)
+				RefreshPlugins (267ms)
+				BeforeProcessingInitializeOnLoad (224ms)
+				ProcessInitializeOnLoadAttributes (693ms)
+				ProcessInitializeOnLoadMethodAttributes (35ms)
 				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 1.19 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.06 ms.
-Unloading 6053 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 69 unused Assets / (229.7 KB). Loaded Objects now: 6488.
-Memory consumption went from 239.1 MB to 238.9 MB.
-Total: 3.792700 ms (FindLiveObjects: 0.530200 ms CreateObjectMapping: 0.321500 ms MarkObjects: 2.681200 ms  DeleteObjects: 0.258900 ms)
+Refreshing native plugins compatible for Editor in 2.11 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Unloading 6056 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (245.5 KB). Loaded Objects now: 6495.
+Memory consumption went from 240.1 MB to 239.9 MB.
+Total: 5.740900 ms (FindLiveObjects: 0.706000 ms CreateObjectMapping: 0.380300 ms MarkObjects: 4.354000 ms  DeleteObjects: 0.298300 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -171,136 +171,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 56136.094972 seconds.
-  path: Assets/Assets/Heist Unity/_Prefabs/Floor.prefab
-  artifactKey: Guid(31e592290fe8d374189df0249055b7e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Heist Unity/_Prefabs/Floor.prefab using Guid(31e592290fe8d374189df0249055b7e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adbb2e546fc29f40d0264b6008819203') in 0.688751 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Assets/Heist Unity/_Prefabs/Wall_Corner.prefab
-  artifactKey: Guid(6b451580f5ec08142971fb50ad79f683) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Heist Unity/_Prefabs/Wall_Corner.prefab using Guid(6b451580f5ec08142971fb50ad79f683) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1839c0991a4b950a5a40280e83ffa6c4') in 0.187131 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 756.354679 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/spiderweb_01.prefab
-  artifactKey: Guid(4da4b73a131757642b5dd46e5be070f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/spiderweb_01.prefab using Guid(4da4b73a131757642b5dd46e5be070f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bb0be73263eacb6f2e63e48e1ea496b') in 0.089513 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2055.727901 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/pumpkin_11.prefab
-  artifactKey: Guid(098fc4f9c342d1b4d9c9d51d4c0acdf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/pumpkin_11.prefab using Guid(098fc4f9c342d1b4d9c9d51d4c0acdf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12ed8fdf08c1ac370c64bad78267dd14') in 0.134847 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.233577 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/hang_pumpkin_02.prefab
-  artifactKey: Guid(79dcb31d20593b34494c43b5f46881ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/hang_pumpkin_02.prefab using Guid(79dcb31d20593b34494c43b5f46881ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '778b5a8664af69e914dbc5287c5c96b0') in 0.122241 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/pumpkin_07.prefab
-  artifactKey: Guid(fd62f710cb420f9449701ff6c2dfd551) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/pumpkin_07.prefab using Guid(fd62f710cb420f9449701ff6c2dfd551) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a40596cda65c7726d93affbb72fb6364') in 0.113118 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_06.prefab
-  artifactKey: Guid(35232e74afe4ef345b30a4e45ed153fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_06.prefab using Guid(35232e74afe4ef345b30a4e45ed153fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78deb973bf7683f692fc14bd3b0770c3') in 0.122059 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000053 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_01.prefab
-  artifactKey: Guid(cd558c52cdfae0e4c8d0c527eacae507) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_01.prefab using Guid(cd558c52cdfae0e4c8d0c527eacae507) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43f2779a7229b53cb47a2f229a86de5b') in 0.103711 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/dead_tree_04.prefab
-  artifactKey: Guid(04251ac4cc9ef904e9b00646dd3b4bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/dead_tree_04.prefab using Guid(04251ac4cc9ef904e9b00646dd3b4bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56bb7a5bc8e02462712d5934d48e963b') in 0.090502 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000062 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/dead_tree_05.prefab
-  artifactKey: Guid(dcd6cfd28ad49ab4796c6b6eab560a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/dead_tree_05.prefab using Guid(dcd6cfd28ad49ab4796c6b6eab560a9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14c45266410a73960463a47aa234d409') in 0.094546 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000078 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/bush_03.prefab
-  artifactKey: Guid(37898355f3308664e8a88f210fe2ca29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/bush_03.prefab using Guid(37898355f3308664e8a88f210fe2ca29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '958c0bad419111e8ec1316142503b66e') in 0.093371 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000071 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_02.prefab
-  artifactKey: Guid(b78d6b40ec28ab14c8e78b500c541d2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_02.prefab using Guid(b78d6b40ec28ab14c8e78b500c541d2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9893866be5497d59ea88be8d416b0b1') in 0.087090 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/dead_tree_03.prefab
-  artifactKey: Guid(baa878f50f65b4f48ac29f443ea4111e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/dead_tree_03.prefab using Guid(baa878f50f65b4f48ac29f443ea4111e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa30ffe9e20fa79c082e4ea5f40673f') in 0.109986 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000049 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/pumpkin_06.prefab
-  artifactKey: Guid(112cc90af5a3b694986a98ac6af800fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/pumpkin_06.prefab using Guid(112cc90af5a3b694986a98ac6af800fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b583be3770bcc3e7efdc3fbbf2458f6') in 0.083859 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000049 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/dead_tree_01.prefab
-  artifactKey: Guid(9e18d1460d69de341b221e656258c7e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/dead_tree_01.prefab using Guid(9e18d1460d69de341b221e656258c7e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '433f7c827df57d4bda4d34a4005c0d99') in 0.095416 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_04.prefab
-  artifactKey: Guid(c9db9d90aba03fe468f68c0c7f75c4d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/Prefab/lava_dead_tree_04.prefab using Guid(c9db9d90aba03fe468f68c0c7f75c4d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfc1f44e2ed31a780882fb4ac1090d45') in 0.075487 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.116026 seconds.
-  path: Assets/Assets/cemetery halloween set/textures/floor_11.mat
-  artifactKey: Guid(71ea78aa56fd40544840810c9e5b0590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/textures/floor_11.mat using Guid(71ea78aa56fd40544840810c9e5b0590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc4d68881f138da14bef50777e593dcf') in 0.135293 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000074 seconds.
-  path: Assets/Assets/cemetery halloween set/textures/floor_14.png
-  artifactKey: Guid(ab33277ab8ae7534f9b003810f244f62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/textures/floor_14.png using Guid(ab33277ab8ae7534f9b003810f244f62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2a6b6ce28a6623e6c3bb35927a8afb5') in 0.066406 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Assets/cemetery halloween set/textures/floor_14.mat
-  artifactKey: Guid(e539cccd52c19aa46ac9e3dd40ae7370) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/textures/floor_14.mat using Guid(e539cccd52c19aa46ac9e3dd40ae7370) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '515b789ed088b90cb5e6a4fb42c91f37') in 0.036554 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000103 seconds.
-  path: Assets/Assets/cemetery halloween set/textures/floor_12.png
-  artifactKey: Guid(575aaa66d3252ab46ad4d7008e2f7f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/textures/floor_12.png using Guid(575aaa66d3252ab46ad4d7008e2f7f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ff453b829d7f51232908ba6f9680528') in 0.044381 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000062 seconds.
-  path: Assets/Assets/cemetery halloween set/textures/Tree_BG.tga
-  artifactKey: Guid(c38f3381ec0c2fe46b5e5c3656df0353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/textures/Tree_BG.tga using Guid(c38f3381ec0c2fe46b5e5c3656df0353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5749f45ae9ddacf6aa2496a31421051e') in 0.071729 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Assets/cemetery halloween set/textures/floor_11.png
-  artifactKey: Guid(a2a3f5aa1919d754db7013249b67ee8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/cemetery halloween set/textures/floor_11.png using Guid(a2a3f5aa1919d754db7013249b67ee8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c960171a3f53971f86c4ce91ca4d0db4') in 0.030747 seconds 
+  Time since last request: 142544.686457 seconds.
+  path: Assets/Assets/cemetery halloween set/Prefab/zombie_hand_03.prefab
+  artifactKey: Guid(dd1a843803920304d8816d640609bc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/cemetery halloween set/Prefab/zombie_hand_03.prefab using Guid(dd1a843803920304d8816d640609bc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28bf2820b5f3af59ec21713209b50fec') in 0.194582 seconds 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting

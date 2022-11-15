@@ -420,6 +420,8 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VoiceSDK.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VoiceSDK.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/WebView.ref.dll"
+"Assets/Assets/Laterns and candles/scripts/CameraFacing.cs"
+"Assets/Assets/Laterns and candles/scripts/ExtendedFlycam.cs"
 "Assets/Scripts/Character/AvatarController.cs"
 "Assets/Scripts/Character/CharAC.cs"
 "Assets/Scripts/Character/LowerBodyAnimation.cs"

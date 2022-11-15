@@ -4,14 +4,18 @@
 #
 /[Ll]ibrary/
 **/Library
+Thesisprojekt/Library
 /[Tt]emp
 **/Temp
+Thesisprojekt/Temp
 /[Oo]bj/
 **/obj
+Thesisprojekt/obj
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
 **/logs
+Thesisprojekt/logs
 /[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.

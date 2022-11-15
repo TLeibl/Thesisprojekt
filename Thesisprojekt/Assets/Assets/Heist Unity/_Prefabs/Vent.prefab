@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33000013822684350}
   - component: {fileID: 23000011176395294}
   - component: {fileID: 95000011297685680}
+  - component: {fileID: 6563080168864146818}
   m_Layer: 0
   m_Name: Vent
   m_TagString: Untagged
@@ -104,3 +105,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &6563080168864146818
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012487770828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 74ee0b8dea310724e9e3e84cab338d7a, type: 3}

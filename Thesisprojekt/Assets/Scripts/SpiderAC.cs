@@ -88,6 +88,24 @@ public class SpiderAC : MonoBehaviour
     }
 
 
+    //method called by supervisor to let spider run away from patient and despawn 
+    public void Flee()
+    {
+        //TODO
+
+        //Walk animation
+        animator.SetBool("isWalking", true);
+
+        //move away from patient
+        //if not already on floor: get down
+
+        //run away
+
+        //despawn
+
+    }
+
+
     //method called by supervisor to let spider die
     public void Die()
     {

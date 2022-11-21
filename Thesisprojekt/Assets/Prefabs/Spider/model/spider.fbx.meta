@@ -462,18 +462,18 @@ ModelImporter:
       name: Walk
       takeName: Default Take
       internalID: 0
-      firstFrame: 22
-      lastFrame: 41
+      firstFrame: 2
+      lastFrame: 4.5
       wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 1
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -624,7 +624,7 @@ ModelImporter:
       takeName: Default Take
       internalID: 0
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 1.1
       wrapMode: 2
       orientationOffsetY: 0
       level: 0
@@ -633,8 +633,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -784,8 +784,8 @@ ModelImporter:
       name: Attack
       takeName: Default Take
       internalID: 0
-      firstFrame: 44
-      lastFrame: 64
+      firstFrame: 4
+      lastFrame: 6
       wrapMode: 2
       orientationOffsetY: 0
       level: 0
@@ -794,8 +794,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -945,8 +945,8 @@ ModelImporter:
       name: Death
       takeName: Default Take
       internalID: 0
-      firstFrame: 64
-      lastFrame: 84.00001
+      firstFrame: 4.5
+      lastFrame: 6.9
       wrapMode: 2
       orientationOffsetY: 0
       level: 0
@@ -955,8 +955,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1

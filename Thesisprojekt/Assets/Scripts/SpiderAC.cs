@@ -26,7 +26,6 @@ public class SpiderAC : MonoBehaviour
     {
         //update distance to patient
         CalculatePatientDistance();
-        Flee();
     }
 
 
@@ -135,7 +134,7 @@ public class SpiderAC : MonoBehaviour
         }
 
         //despawn
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
 

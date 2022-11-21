@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
 public class SpiderAC : MonoBehaviour
 {
     //references
@@ -10,9 +11,13 @@ public class SpiderAC : MonoBehaviour
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
 
+    //distance to patient
     [SerializeField] private float patientDistance = 0.0f; //distance of spider to patient
     private float nearPatient = 2.0f; //value in which spider is near the patient 
     private bool inPatientRange = false; //if true spider is near patient
+
+    private float fleeDistance = 4f; //distance for spider to flee
+    private float despawnDelay = 2.5f; //delay when despawning
 
 
     private void Awake()
@@ -21,6 +26,7 @@ public class SpiderAC : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         patient = GameObject.Find("OVRPlayerController").transform;
     }
+
 
     private void Update()
     {
@@ -37,6 +43,29 @@ public class SpiderAC : MonoBehaviour
         if (patientDistance <= nearPatient)
             inPatientRange = true;
         else inPatientRange = false;
+    }
+
+
+    //------------------------SPAWN AND DESPAWN-----------------------
+
+    /// <summary>
+    /// Method to let the spider spawn e.g. enable the game object 
+    /// </summary>
+    /// <param name="position">the position the spider shall be spawned</param>
+    public void SpawnSpider(Vector3 position)
+    {
+        //set disabled spider to choosen position
+        gameObject.transform.position = position;
+
+        //enable spider
+        gameObject.SetActive(true);
+    }
+
+
+    //disable spider game object
+    public void DespawnSpider()
+    {
+        gameObject.SetActive(false);
     }
 
 
@@ -57,14 +86,6 @@ public class SpiderAC : MonoBehaviour
     }
 
 
-    //method to let spider struggle if taken by VR character
-    public void Struggle()
-    {
-        //struggle animation
-        animator.SetBool("isStruggling", true);
-    }
-
-
     //method called by supervisor to let spider stop and return to idle
     public void Stop()
     {
@@ -75,6 +96,15 @@ public class SpiderAC : MonoBehaviour
         //stop movement
         agent.SetDestination(transform.position);
     }
+
+
+    //method to let spider struggle if taken by VR character
+    public void Struggle()
+    {
+        //struggle animation
+        animator.SetBool("isStruggling", true);
+    }
+
 
     //method called by supervisor to let spider walk towards patient
     public void WalkTowards()
@@ -114,7 +144,6 @@ public class SpiderAC : MonoBehaviour
 
 
     //method called by supervisor to let spider run away from patient and despawn 
-    //TODO
     public void Flee()
     {
         //Walk animation
@@ -122,27 +151,31 @@ public class SpiderAC : MonoBehaviour
 
         //move away from patient
         //if not already on floor: get down
+        //TODO 
 
         //run away
-        Vector3 dirToPatient = transform.position - patient.transform.position; //calculate current Vector3 from spider to patient
-        Vector3 newPos = transform.position + dirToPatient; //define new position for spider to run to 
+        Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
+        Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
         LookAt(newPos); //look at pos
         agent.SetDestination(newPos); //move there
-        while (agent.remainingDistance > agent.stoppingDistance)
-        {
-            //walk until flee position reached
-        }
 
-        //despawn
-        Destroy(gameObject);
+        //despawn spider after short time
+        StartCoroutine(DespawnAfterTime());
+    }
+
+    //Coroutine used when spider flees to despawn the spider after some time
+    private IEnumerator DespawnAfterTime()
+    {
+        yield return new WaitForSeconds(despawnDelay);
+        DespawnSpider();
     }
 
 
     //method called by supervisor to let spider die
-    //TODO
     public void Die()
     {
         //if not already there drop to the ground
+        //TODO
 
         //Death animation
         animator.SetBool("dead", true);

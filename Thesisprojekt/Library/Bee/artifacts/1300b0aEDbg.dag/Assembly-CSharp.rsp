@@ -346,6 +346,8 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Facebook.Wit.TTS.Samples.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Facebook.WitAI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/LitJson.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/NavMeshComponents.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/NavMeshComponentsEditor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Oculus.AudioManager.Audio.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Oculus.AudioManager.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Oculus.AudioManager.Utils.Editor.ref.dll"

@@ -69,7 +69,6 @@ public class SpiderAC : MonoBehaviour
     }
 
 
-
     //---------------------------MOVEMENT-----------------------------
 
     /// <summary>
@@ -105,6 +104,22 @@ public class SpiderAC : MonoBehaviour
         animator.SetBool("isStruggling", true);
     }
 
+    
+    //method called by supervisor to let spider walk to chosen position
+    public void MoveToPosition(Vector3 position)
+    {
+        LookAt(position);
+        //Walk animation
+        animator.SetBool("isWalking", true);
+
+        agent.SetDestination(position);
+        while (agent.remainingDistance > agent.stoppingDistance)
+        {
+            //walk until position reached
+        }
+        animator.SetBool("isWalking", false);
+    }
+
 
     //method called by supervisor to let spider walk towards patient
     public void WalkTowards()
@@ -115,15 +130,7 @@ public class SpiderAC : MonoBehaviour
         //if not already there - move into direction of patient
         if(!inPatientRange)
         {
-            //Walk animation
-            animator.SetBool("isWalking", true);
-
-            agent.SetDestination(patient.position);
-            while (agent.remainingDistance > agent.stoppingDistance)
-            {
-                //walk until patient position reached
-            }
-            animator.SetBool("isWalking", false);
+            MoveToPosition(patient.position);
         }
 
     }

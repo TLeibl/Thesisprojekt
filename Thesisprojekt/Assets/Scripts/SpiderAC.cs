@@ -10,6 +10,7 @@ public class SpiderAC : MonoBehaviour
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
+    private Vector3 groundedPosition = Vector3.zero; //position of the spider when sitting on the floor to return to (only usage of y value)
 
     //distance to patient
     [SerializeField] private float patientDistance = 0.0f; //distance of spider to patient
@@ -25,6 +26,7 @@ public class SpiderAC : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         patient = GameObject.Find("OVRPlayerController").transform;
+        groundedPosition = this.transform.position;
     }
 
 
@@ -70,6 +72,16 @@ public class SpiderAC : MonoBehaviour
 
 
     //---------------------------MOVEMENT-----------------------------
+
+    //method used to let spider return to the floor (e.g. when dying)
+    private void ReturnToFloor()
+    {
+        //if not already on floor: set y to be on floor (reset y to groundedPosition.y)
+        if(!(transform.position.y == groundedPosition.y))
+        {
+            transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z);
+        }
+    }
 
     /// <summary>
     /// Let the spider look at a position, e.g. the patient.
@@ -158,7 +170,7 @@ public class SpiderAC : MonoBehaviour
 
         //move away from patient
         //if not already on floor: get down
-        //TODO 
+        ReturnToFloor();
 
         //run away
         Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
@@ -182,7 +194,7 @@ public class SpiderAC : MonoBehaviour
     public void Die()
     {
         //if not already there drop to the ground
-        //TODO
+        ReturnToFloor();
 
         //Death animation
         animator.SetBool("dead", true);

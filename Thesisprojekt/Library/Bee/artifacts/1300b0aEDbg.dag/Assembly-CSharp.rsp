@@ -424,6 +424,7 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/WebView.ref.dll"
 "Assets/Prefabs/ImportedAssets/Laterns and candles/scripts/CameraFacing.cs"
 "Assets/Prefabs/ImportedAssets/Laterns and candles/scripts/ExtendedFlycam.cs"
+"Assets/Prefabs/ImportedAssets/UI pack/Scripts/FillValueNumber.cs"
 "Assets/Scripts/Character/AvatarController.cs"
 "Assets/Scripts/Character/CharAC.cs"
 "Assets/Scripts/Character/LowerBodyAnimation.cs"

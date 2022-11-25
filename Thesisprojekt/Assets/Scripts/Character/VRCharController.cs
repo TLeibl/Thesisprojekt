@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+//using UnityEngine.InputSystem;
 
 /**
  * This class is used to control the VR character.
@@ -8,7 +11,10 @@ using UnityEngine;
  */
 public class VRCharController : MonoBehaviour
 {
-    private int currentFeedbackValue = 0; //current feedback value (can be 0-100)
+	//Give Feedback
+	private InputDevice targetDevice; //the device used to get an input value (e.g. right hand controller)
+	private int currentFeedbackValue = 0; //current feedback value (can be 0-100)
+	private int valueMultiplicator = 100; //target device input value is multiplicated with this value to get a valid feedback value
 
 	//Quit
 	public KeyCode quitKey = KeyCode.Escape; //key to quit application
@@ -106,7 +112,17 @@ public class VRCharController : MonoBehaviour
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
+
+		//get all usable devices (headset and controllers) 
+		List<InputDevice> devices = new List<InputDevice>();
+		//get right hand controller out of devices because we only need input values for this one (feedback)
+		InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+		InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
+		//set right hand controller as target device
+		if(devices.Count > 0)
+			targetDevice = devices[0];
 	}
+
 
 	private void Awake()
 	{
@@ -128,9 +144,11 @@ public class VRCharController : MonoBehaviour
 		InitialYRotation = transform.rotation.eulerAngles.y;
 	}
 
+
 	private void OnEnable()
 	{
 	}
+
 
 	private void OnDisable()
 	{
@@ -151,6 +169,10 @@ public class VRCharController : MonoBehaviour
 
 	private void Update()
 	{
+		//update feedback value
+		UpdateFeedback();
+
+		//update position and orientation
 		if (!playerControllerEnabled)
 		{
 			if (OVRManager.OVRManagerinitialized)
@@ -185,6 +207,7 @@ public class VRCharController : MonoBehaviour
 			Application.Quit();
 #endif
 	}
+
 
 	protected virtual void UpdateController()
 	{
@@ -261,6 +284,55 @@ public class VRCharController : MonoBehaviour
 
 		if (predictedXZ != actualXZ)
 			MoveThrottle += (actualXZ - predictedXZ) / (SimulationRate * Time.deltaTime);
+	}
+
+
+	/// <summary>
+	/// Invoked by OVRCameraRig's UpdatedAnchors callback. Allows the Hmd rotation to update the facing direction of the player.
+	/// </summary>
+	public void UpdateTransform(OVRCameraRig rig)
+	{
+		Transform root = CameraRig.trackingSpace;
+		Transform centerEye = CameraRig.centerEyeAnchor;
+
+		if (HmdRotatesY && !Teleported)
+		{
+			Vector3 prevPos = root.position;
+			Quaternion prevRot = root.rotation;
+
+			transform.rotation = Quaternion.Euler(0.0f, centerEye.rotation.eulerAngles.y, 0.0f);
+
+			root.position = prevPos;
+			root.rotation = prevRot;
+		}
+
+		UpdateController();
+		if (TransformUpdated != null)
+		{
+			TransformUpdated(root);
+		}
+	}
+
+
+	/// <summary>
+	/// Stop this instance.
+	/// </summary>
+	public void Stop()
+	{
+		Controller.Move(Vector3.zero);
+		MoveThrottle = Vector3.zero;
+	}
+
+
+	//method to update the feedback value via right trigger button used in the Update() method
+	private void UpdateFeedback()
+	{
+		//use float value (0 to 1) of trigger button input to set current feedback value
+		targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
+		currentFeedbackValue = (int)triggerValue * valueMultiplicator; 
+
+		//update value in GameManager
+		GameManager.FeedbackValue = currentFeedbackValue;
 	}
 
 
@@ -437,53 +509,6 @@ public class VRCharController : MonoBehaviour
 	}
 
 
-
-	//--------------------------------------UPDATE--------------------------------------
-
-	/// <summary>
-	/// Invoked by OVRCameraRig's UpdatedAnchors callback. Allows the Hmd rotation to update the facing direction of the player.
-	/// </summary>
-	public void UpdateTransform(OVRCameraRig rig)
-	{
-		Transform root = CameraRig.trackingSpace;
-		Transform centerEye = CameraRig.centerEyeAnchor;
-
-		if (HmdRotatesY && !Teleported)
-		{
-			Vector3 prevPos = root.position;
-			Quaternion prevRot = root.rotation;
-
-			transform.rotation = Quaternion.Euler(0.0f, centerEye.rotation.eulerAngles.y, 0.0f);
-
-			root.position = prevPos;
-			root.rotation = prevRot;
-		}
-
-		UpdateController();
-		if (TransformUpdated != null)
-		{
-			TransformUpdated(root);
-		}
-	}
-
-	/// <summary>
-	/// Stop this instance.
-	/// </summary>
-	public void Stop()
-	{
-		Controller.Move(Vector3.zero);
-		MoveThrottle = Vector3.zero;
-	}
-
-
-	//method to update the feedback value via right trigger button
-	private void UpdateFeedback()
-	{
-		//TODO GameManager-Methoden nutzen!
-	}
-
-
-
 	//--------------------------------------GETTER & SETTER--------------------------------------
 
 	/// <summary>
@@ -495,6 +520,7 @@ public class VRCharController : MonoBehaviour
 		moveScaleMultiplier = MoveScaleMultiplier;
 	}
 
+
 	/// <summary>
 	/// Sets the move scale multiplier.
 	/// </summary>
@@ -503,6 +529,7 @@ public class VRCharController : MonoBehaviour
 	{
 		MoveScaleMultiplier = moveScaleMultiplier;
 	}
+
 
 	/// <summary>
 	/// Gets the rotation scale multiplier.
@@ -513,6 +540,7 @@ public class VRCharController : MonoBehaviour
 		rotationScaleMultiplier = RotationScaleMultiplier;
 	}
 
+
 	/// <summary>
 	/// Sets the rotation scale multiplier.
 	/// </summary>
@@ -521,6 +549,7 @@ public class VRCharController : MonoBehaviour
 	{
 		RotationScaleMultiplier = rotationScaleMultiplier;
 	}
+
 
 	/// <summary>
 	/// Gets the allow mouse rotation.
@@ -531,6 +560,7 @@ public class VRCharController : MonoBehaviour
 		skipMouseRotation = SkipMouseRotation;
 	}
 
+
 	/// <summary>
 	/// Sets the allow mouse rotation.
 	/// </summary>
@@ -539,6 +569,7 @@ public class VRCharController : MonoBehaviour
 	{
 		SkipMouseRotation = skipMouseRotation;
 	}
+
 
 	/// <summary>
 	/// Gets the halt update movement.
@@ -549,6 +580,7 @@ public class VRCharController : MonoBehaviour
 		haltUpdateMovement = HaltUpdateMovement;
 	}
 
+
 	/// <summary>
 	/// Sets the halt update movement.
 	/// </summary>
@@ -557,6 +589,7 @@ public class VRCharController : MonoBehaviour
 	{
 		HaltUpdateMovement = haltUpdateMovement;
 	}
+
 
 	/// <summary>
 	/// Resets the player look rotation when the device orientation is reset.

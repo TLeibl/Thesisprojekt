@@ -295,8 +295,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlWalk: {fileID: 516914581}
-  controlFeedback: {fileID: 1052752636}
   controlGrab: {fileID: 1813389524}
+  controlFeedback: {fileID: 1052752636}
+  feedbackBar: {fileID: 2040542911}
 --- !u!114 &516914581 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8626514576074596561, guid: 168c06a07ebd7464ca63598e3f1cb977, type: 3}
@@ -954,6 +955,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2040542911 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
+  m_PrefabInstance: {fileID: 324103746949242267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &324103746949242267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1009,21 +1021,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 324103747708574557, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
+      propertyPath: giveFeedback
+      value: 
+      objectReference: {fileID: 1120369429361536294, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
     - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
       propertyPath: m_Color.b
-      value: 0.5365271
+      value: 0.27404058
       objectReference: {fileID: 0}
     - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
       propertyPath: m_Color.g
-      value: 0.40943396
+      value: 0.09740115
       objectReference: {fileID: 0}
     - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.9056604
       objectReference: {fileID: 0}
     - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
       propertyPath: m_FillAmount
-      value: 0.283
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
       propertyPath: m_FillMethod

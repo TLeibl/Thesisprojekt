@@ -8,22 +8,24 @@ using Oculus.Interaction;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI controlWalk = null;
-    [SerializeField] private TextMeshProUGUI controlFeedback = null;
     [SerializeField] private TextMeshProUGUI controlGrab = null;
+    [SerializeField] private TextMeshProUGUI controlFeedback = null;
+    [SerializeField] private Image feedbackBar = null;
 
     //set texts in UI and start feedback value
     private void Awake()
     {
+        //Wall UI
         controlWalk.text = "Walk - Left Thumbstick";
-        controlFeedback.text = "Feedback\nRight Trigger";
         controlGrab.text = "Grab - Left/Right Grip";
+        //Player UI
+        controlFeedback.text = "Feedback\nRight Trigger";
     }
 
     //update feedback value in UI
     private void Update()
     {
-        //update Feedback value
-        //TODO
-        //_____ = GameManager.FeedbackValue;
+        //update FeedbackBar value
+        feedbackBar.fillAmount = GameManager.FeedbackValue;
     }
 }

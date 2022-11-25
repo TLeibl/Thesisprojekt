@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
         set
         {
             feedbackValue = value;
+            //value can be between 0 and 100
+            if(feedbackValue > 100)
+            {
+                feedbackValue = 100;
+            }
         }
-    }
-
-    public void UpdateFeedbackValue(int newFeedbackValue)
-    {
-        feedbackValue = newFeedbackValue;
     }
 }

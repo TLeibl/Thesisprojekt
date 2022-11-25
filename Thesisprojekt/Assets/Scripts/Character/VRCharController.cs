@@ -118,9 +118,17 @@ public class VRCharController : MonoBehaviour
 		//get right hand controller out of devices because we only need input values for this one (feedback)
 		InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
 		InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
+
+		foreach(var item in devices)
+        {
+			Debug.Log(item.name + item.characteristics);
+        }
+
 		//set right hand controller as target device
 		if(devices.Count > 0)
 			targetDevice = devices[0];
+
+		Debug.Log("targetDevice: " + targetDevice.name);
 	}
 
 
@@ -329,7 +337,9 @@ public class VRCharController : MonoBehaviour
 	{
 		//use float value (0 to 1) of trigger button input to set current feedback value
 		targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
-		currentFeedbackValue = (int)triggerValue * valueMultiplicator; 
+		currentFeedbackValue = (int)triggerValue * valueMultiplicator;
+
+		Debug.Log("currentFeedbackValue: " + currentFeedbackValue);
 
 		//update value in GameManager
 		GameManager.FeedbackValue = currentFeedbackValue;

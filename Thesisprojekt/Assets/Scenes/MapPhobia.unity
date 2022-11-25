@@ -1009,6 +1009,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5365271
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
+      propertyPath: m_Color.g
+      value: 0.40943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637881457083255043, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
 --- !u!1001 &1309561734372858596

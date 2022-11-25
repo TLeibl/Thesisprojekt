@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         controlWalk.text = "Walk - Left Thumbstick";
-        controlFeedback.text = "Feedback - Right Trigger";
+        controlFeedback.text = "Feedback\nRight Trigger";
         controlGrab.text = "Grab - Left/Right Grip";
     }
 

@@ -330,6 +330,7 @@ public class VRCharController : MonoBehaviour
 		currentFeedbackValue = triggerValue * valueMultiplicator;
 
 		//update value in GameManager
+		//TODO Wert nicht direkt übertragen, sondern langsam anpassen lassen
 		GameManager.FeedbackValue = currentFeedbackValue;
 	}
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static int feedbackValue = 0;
+    private static float feedbackValue = 0;
 
-    public static int FeedbackValue
+    public static float FeedbackValue
     {
         get => feedbackValue;
         set

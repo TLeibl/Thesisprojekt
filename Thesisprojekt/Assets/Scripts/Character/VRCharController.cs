@@ -13,7 +13,7 @@ public class VRCharController : MonoBehaviour
 {
 	//Give Feedback
 	private InputDevice targetDevice; //the device used to get an input value (e.g. right hand controller)
-	private int currentFeedbackValue = 0; //current feedback value (can be 0-100)
+	private float currentFeedbackValue = 0.0f; //current feedback value (can be 0-100)
 	private int valueMultiplicator = 100; //target device input value is multiplicated with this value to get a valid feedback value
 
 	//Quit
@@ -113,22 +113,8 @@ public class VRCharController : MonoBehaviour
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
 
-		//get all usable devices (headset and controllers) 
-		List<InputDevice> devices = new List<InputDevice>();
-		//get right hand controller out of devices because we only need input values for this one (feedback)
-		InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-		InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
-
-		foreach(var item in devices)
-        {
-			Debug.Log(item.name + item.characteristics);
-        }
-
-		//set right hand controller as target device
-		if(devices.Count > 0)
-			targetDevice = devices[0];
-
-		Debug.Log("targetDevice: " + targetDevice.name);
+		//try and set right hand controller as target device (e.g. for giving feedback)
+		TrySetTargetDevice();
 	}
 
 
@@ -177,6 +163,10 @@ public class VRCharController : MonoBehaviour
 
 	private void Update()
 	{
+		//if targetDevice is not valid yet - set it
+		if (!targetDevice.isValid)
+			TrySetTargetDevice();
+
 		//update feedback value
 		UpdateFeedback();
 
@@ -337,9 +327,7 @@ public class VRCharController : MonoBehaviour
 	{
 		//use float value (0 to 1) of trigger button input to set current feedback value
 		targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
-		currentFeedbackValue = (int)triggerValue * valueMultiplicator;
-
-		Debug.Log("currentFeedbackValue: " + currentFeedbackValue);
+		currentFeedbackValue = triggerValue * valueMultiplicator;
 
 		//update value in GameManager
 		GameManager.FeedbackValue = currentFeedbackValue;
@@ -519,7 +507,33 @@ public class VRCharController : MonoBehaviour
 	}
 
 
-	//--------------------------------------GETTER & SETTER--------------------------------------
+    //--------------------------------------GETTER & SETTER--------------------------------------
+
+
+	//method used to set the right hand controller as target device
+    private void TrySetTargetDevice()
+    {
+		//get all usable devices (headset and controllers) 
+		List<InputDevice> devices = new List<InputDevice>();
+
+		//to get all devices
+		//InputDevices.GetDevices(devices);
+
+		//get right hand controller out of devices because we only need input values for this one (feedback)
+		InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+		InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
+		
+
+		//if right controller not found - end method
+		if (devices.Count == 0)
+		{
+			return;
+		}
+
+		//set right hand controller as target device
+		targetDevice = devices[0];
+	}
+
 
 	/// <summary>
 	/// Gets the move scale multiplier.

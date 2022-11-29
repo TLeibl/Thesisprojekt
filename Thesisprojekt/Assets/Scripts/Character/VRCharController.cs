@@ -12,9 +12,9 @@ using UnityEngine.XR;
 public class VRCharController : MonoBehaviour
 {
 	//Give Feedback
+	[SerializeField] UIManager uiManager = null; //the player UI manager
 	private InputDevice targetDevice; //the device used to get an input value (e.g. right hand controller)
 	private float currentFeedbackValue = 0.0f; //current feedback value (can be 0-100)
-	private int valueMultiplicator = 100; //target device input value is multiplicated with this value to get a valid feedback value
 
 	//Quit
 	public KeyCode quitKey = KeyCode.Escape; //key to quit application
@@ -325,12 +325,14 @@ public class VRCharController : MonoBehaviour
 	//method to update the feedback value via right trigger button used in the Update() method
 	private void UpdateFeedback()
 	{
-		//use float value (0 to 1) of trigger button input to set current feedback value
+		//get float value (0 to 1) of trigger button input for feedback value calculation
 		targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
-		currentFeedbackValue = triggerValue * valueMultiplicator;
+
+		//calculate current feedback value
+		if (uiManager != null)
+			currentFeedbackValue = uiManager.CalculateCurrentFeedbackValue(currentFeedbackValue, triggerValue);
 
 		//update value in GameManager
-		//TODO Wert nicht direkt übertragen, sondern langsam anpassen lassen
 		GameManager.FeedbackValue = currentFeedbackValue;
 	}
 

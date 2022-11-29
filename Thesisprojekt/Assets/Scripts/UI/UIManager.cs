@@ -7,10 +7,16 @@ using Oculus.Interaction;
 
 public class UIManager : MonoBehaviour
 {
+    //UI elements
     [SerializeField] private TextMeshProUGUI controlWalk = null;
     [SerializeField] private TextMeshProUGUI controlGrab = null;
     [SerializeField] private TextMeshProUGUI controlFeedback = null;
     [SerializeField] private Image feedbackBar = null;
+
+    //feedback
+    private float lastTriggerValue = 0.0f; //the last used trigger value
+    private int valueDivider = 50; //value used for feedback value calculation
+
 
     //set texts in UI and start feedback value
     private void Awake()
@@ -22,10 +28,25 @@ public class UIManager : MonoBehaviour
         controlFeedback.text = "Feedback\nRight Trigger";
     }
 
-    //update feedback value in UI
+    //update feedback bar
     private void Update()
     {
         //update FeedbackBar value
         feedbackBar.fillAmount = GameManager.FeedbackValue;
+    }
+
+    //method used by VRCharController to calculate the current feedback value in dependence of the controller trigger value
+    public float CalculateCurrentFeedbackValue(float currentFeedbackValue, float triggerValue)
+    {
+        //increase/decrease feedback value the more trigger is pressed or released
+        if (triggerValue > lastTriggerValue)
+            currentFeedbackValue = currentFeedbackValue + triggerValue / valueDivider;
+        else if(triggerValue < lastTriggerValue)
+            currentFeedbackValue =  currentFeedbackValue - triggerValue / valueDivider;
+
+        //save trigger value as last trigger value
+        lastTriggerValue = triggerValue;
+
+        return currentFeedbackValue;
     }
 }

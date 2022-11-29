@@ -1022,6 +1022,10 @@ PrefabInstance:
       value: OVRPlayerController
       objectReference: {fileID: 0}
     - target: {fileID: 324103747708574557, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 211453804}
+    - target: {fileID: 324103747708574557, guid: 53181d28e767d3f4997d9907e17bfdde, type: 3}
       propertyPath: giveFeedback
       value: 
       objectReference: {fileID: 1120369429361536294, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}

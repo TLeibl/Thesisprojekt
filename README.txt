@@ -28,6 +28,7 @@ VERWENDETE ASSETS:
 - Oculus Integration: https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
 - ProBuilder
 - Animation Rigging
+- Photon PUN 2 free
 - ReadyPlayerMe SDK
 - Avatare und Animationen:
   > ReadyPlayerMe Avatar

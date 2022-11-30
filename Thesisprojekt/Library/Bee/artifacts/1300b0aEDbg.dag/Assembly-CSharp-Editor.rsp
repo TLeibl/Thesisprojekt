@@ -119,8 +119,14 @@
 -define:ENABLE_TIMELINE
 -define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
+-define:PHOTON_UNITY_NETWORKING
+-define:PUN_2_0_OR_NEWER
+-define:PUN_2_OR_NEWER
+-define:PUN_2_19_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll"
+-r:"Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -382,6 +388,16 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Oculus.VR.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Oculus.VR.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Oculus.VR.Scripts.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonChat.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonRealtime.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonUnityNetworking.Demos.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonUnityNetworking.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonUnityNetworking.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonUnityNetworking.Utilities.Culling.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PhotonUnityNetworking.Utilities.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PunDemos.DemoHubEditor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PunDemos.DemoSlotcarEditor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/ReadyPlayerMe.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/ReadyPlayerMe.Extras.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/ReadyPlayerMe.ref.dll"
@@ -440,6 +456,7 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VoiceSDK.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VoiceSDK.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/WebView.ref.dll"
+"Assets/Photon/PhotonChat/Demos/DemoChat/Editor/ChatEditor.cs"
 "Assets/VR/Oculus/SampleFramework/Core/Firebase/Editor/FirebaseEnabler.cs"
 "Assets/VR/Oculus/SampleFramework/Core/Gradle/Editor/Utils.cs"
 "Assets/VR/Oculus/SampleFramework/Core/Locomotion/Scripts/Editor/TeleportTransitionWarpInspector.cs"

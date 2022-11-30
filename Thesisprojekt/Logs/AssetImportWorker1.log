@@ -15,7 +15,7 @@ C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-27743
+26050
 Successfully changed project path to: C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
 C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,8 +47,8 @@ C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 295.33 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.91 ms.
+Refreshing native plugins compatible for Editor in 146.12 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.60 ms.
 Initialize engine version: 2021.3.11f1 (0a5ca18544bf)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/admin/Dropbox/Thesisprojekt/Thesisprojekt/Assets
@@ -64,125 +64,99 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56528
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.014904 seconds.
+Registered in 0.007530 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 207.02 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.18 ms.
+Refreshing native plugins compatible for Editor in 132.18 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.22 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.261 seconds
+- Completed reload, in  0.659 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1262ms)
-		BeginReloadAssembly (126ms)
+	ReloadAssembly (660ms)
+		BeginReloadAssembly (59ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (954ms)
-			LoadAssemblies (122ms)
+		EndReloadAssembly (507ms)
+			LoadAssemblies (58ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (196ms)
+			SetupTypeCache (85ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (66ms)
-			SetupLoadedEditorAssemblies (587ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (338ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (87ms)
+				InitializePlatformSupportModulesInManaged (83ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (207ms)
-				BeforeProcessingInitializeOnLoad (3ms)
-				ProcessInitializeOnLoadAttributes (191ms)
-				ProcessInitializeOnLoadMethodAttributes (98ms)
+				RefreshPlugins (132ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (82ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.025443 seconds.
+Registered in 0.009354 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\admin\Dropbox\Thesisprojekt\Thesisprojekt\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\admin\Dropbox\Thesisprojekt\Thesisprojekt\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 178.87 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
+Refreshing native plugins compatible for Editor in 127.97 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
 Package Manager log level set to [2]
-Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path C:\Users\admin\Dropbox\Thesisprojekt\Thesisprojekt\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <9aad1b3a47484d63ba2b3985692d80e9>:0 
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <9aad1b3a47484d63ba2b3985692d80e9>:0 
-  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
-  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <9aad1b3a47484d63ba2b3985692d80e9>:0 
-  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <9aad1b3a47484d63ba2b3985692d80e9>:0 
-  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
-  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <9aad1b3a47484d63ba2b3985692d80e9>:0 
-  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <4e64905d831f4883a53259ef37fb023b>:0 
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
-UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
-UnityEditor.Tools:set_lockedLayers (int)
-UnityEditor.Tools:OnEnable ()
-UnityEngine.ScriptableObject:CreateInstance (System.Type)
-UnityEngine.ScriptableObject:CreateInstance<UnityEditor.Tools> ()
-UnityEditor.Tools:get_get ()
-UnityEditor.Tools:get_visibleLayers ()
-UnityEditor.Animations.Rigging.BoneRendererUtils:.cctor () (at Library/PackageCache/com.unity.animation.rigging@1.1.1/Editor/Utils/BoneRendererUtils.cs:121)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Library/PackageCache/com.unity.animation.rigging@1.1.1/Editor/Utils/BoneRendererUtils.cs Line: 121)
-
 [XR] OculusXRPlugin: registering subsystems
 [XR] Unable to register display lifecyle provider: [1]
 [XR] Oculus Input lifecycle provider registered.
 [XR] Unable to register input lifecyle provider: [1]
 [XR] OVRP version 1.78.0
 Mono: successfully reloaded assembly
-- Completed reload, in  2.600 seconds
+- Completed reload, in  1.475 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2601ms)
-		BeginReloadAssembly (335ms)
+	ReloadAssembly (1476ms)
+		BeginReloadAssembly (210ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (12ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (151ms)
-		EndReloadAssembly (2053ms)
-			LoadAssemblies (194ms)
+			CreateAndSetChildDomain (123ms)
+		EndReloadAssembly (1155ms)
+			LoadAssemblies (104ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (510ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (164ms)
-			SetupLoadedEditorAssemblies (1097ms)
+			SetupTypeCache (289ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (81ms)
+			SetupLoadedEditorAssemblies (630ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (19ms)
+				InitializePlatformSupportModulesInManaged (12ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (179ms)
-				BeforeProcessingInitializeOnLoad (217ms)
-				ProcessInitializeOnLoadAttributes (616ms)
-				ProcessInitializeOnLoadMethodAttributes (57ms)
-				AfterProcessingInitializeOnLoad (9ms)
+				RefreshPlugins (128ms)
+				BeforeProcessingInitializeOnLoad (123ms)
+				ProcessInitializeOnLoadAttributes (327ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
+				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (12ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
-Refreshing native plugins compatible for Editor in 3.04 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.25 ms.
-Unloading 6082 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 69 unused Assets / (237.8 KB). Loaded Objects now: 6523.
-Memory consumption went from 243.5 MB to 243.2 MB.
-Total: 7.120100 ms (FindLiveObjects: 0.590800 ms CreateObjectMapping: 0.663400 ms MarkObjects: 5.502700 ms  DeleteObjects: 0.361800 ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.57 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Unloading 6306 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 75 unused Assets / (246.2 KB). Loaded Objects now: 6744.
+Memory consumption went from 250.9 MB to 250.7 MB.
+Total: 4.028100 ms (FindLiveObjects: 0.567600 ms CreateObjectMapping: 0.353500 ms MarkObjects: 2.892400 ms  DeleteObjects: 0.213500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -197,107 +171,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 303775.798843 seconds.
-  path: Assets/Scenes/Menus/MainMenuVR.unity
-  artifactKey: Guid(ebc71ba8ca7467643b446e460f4d4d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Menus/MainMenuVR.unity using Guid(ebc71ba8ca7467643b446e460f4d4d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c90d683c39c11c1353083ca83de43ded') in 0.025612 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 99.968854 seconds.
-  path: Assets/VR/Oculus/Voice/Demo/Materials/Skybox.mat
-  artifactKey: Guid(fea35dc83d97e2b438e3baebaf6ead34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/Voice/Demo/Materials/Skybox.mat using Guid(fea35dc83d97e2b438e3baebaf6ead34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8355f0a3a577f20d0b6293ff9bfa5192') in 0.415291 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000047 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/HandsTrainExample/Materials/SkyboxForLightbaking.mat
-  artifactKey: Guid(b95594ffeaf238c46a8d575dcd72705a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/HandsTrainExample/Materials/SkyboxForLightbaking.mat using Guid(b95594ffeaf238c46a8d575dcd72705a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98f1b7c7a340db736b408a809eaf8445') in 0.041744 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000051 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/SharedAssets/Skyboxes/Sky_02/Skybox02.mat
-  artifactKey: Guid(b709a9919bd4047b58bb05887b4faad3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/SharedAssets/Skyboxes/Sky_02/Skybox02.mat using Guid(b709a9919bd4047b58bb05887b4faad3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6f6e41193209902755c7206f9db26b0') in 0.877187 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/SharedAssets/Skyboxes/Sky_01/Skybox01Mat.mat
-  artifactKey: Guid(b6121f1ede3dbe848a9c9de2ef369c28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/SharedAssets/Skyboxes/Sky_01/Skybox01Mat.mat using Guid(b6121f1ede3dbe848a9c9de2ef369c28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c47721d74d93bdf8a5b2ca8a82c708d8') in 0.223314 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 50.290391 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/SceneManager/Materials/WindowHole.mat
-  artifactKey: Guid(d59a9f09401dbba4e85df048fdd5aa73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/SceneManager/Materials/WindowHole.mat using Guid(d59a9f09401dbba4e85df048fdd5aa73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68e10af9b81c63ed86e582cd90490a88') in 0.045024 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000050 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/SceneManager/Materials/Wood.mat
-  artifactKey: Guid(5dce1f8fd86e04f42a922b7a3ce2a2a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/SceneManager/Materials/Wood.mat using Guid(5dce1f8fd86e04f42a922b7a3ce2a2a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f987bbff79b955b3355d545fb363ee59') in 0.082868 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/SceneManager/Materials/WoodDark.mat
-  artifactKey: Guid(47dc5a096e1063a47b2d9afb0ecc8e75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/SceneManager/Materials/WoodDark.mat using Guid(47dc5a096e1063a47b2d9afb0ecc8e75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faf7b1660c01546e98b9697d6587a873') in 0.046770 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000068 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/HandsTrainExample/Materials/XingLightMaterial.mat
-  artifactKey: Guid(b99b44499a77b3645b481d4f7d0ddf33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/HandsTrainExample/Materials/XingLightMaterial.mat using Guid(b99b44499a77b3645b481d4f7d0ddf33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f46de17bcb0ba31d035585a4a5aa98af') in 0.052086 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/DistanceGrab/Materials/WoodBlockWithOutline.mat
-  artifactKey: Guid(3a4cc84819795469da40d14888581e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/DistanceGrab/Materials/WoodBlockWithOutline.mat using Guid(3a4cc84819795469da40d14888581e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22479f7d954b8c44e7431b7ca4031f85') in 0.076786 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.089450 seconds.
-  path: Assets/Prefabs/ImportedAssets/Spider/Materials/texture_spider8.mat
-  artifactKey: Guid(48da4508513b07149af0d4912a0f460b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/ImportedAssets/Spider/Materials/texture_spider8.mat using Guid(48da4508513b07149af0d4912a0f460b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f017034b456b9f52f54e2b67572fc5e') in 0.163321 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000054 seconds.
-  path: Assets/VR/Oculus/Interaction/Samples/Scripts/HandGrabUse/Effects/WaterSpray/WaterSpray.mat
-  artifactKey: Guid(44092c54cacca1046ac25e52c878a0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/Interaction/Samples/Scripts/HandGrabUse/Effects/WaterSpray/WaterSpray.mat using Guid(44092c54cacca1046ac25e52c878a0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a610ec905c885705d889963e3d4ace68') in 0.057646 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Core/TouchControllers/Materials/touchController_basecolor.mat
-  artifactKey: Guid(1caef85feb223044d801a24540271231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Core/TouchControllers/Materials/touchController_basecolor.mat using Guid(1caef85feb223044d801a24540271231) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77d2872e3ca9a63960d1457e9749f704') in 0.046423 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Usage/DistanceGrab/Materials/TriangleCursorTargeted.mat
-  artifactKey: Guid(61ef159634e7b49fb88f64dfa954b0f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Usage/DistanceGrab/Materials/TriangleCursorTargeted.mat using Guid(61ef159634e7b49fb88f64dfa954b0f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '087094c15db22ecd1e6f2bd348bdcc60') in 0.038780 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.023338 seconds.
-  path: Assets/Prefabs/ImportedAssets/Heist Unity/Desk/Materials/Desk.mat
-  artifactKey: Guid(7d2f5cea41f80b44ba98f2dd61074b7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/ImportedAssets/Heist Unity/Desk/Materials/Desk.mat using Guid(7d2f5cea41f80b44ba98f2dd61074b7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9b30b0b9fbadfa797ff64658043f2ea') in 0.278009 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/VR/Oculus/Interaction/Samples/Objects/Environment/Room/Models/backgroundSkyDome.fbx
-  artifactKey: Guid(216e64467da9e644b990c6663f483186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/Interaction/Samples/Objects/Environment/Room/Models/backgroundSkyDome.fbx using Guid(216e64467da9e644b990c6663f483186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f56e9e723eee1b2eabc9e7b0626c6467') in 0.174405 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000131 seconds.
-  path: Assets/VR/Oculus/SampleFramework/Core/HandsInteraction/Materials/SystemGestureSkeletonBoneMaterial.mat
-  artifactKey: Guid(a3aacb3bb3e11b948899db3fbefc6fe1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VR/Oculus/SampleFramework/Core/HandsInteraction/Materials/SystemGestureSkeletonBoneMaterial.mat using Guid(a3aacb3bb3e11b948899db3fbefc6fe1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3257e2e5992df93389fe69656eb90af') in 0.041856 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+  Time since last request: 406182.362788 seconds.
+  path: Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
+  artifactKey: Guid(7a18a56d63b6f394cad2a94cb7f6de33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset using Guid(7a18a56d63b6f394cad2a94cb7f6de33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00abf95579b8aff936ac5a95a18a2a3c') in 0.034651 seconds 

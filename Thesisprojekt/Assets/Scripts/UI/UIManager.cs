@@ -38,11 +38,20 @@ public class UIManager : MonoBehaviour
     //method used by VRCharController to calculate the current feedback value in dependence of the controller trigger value
     public float CalculateCurrentFeedbackValue(float currentFeedbackValue, float triggerValue)
     {
+        Debug.Log("triggerValue: " + triggerValue + ", lastTriggerValue: " + lastTriggerValue);
+
         //increase/decrease feedback value the more trigger is pressed or released
         if (triggerValue > lastTriggerValue)
             currentFeedbackValue = currentFeedbackValue + triggerValue / valueDivider;
         else if(triggerValue < lastTriggerValue)
             currentFeedbackValue =  currentFeedbackValue - triggerValue / valueDivider;
+        //check if feedback value is between 0 and 100
+        if (currentFeedbackValue > 100)
+            currentFeedbackValue = 100;
+        else if (currentFeedbackValue < 0)
+            currentFeedbackValue = 0;
+
+        Debug.Log("CURRENTFEEDBACKVALUE: " + currentFeedbackValue);
 
         //save trigger value as last trigger value
         lastTriggerValue = triggerValue;

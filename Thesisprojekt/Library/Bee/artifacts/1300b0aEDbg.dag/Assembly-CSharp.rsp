@@ -447,6 +447,8 @@
 "Assets/Scripts/Character/LowerBodyAnimation.cs"
 "Assets/Scripts/Character/VRCharController.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/Networking/ConnectToServer.cs"
+"Assets/Scripts/Networking/CreateAndJoinRoom.cs"
 "Assets/Scripts/SpiderAC.cs"
 "Assets/Scripts/UI/MenuController.cs"
 "Assets/Scripts/UI/UIManager.cs"

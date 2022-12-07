@@ -27,9 +27,9 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     //gets called automatically when joined a lobby
     public override void OnJoinedLobby()
     {
-        //change scene to map for scenario
-        Debug.Log("Go into scenario...");
-        //TODO: in korrekte Szene, nicht automatisch Phobiemap
-        SceneManager.LoadScene("MapPhobia");
+        //go to scene to find/create room
+        //TODO supervisor + patient unterscheiden durch Check ob szene vorhanden
+        SceneManager.LoadScene("CreateRoom");
+        SceneManager.LoadScene("FindRoom");
     }
 }

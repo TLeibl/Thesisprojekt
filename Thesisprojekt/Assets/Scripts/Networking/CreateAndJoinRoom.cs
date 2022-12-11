@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,15 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TMP_InputField createInput = null; //create lobby text input field
     [SerializeField] private TMP_InputField joinInput = null; //join lobby text input field
+
+    private Scenario chosenScenario; //the scenario the supervisor has chosen
+
+    //all possible scenarios
+    private enum Scenario
+    {
+        Arachnophobia,
+        MachineOperating
+    }
 
 
     //method called by Create button
@@ -40,19 +50,20 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        //TODO Build herausfinden und danach weiterleiten
         Debug.Log("Joined room.");
 
-        //supervisor created a room - go to UISupervisor scene
-        if(joinInput == null)
+        //supervisor (Pc/Mac/Linux user) created a room - go to UISupervisor scene
+        if(EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
         {
             SceneManager.LoadScene("UISupervisor");
         }
-        //patient/scholar joined a room - send to map
-        else if(createInput == null) 
+        //patient/scholar (VR = Android user) joined a room - send to map
+        else if(EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android) 
         {
-            //TODO herausfinden welche Map
-            SceneManager.LoadScene("MapPhobia");
+            if (chosenScenario == Scenario.Arachnophobia)
+                SceneManager.LoadScene("MapPhobia");
+            else if (chosenScenario == Scenario.MachineOperating)
+                SceneManager.LoadScene("MapLearning");
         }
     }
 }

@@ -23,12 +23,13 @@ public class MenuController : MonoBehaviour
 
     //--------------------ChooseScenario Menu Buttons--------------------
 
+    //TODO überarbeiten
     public void ArachnophobiaButton()
     {
         //send supervisor in UISupervisor scene
         SceneManager.LoadScene("UISupervisor");
         //send patient into phobia scene
-        LoadVRPlayerIntoScene("MapPhobia");
+        GameManager.ChosenScenario = GameManager.Scenario.Arachnophobia;
     }
 
     public void MachineOperatingButton()
@@ -36,13 +37,6 @@ public class MenuController : MonoBehaviour
         //send supervisor in UISupervisor scene
         SceneManager.LoadScene("UISupervisor");
         //send patient into learning scene
-        LoadVRPlayerIntoScene("MapLearning");
-    }
-
-    //method used to spawn player/scholar into the chosen scenario scene
-    private void LoadVRPlayerIntoScene(string sceneName)
-    {
-        //TODO nach networking: Methode nur für VR Player ausführen lassen!
-        SceneManager.LoadScene(sceneName);
+        GameManager.ChosenScenario = GameManager.Scenario.MachineOperating;
     }
 }

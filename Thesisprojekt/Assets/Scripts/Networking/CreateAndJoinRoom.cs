@@ -14,14 +14,6 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField createInput = null; //create lobby text input field
     [SerializeField] private TMP_InputField joinInput = null; //join lobby text input field
 
-    private Scenario chosenScenario; //the scenario the supervisor has chosen
-
-    //all possible scenarios
-    private enum Scenario
-    {
-        Arachnophobia,
-        MachineOperating
-    }
 
 
     //method called by Create button
@@ -60,9 +52,9 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
         //patient/scholar (VR = Android user) joined a room - send to map
         else if(EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android) 
         {
-            if (chosenScenario == Scenario.Arachnophobia)
+            if (GameManager.ChosenScenario == GameManager.Scenario.Arachnophobia)
                 SceneManager.LoadScene("MapPhobia");
-            else if (chosenScenario == Scenario.MachineOperating)
+            else if (GameManager.ChosenScenario == GameManager.Scenario.MachineOperating)
                 SceneManager.LoadScene("MapLearning");
         }
     }

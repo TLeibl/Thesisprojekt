@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
 
 //Script that containts the menu components functionality
 public class MenuController : MonoBehaviour
@@ -28,15 +31,15 @@ public class MenuController : MonoBehaviour
     {
         //send supervisor in UISupervisor scene
         SceneManager.LoadScene("UISupervisor");
-        //send patient into phobia scene
-        GameManager.ChosenScenario = GameManager.Scenario.Arachnophobia;
+        //set chosen scenario for patient/scholar to be sent to
+        PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ChosenScenario", NetworkingManager.Scenario.Arachnophobia } });
     }
 
     public void MachineOperatingButton()
     {
         //send supervisor in UISupervisor scene
         SceneManager.LoadScene("UISupervisor");
-        //send patient into learning scene
-        GameManager.ChosenScenario = GameManager.Scenario.MachineOperating;
+        //set chosen scenario for patient/scholar to be sent to
+        PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ChosenScenario", NetworkingManager.Scenario.MachineOperating } });
     }
 }

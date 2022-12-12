@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Oculus.Interaction;
+using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -32,7 +35,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         //update FeedbackBar value
-        feedbackBar.fillAmount = GameManager.FeedbackValue;
+        feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
     }
 
     //method used by VRCharController to calculate the current feedback value in dependence of the controller trigger value

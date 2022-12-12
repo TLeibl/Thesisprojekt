@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 2051426437}
   - component: {fileID: 2051426438}
   m_Layer: 0
-  m_Name: ConnectionManager
+  m_Name: NetworkingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

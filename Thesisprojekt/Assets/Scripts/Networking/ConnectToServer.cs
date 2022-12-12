@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
@@ -28,8 +29,10 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         //go to scene to find/create room
-        //TODO supervisor + patient unterscheiden durch Check ob szene vorhanden
-        SceneManager.LoadScene("CreateRoom");
-        SceneManager.LoadScene("FindRoom");
+        //supervisor (Pc/Mac/Linux user) shall create a room - go to CreateRoom scene
+        if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
+            SceneManager.LoadScene("CreateRoom");
+        //patient/scholar (VR = Android user) shall join a room - go to FindRoom scene
+        else SceneManager.LoadScene("FindRoom");
     }
 }

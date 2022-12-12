@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
-//using UnityEngine.InputSystem;
+using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 /**
  * This class is used to control the VR character.
@@ -332,8 +333,9 @@ public class VRCharController : MonoBehaviour
 		if (uiManager != null)
 			currentFeedbackValue = uiManager.CalculateCurrentFeedbackValue(currentFeedbackValue, triggerValue);
 
-		//update value in GameManager
-		GameManager.FeedbackValue = currentFeedbackValue;
+		//update value in properties for current Photon room
+		if (PhotonNetwork.IsConnected)
+			PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "FeedbackValue", currentFeedbackValue } });
 	}
 
 

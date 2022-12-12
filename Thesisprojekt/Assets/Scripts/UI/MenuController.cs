@@ -26,7 +26,6 @@ public class MenuController : MonoBehaviour
 
     //--------------------ChooseScenario Menu Buttons--------------------
 
-    //TODO überarbeiten
     public void ArachnophobiaButton()
     {
         //send supervisor in UISupervisor scene

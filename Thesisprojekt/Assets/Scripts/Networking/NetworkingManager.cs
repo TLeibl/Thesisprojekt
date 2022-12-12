@@ -28,6 +28,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     }
 
     private static Scenario chosenScenario = Scenario.notChosenYet; //the scenario the supervisor has chosen
+    private static bool scenarioNotChosenYet = true; //set to false when scenario has been chosen
 
     //the in the ChooseScenario scene chosen scenario 
     public static Scenario ChosenScenario
@@ -36,6 +37,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         set
         {
             chosenScenario = value;
+            scenarioNotChosenYet = false;
         }
     }
 
@@ -43,7 +45,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        //keep values during whole run
+        //keep object during whole run
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -94,11 +96,24 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         //patient/scholar (VR = Android user) joined a room - send to map
         else if(EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android) 
         {
-            //TODO Warten wenn notChosenYet
-            if (chosenScenario == Scenario.Arachnophobia)
-                SceneManager.LoadScene("MapPhobia");
-            else if (chosenScenario == Scenario.MachineOperating)
-                SceneManager.LoadScene("MapLearning");
+            //wait until scenario has been chosen by supervisor and then sent to map
+            StartCoroutine(sendToScenario());
         }
+    }
+
+    //coroutine until scenario has been set by supervisor
+    private IEnumerator sendToScenario()
+    {
+        Debug.Log("Wait for supervisor to choose scenario...");
+        while (scenarioNotChosenYet)
+        {
+            yield return null;
+        }
+        Debug.Log("Scenario chosen. Go to scenario...");
+
+        if (chosenScenario == Scenario.Arachnophobia)
+            SceneManager.LoadScene("MapPhobia");
+        else if (chosenScenario == Scenario.MachineOperating)
+            SceneManager.LoadScene("MapLearning");
     }
 }

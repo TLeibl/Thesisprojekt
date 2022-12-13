@@ -27,20 +27,6 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         MachineOperating
     }
 
-    private static Scenario chosenScenario = Scenario.notChosenYet; //the scenario the supervisor has chosen
-    private static bool scenarioNotChosenYet = true; //set to false when scenario has been chosen
-
-    //the in the ChooseScenario scene chosen scenario 
-    public static Scenario ChosenScenario
-    {
-        get => chosenScenario;
-        set
-        {
-            chosenScenario = value;
-            scenarioNotChosenYet = false;
-        }
-    }
-
 
 
     private void Awake()
@@ -62,8 +48,9 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
 
             //create hashtable to keep shared values e.g. feedback value in
             Hashtable SharedValues = new Hashtable();
-            SharedValues.Add("FeedbackValue", 0f);
-            SharedValues.Add("ChosenScenario", NetworkingManager.Scenario.notChosenYet);
+            SharedValues.Add("FeedbackValue", 0f); //shared feedback value
+            SharedValues.Add("ChosenScenario", NetworkingManager.Scenario.notChosenYet); //the scenario chosen
+            SharedValues.Add("ScenarioNotChosenYet", true); //false if scenario has been chosen
             roomOptions.CustomRoomProperties = SharedValues;
 
             //create and join room with input text as name
@@ -105,15 +92,15 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     private IEnumerator sendToScenario()
     {
         Debug.Log("Wait for supervisor to choose scenario...");
-        while (scenarioNotChosenYet)
+        while ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ScenarioNotChosenYet"])
         {
             yield return null;
         }
         Debug.Log("Scenario chosen. Go to scenario...");
 
-        if (chosenScenario == Scenario.Arachnophobia)
+        if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.Arachnophobia)
             SceneManager.LoadScene("MapPhobia");
-        else if (chosenScenario == Scenario.MachineOperating)
+        else if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.MachineOperating)
             SceneManager.LoadScene("MapLearning");
     }
 }

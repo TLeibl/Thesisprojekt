@@ -32,7 +32,7 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("UISupervisor");
         //set chosen scenario for patient/scholar to be sent to
         PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ChosenScenario", NetworkingManager.Scenario.Arachnophobia } });
-        NetworkingManager.scenarioNotChosenYet
+        PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ScenarioNotChosenYet", false } });
     }
 
     public void MachineOperatingButton()
@@ -41,5 +41,6 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("UISupervisor");
         //set chosen scenario for patient/scholar to be sent to
         PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ChosenScenario", NetworkingManager.Scenario.MachineOperating } });
+        PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ScenarioNotChosenYet", false } });
     }
 }

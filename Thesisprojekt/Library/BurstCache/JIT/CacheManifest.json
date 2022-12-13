@@ -7,7 +7,7 @@
     },
     {
       "FullName": "Unity.Animation.Rigging, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-12-11T15:18:51.4962789Z"
+      "LastWriteTime": "2022-12-13T09:39:25.2369667Z"
     },
     {
       "FullName": "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -23,11 +23,15 @@
     },
     {
       "FullName": "Unity.Animation.Rigging.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-12-11T15:18:51.3832448Z"
+      "LastWriteTime": "2022-12-13T09:39:26.0048266Z"
+    },
+    {
+      "FullName": "mscorlib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-09-20T00:57:32Z"
     },
     {
       "FullName": "Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-12-11T15:18:51.527176Z"
+      "LastWriteTime": "2022-12-13T09:39:25.9418044Z"
     }
   ],
   "Functions": [
@@ -104,8 +108,8 @@
       "AssemblyDependencyIndices": [
         0,
         5,
-        2,
         3,
+        2,
         1,
         4
       ]
@@ -132,6 +136,7 @@
       "AssemblyDependencyIndices": [
         0,
         1,
+        6,
         2,
         3,
         4
@@ -143,7 +148,7 @@
       "ModuleHash": "cd604f9cafdc3794b3fb2d6405c4eaa5",
       "LinkName": "801E9A000BB37B05",
       "AssemblyDependencyIndices": [
-        6,
+        7,
         4,
         2
       ]
@@ -154,7 +159,7 @@
       "ModuleHash": "db8cff958ed7ea27e33dfe4181bc7d01",
       "LinkName": "CDCA4A5193BE5947",
       "AssemblyDependencyIndices": [
-        6,
+        7,
         4,
         2
       ]
@@ -302,9 +307,9 @@
       "AssemblyDependencyIndices": [
         0,
         1,
+        4,
         2,
-        3,
-        4
+        3
       ]
     },
     {

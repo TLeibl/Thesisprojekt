@@ -459,6 +459,7 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VoiceSDK.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/VoiceSDK.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/WebView.ref.dll"
+"Assets/BuildTools/Editor/BuildTools.cs"
 "Assets/VR/Oculus/SampleFramework/Core/Firebase/Editor/FirebaseEnabler.cs"
 "Assets/VR/Oculus/SampleFramework/Core/Gradle/Editor/Utils.cs"
 "Assets/VR/Oculus/SampleFramework/Core/Locomotion/Scripts/Editor/TeleportTransitionWarpInspector.cs"

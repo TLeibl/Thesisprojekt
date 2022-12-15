@@ -197,7 +197,7 @@ public class BuildTools : EditorWindow
             options.locationPathName = System.IO.Path.Combine("Builds", target.ToString(), apkName);
         }
         else
-            options.locationPathName = System.IO.Path.Combine("Builds", target.ToString());
+            options.locationPathName = System.IO.Path.Combine("Builds", target.ToString(), PlayerSettings.productName);
 
         if (BuildPipeline.BuildCanBeAppended(target, options.locationPathName) == CanAppendBuild.Yes)
             options.options = BuildOptions.AcceptExternalModificationsToPlayer; //if build can be appended - accept external modifications

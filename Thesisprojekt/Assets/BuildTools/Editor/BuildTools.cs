@@ -179,6 +179,7 @@ public class BuildTools : EditorWindow
         BuildPlayerOptions options = new BuildPlayerOptions(); //the player options
 
         //TODO eigene Szenen für jeden Build
+        //SetScenes();
 
         //get list of scenes
         List<string> scenes = new List<string>();
@@ -216,5 +217,30 @@ public class BuildTools : EditorWindow
         //if method reaches that point - build failed
         Debug.LogError($"Build for {target.ToString()} failed"); //log which build failed
         return false;
+    }
+
+
+    //method used to enable/disable scenes for target build
+    //TODO fertig schreiben
+    private void SetScenes(string sceneName, bool sceneEnabled, NetworkingManager.Scenario scenario)
+    {
+        EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes; //all scenes in EditorBuildSettings
+
+        if(scenario == NetworkingManager.Scenario.Arachnophobia)
+        {
+            foreach (EditorBuildSettingsScene scene in scenes)
+            {
+                if (scene.path.Contains(sceneName))
+                {
+                    scene.enabled = sceneEnabled;
+                }
+            }
+        }
+        else if(scenario == NetworkingManager.Scenario.MachineOperating)
+        {
+
+        }
+
+        EditorBuildSettings.scenes = scenes;
     }
 }

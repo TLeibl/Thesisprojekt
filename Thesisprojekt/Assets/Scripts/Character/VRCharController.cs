@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -200,9 +201,20 @@ public class VRCharController : MonoBehaviour
 #endif
 
 
-#if !UNITY_ANDROID || UNITY_EDITOR
+#if UNITY_ANDROID || UNITY_EDITOR
 		// Escape Application
 		if (Input.GetKeyDown(quitKey))
+			Application.Quit();
+
+		//Reset application when supervisor pushed button
+		if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ResetScenario"] == true)
+			if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+				SceneManager.LoadScene("MapPhobia");
+			else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+				SceneManager.LoadScene("MapLearning");
+
+		//end application when scenario finished
+		if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["StoppedScenario"] == true)
 			Application.Quit();
 #endif
 	}

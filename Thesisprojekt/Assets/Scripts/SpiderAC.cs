@@ -116,7 +116,14 @@ public class SpiderAC : MonoBehaviour
         animator.SetBool("isStruggling", true);
     }
 
-    
+
+    // Let the spider look at a position, e.g. the patient.
+    public void LookAtPerson()
+    {
+        LookAt(patient.position);
+    }
+
+
     //method called by supervisor to let spider walk to chosen position
     public void MoveToPosition(Vector3 position)
     {
@@ -130,6 +137,13 @@ public class SpiderAC : MonoBehaviour
             //walk until position reached
         }
         animator.SetBool("isWalking", false);
+    }
+
+
+    //method called by supervisor to let spider walk to patient
+    public void MoveToPatient()
+    {
+        MoveToPosition(patient.position);
     }
 
 

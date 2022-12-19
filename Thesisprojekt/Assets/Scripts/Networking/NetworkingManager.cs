@@ -51,10 +51,14 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
             SharedValues.Add("FeedbackValue", 0f); //shared feedback value
             SharedValues.Add("ChosenScenario", NetworkingManager.Scenario.notChosenYet); //the scenario chosen
             SharedValues.Add("ScenarioNotChosenYet", true); //false if scenario has been chosen
+            SharedValues.Add("StoppedScenario", false); //true when supervisor pushed Stop button
+            SharedValues.Add("ResetScenario", false); //true when supervisor pushed Reset button
             roomOptions.CustomRoomProperties = SharedValues;
 
             //create and join room with input text as name
             PhotonNetwork.CreateRoom(createInput.text, roomOptions);
+            //enable having supervisor and VR user in different scenes
+            PhotonNetwork.AutomaticallySyncScene = false;
 
             Debug.Log("Room successfully created. Waiting for scholar/patient...");
         }  
@@ -89,7 +93,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     }
 
     //coroutine until scenario has been set by supervisor
-    private IEnumerator sendToScenario()
+    public IEnumerator sendToScenario()
     {
         Debug.Log("Wait for supervisor to choose scenario...");
         while ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ScenarioNotChosenYet"])

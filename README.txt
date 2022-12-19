@@ -33,6 +33,7 @@ VERWENDETE ASSETS:
 - Animation Rigging
 - Photon PUN 2 free
 - ReadyPlayerMe SDK
+- Simple Tooltip: https://assetstore.unity.com/packages/tools/gui/simple-tooltip-155804
 - Avatare und Animationen:
   > ReadyPlayerMe Avatar
   > ReadyPlayerMe Walking-Animation

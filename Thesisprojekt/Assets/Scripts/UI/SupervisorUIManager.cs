@@ -20,6 +20,12 @@ public class SupervisorUIManager : MonoBehaviour
     {
         //update FeedbackBar value
         feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
+
+        //if phobia object (e.g. spider) is dead - can only be despawned
+        if (spider.dead)
+        {
+
+        }
     }
 
     //--------------------Arachnophobia Scenario Buttons--------------------
@@ -68,8 +74,6 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Spawn object...");
 
-        //TODO
-
         //command object to spawn at chosen position
         spider.SpawnSpider(ChoosePosition());
 
@@ -99,7 +103,8 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object flee...");
 
         //command object to flee
-        spider.Flee();
+        if(!spider.dead)
+            spider.Flee();
 
         //reactivate SpawnButton and deactivate despawn buttons
         spawnButton.interactable = true;
@@ -114,7 +119,8 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object look at person...");
 
         //command object to look at person
-        spider.LookAtPerson();
+        if (!spider.dead)
+            spider.LookAtPerson();
     }
 
     //MoveToPosition button - command phobia object (e.g. spider) to move to a chosen position
@@ -123,7 +129,8 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object move to position...");
 
         //command object  to move to chosen position
-        spider.MoveToPosition(ChoosePosition());
+        if (!spider.dead)
+            spider.MoveToPosition(ChoosePosition());
     }
 
 
@@ -132,7 +139,8 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Let object move to person...");
 
-        spider.MoveToPatient();
+        if (!spider.dead)
+            spider.MoveToPatient();
     }
 
 
@@ -142,6 +150,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object move onto person...");
 
         //TODO MoveOntoPerson Button
+        //if(!spider.dead)
     }
 
 

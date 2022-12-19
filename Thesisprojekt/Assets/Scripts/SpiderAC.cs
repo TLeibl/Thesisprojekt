@@ -6,6 +6,8 @@ using UnityEngine.AI;
 //script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
 public class SpiderAC : MonoBehaviour
 {
+    public bool dead = false; //true if spider is dead
+
     //references
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider

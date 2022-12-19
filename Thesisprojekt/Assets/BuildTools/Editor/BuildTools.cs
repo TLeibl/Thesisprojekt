@@ -269,7 +269,8 @@ public class BuildTools : EditorWindow
             string[] scenesToEnableList = new string[] {  "Menus/MainMenuPc",
                                                           "Menus/CreateRoom",
                                                           "Menus/ChooseScenario",
-                                                          "UISupervisor"};
+                                                          "UISupervisor",
+                                                          "ScenarioEvaluation"};
 
             //add list components to scenesToEnable list
             for (int i = 0; i < scenesToEnableList.Length; i++)

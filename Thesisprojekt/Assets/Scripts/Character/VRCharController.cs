@@ -13,7 +13,7 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class VRCharController : MonoBehaviour
 {
 	//Give Feedback
-	[SerializeField] UIManager uiManager = null; //the player UI manager
+	[SerializeField] PlayerUIManager uiManager = null; //the player UI manager
 	private InputDevice targetDevice; //the device used to get an input value (e.g. right hand controller)
 	private float currentFeedbackValue = 0.0f; //current feedback value (can be 0-100)
 

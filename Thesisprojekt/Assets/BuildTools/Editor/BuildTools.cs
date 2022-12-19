@@ -5,6 +5,8 @@ using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using Unity.EditorCoroutines.Editor;
+using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 //script used to automatically build project for different platforms.
 //It can be controlled via Tools - BuildTools window.
@@ -14,6 +16,10 @@ public class BuildTools : EditorWindow
     Dictionary<BuildTarget, bool> TargetsToBuild = new Dictionary<BuildTarget, bool>();
     //List keeping available build targets
     List<BuildTarget> AvailableTargets = new List<BuildTarget>();
+
+    //strings used for scene enabling/disabling
+    private string mainFolder = "Assets/Application/Scenes/";
+    private string sceneType = ".unity";
 
 
     //Create editor window
@@ -178,8 +184,8 @@ public class BuildTools : EditorWindow
         //the player options
         BuildPlayerOptions options = new BuildPlayerOptions(); //the player options
 
-        //TODO eigene Szenen für jeden Build
-        //SetScenes();
+        //eigene Szenen für jeden Build
+        SetScenes(target);
 
         //get list of scenes
         List<string> scenes = new List<string>();
@@ -221,26 +227,68 @@ public class BuildTools : EditorWindow
 
 
     //method used to enable/disable scenes for target build
-    //TODO fertig schreiben
-    private void SetScenes(string sceneName, bool sceneEnabled, NetworkingManager.Scenario scenario)
+    private void SetScenes(BuildTarget target)
     {
         EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes; //all scenes in EditorBuildSettings
+        List<EditorBuildSettingsScene> scenesToEnable = new List<EditorBuildSettingsScene>(); //scenes that shall be enabled for build
 
-        if(scenario == NetworkingManager.Scenario.Arachnophobia)
+        //Build vor VR and Scenario Arachnophobia
+        if (target == BuildTarget.Android && (NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia) 
         {
-            foreach (EditorBuildSettingsScene scene in scenes)
+            //list with scenes to enable for build
+            string[] scenesToEnableList = new string[] {  "Menus/MainMenuVR",
+                                                          "Menus/FindRoom",
+                                                          "Menus/WaitingScene",
+                                                          "MapPhobia"};
+
+            //add list components to scenesToEnable list
+            for (int i = 0; i < scenesToEnableList.Length; i++)
             {
-                if (scene.path.Contains(sceneName))
-                {
-                    scene.enabled = sceneEnabled;
-                }
+                scenesToEnable.Add(new EditorBuildSettingsScene(mainFolder + scenesToEnableList[i] + sceneType, true));
             }
         }
-        else if(scenario == NetworkingManager.Scenario.MachineOperating)
+        //build for VR and Scenario Machine Operating
+        else if (target == BuildTarget.Android && (NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
         {
+            //list with scenes to enable for build
+            string[] scenesToEnableList = new string[] {  "Menus/MainMenuVR",
+                                                          "Menus/FindRoom",
+                                                          "Menus/WaitingScene",
+                                                          "MapLearning"};
 
+            //add list components to scenesToEnable list
+            for (int i = 0; i < scenesToEnableList.Length; i++)
+            {
+                scenesToEnable.Add(new EditorBuildSettingsScene(mainFolder + scenesToEnableList[i] + sceneType, true));
+            }
+        }
+        //build for Windows/iOs/Linux
+        else if (target != BuildTarget.Android)
+        {
+            //list with scenes to enable for build
+            string[] scenesToEnableList = new string[] {  "Menus/MainMenuPc",
+                                                          "Menus/CreateRoom",
+                                                          "Menus/ChooseScenario",
+                                                          "UISupervisor"};
+
+            //add list components to scenesToEnable list
+            for (int i = 0; i < scenesToEnableList.Length; i++)
+            {
+                scenesToEnable.Add(new EditorBuildSettingsScene(mainFolder + scenesToEnableList[i] + sceneType, true));
+            }
         }
 
+
+        //check for each scene in scenes list if it should be enabled (= is in scenesToEnable)
+        foreach (EditorBuildSettingsScene scene in scenes)
+        {
+            if (scenesToEnable.Contains(scene))
+                scene.enabled = true; //enable if yes
+            else scene.enabled = false; //disable if no
+        }
+
+        //update the scenes list in the EditorBuildSettings so the scenes needed are enabled and the ones not needed
+        //are disabled
         EditorBuildSettings.scenes = scenes;
     }
 }

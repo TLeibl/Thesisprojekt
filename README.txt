@@ -21,6 +21,9 @@ SteamVR muss hierauf aktiviert und eingerichtet werden und die benötigten Gerä
 verbunden sein. Alle Geräte müssen von SteamVR erkannt worden sein.
 Daraufhin kann das Spiel gestartet werden.
 
+Achtung: Szenen, welche neu hinzugefügt werden, müssen in den Build Settings aktiviert sowie in den BuildTools (Skript) 
+für das entsprechende Szenario in die Liste scenesToEnable hinzugefügt werden.
+
 
 =======
 VERWENDETE ASSETS:

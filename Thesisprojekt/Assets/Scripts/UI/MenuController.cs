@@ -23,6 +23,11 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("WaitingScene");
     }
 
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
 
     //--------------------ChooseScenario Menu Buttons--------------------
 

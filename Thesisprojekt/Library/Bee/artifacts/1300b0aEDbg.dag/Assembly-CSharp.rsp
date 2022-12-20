@@ -450,6 +450,7 @@
 "Assets/Scripts/Networking/ConnectToServer.cs"
 "Assets/Scripts/Networking/NetworkingManager.cs"
 "Assets/Scripts/SpiderAC.cs"
+"Assets/Scripts/UI/EvaluationUIManager.cs"
 "Assets/Scripts/UI/MenuController.cs"
 "Assets/Scripts/UI/PlayerUIManager.cs"
 "Assets/Scripts/UI/SupervisorUIManager.cs"

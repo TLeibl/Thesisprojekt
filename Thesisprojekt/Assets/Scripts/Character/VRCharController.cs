@@ -204,6 +204,7 @@ public class VRCharController : MonoBehaviour
 #if UNITY_ANDROID || UNITY_EDITOR
 		// Escape Application
 		if (Input.GetKeyDown(quitKey))
+			PhotonNetwork.Disconnect();
 			Application.Quit();
 
 		//Reset application when supervisor pushed button
@@ -215,6 +216,7 @@ public class VRCharController : MonoBehaviour
 
 		//end application when scenario finished
 		if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["StoppedScenario"] == true)
+			PhotonNetwork.Disconnect();
 			Application.Quit();
 #endif
 	}

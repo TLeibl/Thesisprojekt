@@ -8,7 +8,7 @@ public class EvaluationValueManager : MonoBehaviour
 {
     //current VR user and spider object
     [SerializeField] private VRCharController vrUser = null;
-    [SerializeField] private SpiderAC spider = null;
+    [SerializeField] private SpiderController spider = null;
 
     //value lists (list for feedback values and every event occuring)
     private List<float> feedbackValues = new List<float>();

@@ -201,7 +201,7 @@ public class VRCharController : MonoBehaviour
 #endif
 
 
-#if UNITY_ANDROID || UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_EDITOR)
 		// Escape Application
 		if (Input.GetKeyDown(quitKey))
 			PhotonNetwork.Disconnect();

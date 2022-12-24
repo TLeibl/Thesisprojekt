@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.InputSystem;
+#if UNITY_ANDROID
 using UnityEngine.XR;
+#endif
 
 
 //Script used to control the animator of the VR character.
@@ -9,8 +11,9 @@ public class CharAC : MonoBehaviour
 {
     //[SerializeField] private InputActionReference move; //use reference of the InputAction for walking
     [SerializeField] private Animator animator; //the VR character animator
-
+    #if UNITY_ANDROID
     private InputDevice targetDevice; //the device used to get an input value (here: left hand controller)
+    #endif
     private float currentMoveValue = 0.0f; //current movement value (Vector2 between x and y -1 to 1)
 
 
@@ -23,9 +26,11 @@ public class CharAC : MonoBehaviour
 
     private void Update()
     {
+        #if UNITY_ANDROID
         //if targetDevice is not valid yet - set it
         if (!targetDevice.isValid)
             TrySetTargetDevice();
+        #endif
 
         UpdateWalkAnimation();
     }
@@ -36,6 +41,7 @@ public class CharAC : MonoBehaviour
     //TODO animSpeed mehr anpassen?
     private void UpdateWalkAnimation()
     {
+#if UNITY_ANDROID
         //get Vector2 value of left controller joystick input 
         targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 joystickValue);
 
@@ -60,12 +66,14 @@ public class CharAC : MonoBehaviour
             this.animator.SetBool("isWalking", true);
             this.animator.SetFloat("animSpeed", -1.0f); 
         }
+#endif
     }
 
 
     //method used to set the left hand controller as target device
     private void TrySetTargetDevice()
     {
+#if UNITY_ANDROID
         //get all usable devices (headset and controllers) 
         List<InputDevice> devices = new List<InputDevice>();
 
@@ -82,6 +90,7 @@ public class CharAC : MonoBehaviour
 
         //set left hand controller as target device
         targetDevice = devices[0];
+#endif
     }
 
     //private void OnEnable()

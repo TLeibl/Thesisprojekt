@@ -646,4 +646,11 @@ public class VRCharController : MonoBehaviour
 			transform.rotation = Quaternion.Euler(euler);
 		}
 	}
+
+
+	//Getter vor EvaluationValueManager
+	public float GetCurrentFeedbackValue()
+    {
+		return currentFeedbackValue;
+    }
 }

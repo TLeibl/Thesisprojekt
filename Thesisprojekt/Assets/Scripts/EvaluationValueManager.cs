@@ -6,6 +6,10 @@ using UnityEngine;
 //later evaluation.
 public class EvaluationValueManager : MonoBehaviour
 {
+    //current VR user and spider object
+    [SerializeField] private VRCharController vrUser = null;
+    [SerializeField] private SpiderAC spider = null;
+
     //value lists (list for feedback values and every event occuring)
     private List<float> feedbackValues = new List<float>();
     private List<bool> spiderSpawned = new List<bool>();
@@ -19,6 +23,12 @@ public class EvaluationValueManager : MonoBehaviour
     private float timeInterval = 3f; //every time interval a value is saved
 
 
+    private void Awake()
+    {
+        //keep object during whole run
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Update()
     {
         //update lists in each time interval
@@ -26,7 +36,7 @@ public class EvaluationValueManager : MonoBehaviour
         if (timeElapsed >= timeInterval) 
         {
             //update lists
-            //feedbackValues.Add(currentFeedbackValue);
+            feedbackValues.Add(vrUser.GetCurrentFeedbackValue());
             //spiderSpawned.Add(bool);
             //spiderLooking.Add(bool);
             //spiderMovingToPos.Add(bool);

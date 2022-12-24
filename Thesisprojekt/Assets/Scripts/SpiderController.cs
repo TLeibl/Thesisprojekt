@@ -6,7 +6,13 @@ using UnityEngine.AI;
 //script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
 public class SpiderController : MonoBehaviour
 {
-    public bool dead = false; //true if spider is dead
+    //bools for occuring events
+    private bool dead = false; 
+    private bool spiderSpawned = false;
+    private bool spiderLooking = false;
+    private bool spiderMovingToPos = false;
+    private bool spiderMovingToPatient = false;
+    private bool spiderOntoPatient = false;
 
     //references
     private Animator animator = null; //the spider animator
@@ -63,6 +69,9 @@ public class SpiderController : MonoBehaviour
 
         //enable spider
         gameObject.SetActive(true);
+
+        //set bool
+        spiderSpawned = true;
     }
 
 
@@ -70,6 +79,12 @@ public class SpiderController : MonoBehaviour
     public void DespawnSpider()
     {
         gameObject.SetActive(false);
+        //reset bools
+        spiderSpawned = false;
+        spiderLooking = false;
+        spiderMovingToPatient = false;
+        spiderMovingToPos = false;
+        spiderOntoPatient = false;
     }
 
 
@@ -108,6 +123,10 @@ public class SpiderController : MonoBehaviour
 
         //stop movement
         agent.SetDestination(transform.position);
+
+        //set bool
+        spiderMovingToPos = false;
+        spiderMovingToPatient = false;
     }
 
 
@@ -123,6 +142,18 @@ public class SpiderController : MonoBehaviour
     public void LookAtPerson()
     {
         LookAt(patient.position);
+
+        //set bool
+        spiderLooking = true;
+        StartCoroutine("ResetSpiderLooking");
+    }
+
+
+    //reset spiderLooking after amount of time so EvaluationValueManager value is changed in time interval
+    private IEnumerator ResetSpiderLooking()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        spiderLooking = false;
     }
 
 
@@ -132,6 +163,7 @@ public class SpiderController : MonoBehaviour
         LookAt(position);
         //Walk animation
         animator.SetBool("isWalking", true);
+        
 
         agent.SetDestination(position);
         while (agent.remainingDistance > agent.stoppingDistance)
@@ -139,12 +171,16 @@ public class SpiderController : MonoBehaviour
             //walk until position reached
         }
         animator.SetBool("isWalking", false);
+        //reset bools
+        spiderMovingToPos = false;
+        spiderMovingToPatient = false;
     }
 
 
     //method called by supervisor to let spider walk to patient
     public void MoveToPatient()
     {
+        spiderMovingToPatient = true;
         MoveToPosition(patient.position);
     }
 
@@ -154,11 +190,15 @@ public class SpiderController : MonoBehaviour
     {
         //look at patient
         LookAt(patient.position);
+        //set bool
+        spiderLooking = true;
+        StartCoroutine("ResetSpiderLooking");
 
         //if not already there - move into direction of patient
-        if(!inPatientRange)
+        if (!inPatientRange)
         {
             MoveToPosition(patient.position);
+            spiderMovingToPatient = true;
         }
 
     }
@@ -175,6 +215,8 @@ public class SpiderController : MonoBehaviour
         //if hand down - climb onto hand and up the arm
 
         //else climb up the legs and onto the arm
+
+        spiderOntoPatient = true;
     }
 
 
@@ -193,6 +235,7 @@ public class SpiderController : MonoBehaviour
         Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
         LookAt(newPos); //look at pos
         agent.SetDestination(newPos); //move there
+        spiderMovingToPos = true;
 
         //despawn spider after short time
         StartCoroutine(DespawnAfterTime());
@@ -214,6 +257,43 @@ public class SpiderController : MonoBehaviour
 
         //Death animation
         animator.SetBool("dead", true);
+
+        //set bool
+        dead = true;
+    }
+
+
+    //---------------------------GETTER-----------------------------
+
+
+    public bool IsDead()
+    {
+        return dead;
+    }
+
+    public bool IsSpawned()
+    {
+        return spiderSpawned;
+    }
+
+    public bool IsLooking()
+    {
+        return spiderLooking;
+    }
+
+    public bool IsMovingToPos()
+    {
+        return spiderMovingToPos;
+    }
+
+    public bool IsMovingToPatient()
+    {
+        return spiderMovingToPatient;
+    }
+
+    public bool IsOntoPatient()
+    {
+        return spiderOntoPatient;
     }
 
 }

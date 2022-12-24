@@ -13,7 +13,7 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button despawnButton = null;
     [SerializeField] private Button fleeButton = null;
 
-    private SpiderAC spider = null; //TODO get spider AC
+    private SpiderController spider = null; //TODO get spider AC
 
     // Update is called once per frame
     private void Update()
@@ -22,9 +22,11 @@ public class SupervisorUIManager : MonoBehaviour
         feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
 
         //if phobia object (e.g. spider) is dead - can only be despawned
-        if (spider.dead)
+        if (spider.IsDead())
         {
-
+            //TODO anderen Buttons adden
+            spawnButton.enabled = false;
+            fleeButton.enabled = false;
         }
     }
 

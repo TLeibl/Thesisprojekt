@@ -16,11 +16,12 @@ public class EvaluationValueManager : MonoBehaviour
     private List<bool> spiderLooking = new List<bool>();
     private List<bool> spiderMovingToPos = new List<bool>();
     private List<bool> spiderMovingToPatient = new List<bool>();
-    private List<bool> spiderOnPatient = new List<bool>();
+    private List<bool> spiderOntoPatient = new List<bool>();
+    private List<bool> spiderDied = new List<bool>();
 
     //save a value for each time interval
     private float timeElapsed = 0f; 
-    private float timeInterval = 3f; //every time interval a value is saved
+    private float timeInterval = 1f; //every time interval a value is saved
 
 
     private void Awake()
@@ -37,11 +38,12 @@ public class EvaluationValueManager : MonoBehaviour
         {
             //update lists
             feedbackValues.Add(vrUser.GetCurrentFeedbackValue());
-            //spiderSpawned.Add(bool);
-            //spiderLooking.Add(bool);
-            //spiderMovingToPos.Add(bool);
-            //spiderMovingToPatient.Add(bool);
-            //spiderOnPatient.Add(bool);
+            spiderSpawned.Add(spider.IsSpawned());
+            spiderLooking.Add(spider.IsLooking());
+            spiderMovingToPos.Add(spider.IsMovingToPos());
+            spiderMovingToPatient.Add(spider.IsMovingToPatient());
+            spiderOntoPatient.Add(spider.IsOntoPatient());
+            spiderDied.Add(spider.IsDead());
 
             timeElapsed = 0;
         }

@@ -105,7 +105,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object flee...");
 
         //command object to flee
-        if(!spider.dead)
+        if(!spider.IsDead())
             spider.Flee();
 
         //reactivate SpawnButton and deactivate despawn buttons
@@ -121,7 +121,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object look at person...");
 
         //command object to look at person
-        if (!spider.dead)
+        if (!spider.IsDead())
             spider.LookAtPerson();
     }
 
@@ -131,7 +131,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object move to position...");
 
         //command object  to move to chosen position
-        if (!spider.dead)
+        if (!spider.IsDead())
             spider.MoveToPosition(ChoosePosition());
     }
 
@@ -141,7 +141,7 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Let object move to person...");
 
-        if (!spider.dead)
+        if (!spider.IsDead())
             spider.MoveToPatient();
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 //Manager that saves the current value of the feedback and occurring events for each time interval for
 //later evaluation.
@@ -38,12 +39,16 @@ public class EvaluationValueManager : MonoBehaviour
         {
             //update lists
             feedbackValues.Add(vrUser.GetCurrentFeedbackValue());
-            spiderSpawned.Add(spider.IsSpawned());
-            spiderLooking.Add(spider.IsLooking());
-            spiderMovingToPos.Add(spider.IsMovingToPos());
-            spiderMovingToPatient.Add(spider.IsMovingToPatient());
-            spiderOntoPatient.Add(spider.IsOntoPatient());
-            spiderDied.Add(spider.IsDead());
+            //if phobia scenario - update spider values
+            if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+            {
+                spiderSpawned.Add(spider.IsSpawned());
+                spiderLooking.Add(spider.IsLooking());
+                spiderMovingToPos.Add(spider.IsMovingToPos());
+                spiderMovingToPatient.Add(spider.IsMovingToPatient());
+                spiderOntoPatient.Add(spider.IsOntoPatient());
+                spiderDied.Add(spider.IsDead());
+            }
 
             timeElapsed = 0;
         }

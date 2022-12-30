@@ -7,10 +7,6 @@ using Photon.Pun;
 //later evaluation.
 public class EvaluationValueManager : MonoBehaviour
 {
-    //current VR user and spider object
-    [SerializeField] private VRCharController vrUser = null;
-    [SerializeField] private SpiderController spider = null;
-
     //value lists (list for feedback values and every event occuring)
     private List<float> feedbackValues = new List<float>();
     private List<bool> spiderSpawned = new List<bool>();
@@ -38,16 +34,16 @@ public class EvaluationValueManager : MonoBehaviour
         if (timeElapsed >= timeInterval) 
         {
             //update lists
-            feedbackValues.Add(vrUser.GetCurrentFeedbackValue());
+            feedbackValues.Add((float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"]);
             //if phobia scenario - update spider values
             if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
             {
-                spiderSpawned.Add(spider.IsSpawned());
-                spiderLooking.Add(spider.IsLooking());
-                spiderMovingToPos.Add(spider.IsMovingToPos());
-                spiderMovingToPatient.Add(spider.IsMovingToPatient());
-                spiderOntoPatient.Add(spider.IsOntoPatient());
-                spiderDied.Add(spider.IsDead());
+                //spiderSpawned.Add(spider.IsSpawned());
+                //spiderLooking.Add(spider.IsLooking());
+                //spiderMovingToPos.Add(spider.IsMovingToPos());
+                //spiderMovingToPatient.Add(spider.IsMovingToPatient());
+                //spiderOntoPatient.Add(spider.IsOntoPatient());
+                //spiderDied.Add(spider.IsDead());
             }
 
             timeElapsed = 0;

@@ -14,13 +14,13 @@ public class MenuController : MonoBehaviour
     public void SupervisorButtonPc()
     {
         //sends the supervisor (= person on pc) to the scene to choose a scenario
-        SceneManager.LoadScene("ChooseScenario");
+        SceneManager.LoadScene("CreateRoom");
     }
 
     public void ScholarButtonVR()
     {
         //sends the scholar/patient (= person using VR) to a waiting scene until the supervisor has chosen a scenario
-        SceneManager.LoadScene("WaitingScene");
+        SceneManager.LoadScene("FindRoom");
     }
 
     public void QuitButton()

@@ -18,6 +18,8 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField createInput = null; //create lobby text input field
     [SerializeField] private TMP_InputField joinInput = null; //join lobby text input field
 
+    private bool joined = false; //scholar/patient has joined - true
+
 
     //all possible scenarios that can be chosen by the supervisor
     public enum Scenario
@@ -33,6 +35,21 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     {
         //keep object during whole run
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    //Update method to check whether a scenario has been chosen and send scholar/patient to it
+    private void Update()
+    {
+        //patient/scholar (VR = Android user) joined a room - send to scenario when chosen
+        if (joined)
+        {
+            //only if scholar/patient - send to scenario
+            if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+            {
+                StartCoroutine(sendToScenario());
+            }
+        }
+        
     }
 
 
@@ -78,17 +95,18 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined room.");
 
-        //supervisor (Pc/Mac/Linux user) created a room - go to UISupervisor scene
+        //supervisor (Pc/Mac/Linux user) created a room - go to ChooseScenario scene
         //TODO wenn so nicht funzt: mit PhotonNetwork.isMasterClient 
         if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
         {
-            SceneManager.LoadScene("UISupervisor");
+            SceneManager.LoadScene("ChooseScenario");
         }
-        //patient/scholar (VR = Android user) joined a room - send to map
+        //patient/scholar (VR = Android user) joined a room - send to waiting screen
         else if(EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android) 
         {
+            joined = true; //scholar/patient joined
             //wait until scenario has been chosen by supervisor and then sent to map
-            StartCoroutine(sendToScenario());
+            SceneManager.LoadScene("WaitingScene");
         }
     }
 

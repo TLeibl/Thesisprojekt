@@ -1,4 +1,0 @@
-#Tue Nov 01 14:38:35 CET 2022
-base.0=C\:\\Users\\admin\\Dropbox\\Thesisprojekt\\Thesisprojekt\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

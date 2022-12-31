@@ -20,7 +20,8 @@ public class SupervisorUIManager : MonoBehaviour
     private void Update()
     {
         //update FeedbackBar value
-        feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
+        if(feedbackBar != null)
+            feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
 
         //if phobia object (e.g. spider) is dead - can only be despawned
         //TODO

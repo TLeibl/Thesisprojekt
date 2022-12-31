@@ -95,7 +95,6 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         Debug.Log("Joined room.");
 
         //supervisor (Pc/Mac/Linux user) created a room - go to ChooseScenario scene
-        //TODO wenn so nicht funzt: mit PhotonNetwork.isMasterClient 
         if (PhotonNetwork.IsMasterClient)
         {
             SceneManager.LoadScene("ChooseScenario");

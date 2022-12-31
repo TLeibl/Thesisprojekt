@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -45,7 +44,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         if (joined)
         {
             //only if scholar/patient - send to scenario
-            if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+            if (!PhotonNetwork.IsMasterClient)
             {
                 StartCoroutine(sendToScenario());
             }
@@ -98,12 +97,12 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
 
         //supervisor (Pc/Mac/Linux user) created a room - go to ChooseScenario scene
         //TODO wenn so nicht funzt: mit PhotonNetwork.isMasterClient 
-        if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
+        if (PhotonNetwork.IsMasterClient)
         {
             SceneManager.LoadScene("ChooseScenario");
         }
         //patient/scholar (VR = Android user) joined a room - send to waiting screen
-        else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+        else
         {
             joined = true; //scholar/patient joined
             //wait until scenario has been chosen by supervisor and then sent to map

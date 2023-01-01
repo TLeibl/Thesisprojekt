@@ -29,6 +29,14 @@ public class EvaluationValueManager : MonoBehaviour
 
     private void Update()
     {
+        //TODO ZU TESTZWECKEN 
+        string result = "FEEDBACKLISTE: ";
+        foreach (var item in feedbackValues)
+        {
+            result += item.ToString() + ", ";
+        }
+        Debug.Log(result);
+
         //update lists in each time interval
         timeElapsed += Time.deltaTime;
         if (timeElapsed >= timeInterval) 

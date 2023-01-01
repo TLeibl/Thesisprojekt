@@ -210,7 +210,8 @@ public class VRCharController : MonoBehaviour
 		//Reset application when supervisor pushed button
 		if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ResetScenario"] == true)
 			if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
-				SceneManager.LoadScene("MapPhobia");
+				PhotonNetwork.LoadLevel("MapPhobia");
+				//SceneManager.LoadScene("MapPhobia");
 			else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
 				SceneManager.LoadScene("MapLearning");
 

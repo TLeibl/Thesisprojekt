@@ -85,7 +85,11 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     //method called by Join button
     public void JoinRoom()
     {
-        if (joinInput != null && createInput.text != "")
+        //TODO ZU TESTZWECKEN! RAUS WENN TEST TASTATUR! 
+        joinInput.text = "a";
+
+
+        if (joinInput != null && joinInput.text != "")
             Debug.Log("Joining room...");
             //join room with name like input text
             PhotonNetwork.JoinRoom(joinInput.text);

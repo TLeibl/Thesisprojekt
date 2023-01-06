@@ -208,17 +208,19 @@ public class VRCharController : MonoBehaviour
 			Application.Quit();
 
 		//Reset application when supervisor pushed button
-		if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ResetScenario"] == true)
-			if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
-				PhotonNetwork.LoadLevel("MapPhobia");
-				//SceneManager.LoadScene("MapPhobia");
-			else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
-				SceneManager.LoadScene("MapLearning");
+		if (PhotonNetwork.CurrentRoom != null)
+			if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ResetScenario"] == true)
+				if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+					PhotonNetwork.LoadLevel("MapPhobia");
+					//SceneManager.LoadScene("MapPhobia");
+				else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+					SceneManager.LoadScene("MapLearning");
 
 		//end application when scenario finished
-		if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["StoppedScenario"] == true)
-			PhotonNetwork.Disconnect();
-			Application.Quit();
+		if (PhotonNetwork.CurrentRoom != null)
+			if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["StoppedScenario"] == true)
+				PhotonNetwork.Disconnect();
+				Application.Quit();
 #endif
 	}
 

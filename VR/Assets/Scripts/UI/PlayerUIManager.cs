@@ -35,7 +35,8 @@ public class PlayerUIManager : MonoBehaviour
     private void Update()
     {
         //update FeedbackBar value
-        feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
+        if(PhotonNetwork.CurrentRoom != null)
+            feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
     }
 
     //method used by VRCharController to calculate the current feedback value in dependence of the controller trigger value

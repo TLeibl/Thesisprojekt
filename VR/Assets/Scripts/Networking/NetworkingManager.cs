@@ -118,15 +118,20 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     public IEnumerator sendToScenario()
     {
         Debug.Log("Wait for supervisor to choose scenario...");
-        while ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ScenarioNotChosenYet"])
+        if (PhotonNetwork.CurrentRoom != null)
         {
-            yield return null;
-        }
-        Debug.Log("Scenario chosen. Go to scenario...");
+            while ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ScenarioNotChosenYet"])
+            {
+                yield return null;
+            }
+            Debug.Log("Scenario chosen. Go to scenario...");
 
-        if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.Arachnophobia)
-            SceneManager.LoadScene("MapPhobia");
-        else if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.MachineOperating)
-            SceneManager.LoadScene("MapLearning");
+            joined = false; //don't join scenario twice or more
+
+            if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.Arachnophobia)
+                SceneManager.LoadScene("MapPhobia");
+            else if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.MachineOperating)
+                SceneManager.LoadScene("MapLearning");
+        }     
     }
 }

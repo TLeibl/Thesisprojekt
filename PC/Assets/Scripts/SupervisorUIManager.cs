@@ -83,8 +83,6 @@ public class SupervisorUIManager : MonoBehaviour
         //instantiate spider and get spider controller
         spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-1.54f, 0.03f, 0.75f), Quaternion.identity, 0);
         spiderController = spawnedSpider.GetComponent<SpiderController>();
-        //command object to spawn at chosen position
-        //spiderController.SpawnSpider(ChoosePosition());
 
         //Gray button out - can only spawn one object
         spawnButton.interactable = false;

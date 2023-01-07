@@ -62,30 +62,30 @@ public class SpiderController : MonoBehaviour
     /// Method to let the spider spawn e.g. enable the game object 
     /// </summary>
     /// <param name="position">the position the spider shall be spawned</param>
-    public void SpawnSpider(Vector3 position)
-    {
-        //set disabled spider to choosen position
-        gameObject.transform.position = position;
+    //public void SpawnSpider(Vector3 position)
+    //{
+    //    //set disabled spider to choosen position
+    //    gameObject.transform.position = position;
 
-        //enable spider
-        gameObject.SetActive(true);
+    //    //enable spider
+    //    gameObject.SetActive(true);
 
-        //set bool
-        spiderSpawned = true;
-    }
+    //    //set bool
+    //    spiderSpawned = true;
+    //}
 
 
     //disable spider game object
-    public void DespawnSpider()
-    {
-        gameObject.SetActive(false);
-        //reset bools
-        spiderSpawned = false;
-        spiderLooking = false;
-        spiderMovingToPatient = false;
-        spiderMovingToPos = false;
-        spiderOntoPatient = false;
-    }
+    //public void DespawnSpider()
+    //{
+    //    gameObject.SetActive(false);
+    //    //reset bools
+    //    spiderSpawned = false;
+    //    spiderLooking = false;
+    //    spiderMovingToPatient = false;
+    //    spiderMovingToPos = false;
+    //    spiderOntoPatient = false;
+    //}
 
 
     //---------------------------MOVEMENT-----------------------------
@@ -271,10 +271,10 @@ public class SpiderController : MonoBehaviour
         return dead;
     }
 
-    public bool IsSpawned()
-    {
-        return spiderSpawned;
-    }
+    //public bool IsSpawned()
+    //{
+    //    return spiderSpawned;
+    //}
 
     public bool IsLooking()
     {

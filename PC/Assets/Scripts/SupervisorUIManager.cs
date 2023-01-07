@@ -14,7 +14,8 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button fleeButton = null;
 
     //TODO get spider AC
-    //private SpiderController spider = null; 
+    private GameObject spawnedSpider = null; //the currently spawned spider
+    private SpiderController spiderController = null; //current spider controller
 
     // Update is called once per frame
     private void Update()
@@ -79,8 +80,11 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Spawn object...");
 
+        //instantiate spider and get spider controller
+        spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-1.54f, 0.03f, 0.75f), Quaternion.identity, 0);
+        spiderController = spawnedSpider.GetComponent<SpiderController>();
         //command object to spawn at chosen position
-        //spider.SpawnSpider(ChoosePosition());
+        //spiderController.SpawnSpider(ChoosePosition());
 
         //Gray button out - can only spawn one object
         spawnButton.interactable = false;
@@ -92,9 +96,8 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Despawn object...");
 
-        //TODO
-        //command object to despawn
-        //spider.DespawnSpider();
+        //destroy current spider object
+        PhotonNetwork.Destroy(spawnedSpider);
 
         //reactivate SpawnButton and deactivate despawn buttons
         spawnButton.interactable = true;

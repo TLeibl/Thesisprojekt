@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 //script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
 public class SpiderController : MonoBehaviour

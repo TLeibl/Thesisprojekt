@@ -23,6 +23,12 @@ public class SupervisorUIManager : MonoBehaviour
     private float despawnDelay = 2.5f; //delay when despawning
 
 
+    private void Awake()
+    {
+        ResetButtons(); //no actions before spider spawned
+    }
+
+
     // Update is called once per frame
     private void Update()
     {

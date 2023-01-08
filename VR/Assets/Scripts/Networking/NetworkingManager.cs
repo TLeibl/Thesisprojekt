@@ -29,7 +29,6 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     }
 
 
-
     private void Awake()
     {
         //keep object during whole run
@@ -53,35 +52,6 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     }
 
 
-    //method called by Create button
-    public void CreateRoom()
-    {
-        if(createInput != null && createInput.text != "")
-        {
-            Debug.Log("Creating and joining room...");
-            //room settings so only 2 people can be in one room
-            RoomOptions roomOptions = new RoomOptions();
-            roomOptions.MaxPlayers = 2;
-
-            //create hashtable to keep shared values e.g. feedback value in
-            Hashtable SharedValues = new Hashtable();
-            SharedValues.Add("FeedbackValue", 0f); //shared feedback value
-            SharedValues.Add("ChosenScenario", NetworkingManager.Scenario.notChosenYet); //the scenario chosen
-            SharedValues.Add("ScenarioNotChosenYet", true); //false if scenario has been chosen
-            SharedValues.Add("StoppedScenario", false); //true when supervisor pushed Stop button
-            SharedValues.Add("ResetScenario", false); //true when supervisor pushed Reset button
-            roomOptions.CustomRoomProperties = SharedValues;
-
-            //create and join room with input text as name
-            PhotonNetwork.CreateRoom(createInput.text, roomOptions);
-            //enable having supervisor and VR user in different scenes
-            PhotonNetwork.AutomaticallySyncScene = false;
-
-            Debug.Log("Room successfully created. Waiting for scholar/patient...");
-        }  
-    }
-
-
     //method called by Join button
     public void JoinRoom()
     {
@@ -99,19 +69,9 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined room.");
 
-        //supervisor (Pc/Mac/Linux user) created a room - go to ChooseScenario scene
-        //TODO wenn so nicht funzt: mit PhotonNetwork.isMasterClient 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            SceneManager.LoadScene("ChooseScenario");
-        }
-        //patient/scholar (VR = Android user) joined a room - send to waiting screen
-        else
-        {
-            joined = true; //scholar/patient joined
-            //wait until scenario has been chosen by supervisor and then sent to map
-            SceneManager.LoadScene("WaitingScene");
-        }
+        joined = true; //scholar/patient joined
+        //wait until scenario has been chosen by supervisor and then sent to map
+        SceneManager.LoadScene("WaitingScene");
     }
 
     //coroutine until scenario has been set by supervisor

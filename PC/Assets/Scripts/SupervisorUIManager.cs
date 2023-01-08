@@ -70,9 +70,9 @@ public class SupervisorUIManager : MonoBehaviour
 
 
     //Draw button - if chosen let supervisor draw onto camera view
-    public void DrawButton()
-    {
-        Debug.Log("Start drawing...");
+    //public void DrawButton()
+    //{
+        //Debug.Log("Start drawing...");
 
         //TODO
         //Knopf soll gewählt werden können und währenddessen gehighlighted sein, statt Maus Pinsel, danach wd
@@ -81,8 +81,8 @@ public class SupervisorUIManager : MonoBehaviour
         //highlight button if not already pressed - else make it normal again
 
         //draw
-        Draw();
-    }
+        //Draw();
+    //}
 
 
     //Spawn button - let the supervisor spawn the phobia object (e.g. spider)
@@ -169,11 +169,9 @@ public class SupervisorUIManager : MonoBehaviour
     public void MoveToPersonButton()
     {
         Debug.Log("Let object move to person...");
-
-        //TODO
         
-        //if (!spider.IsDead())
-         //   spider.MoveToPatient();
+        if (!spiderController.IsDead())
+            spiderController.MoveToPatient();
     }
 
 
@@ -183,7 +181,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object move onto person...");
 
         //TODO MoveOntoPerson Button
-        //if(!spider.dead)
+        //if(!spiderController.IsDead())
     }
 
 
@@ -192,12 +190,12 @@ public class SupervisorUIManager : MonoBehaviour
 
 
     //method used to draw onto camera view - shall be seen by patient/scholar in scene
-    private void Draw()
-    {
-        Debug.Log("Drawing...");
+    //private void Draw()
+    //{
+        //Debug.Log("Drawing...");
 
         //TODO Draw functionality
-    }
+    //}
 
 
     //method used to let supervisor choose a position in the camera view 

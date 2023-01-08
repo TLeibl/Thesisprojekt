@@ -35,7 +35,7 @@ public class EvaluationValueManager : MonoBehaviour
         {
             result += item.ToString() + ", ";
         }
-        Debug.Log(result);
+        //Debug.Log(result);
 
         //update lists in each time interval
         timeElapsed += Time.deltaTime;

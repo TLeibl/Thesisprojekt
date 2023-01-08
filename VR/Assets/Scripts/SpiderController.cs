@@ -31,17 +31,21 @@ public class SpiderController : MonoBehaviour
 
     private void Awake()
     {
+        //set references
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        patient = GameObject.Find("OVRPlayerController").transform;
+        if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient
+            patient = GameObject.Find("OVRPlayerController").transform;
+
         groundedPosition = this.transform.position;
     }
 
 
     private void Update()
     {
-        //update distance to patient
-        CalculatePatientDistance();
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+            //update distance to patient
+            CalculatePatientDistance();
     }
 
 

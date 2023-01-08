@@ -31,13 +31,16 @@ public class SupervisorUIManager : MonoBehaviour
             feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
 
         //if phobia object (e.g. spider) is dead - can only be despawned
-        if (spiderController.IsDead())
+        if(spawnedSpider != null)
         {
-            spawnButton.enabled = false;
-            fleeButton.enabled = false;
-            lookAtButton.enabled = false;
-            moveToPosButton.enabled = false;
-            moveToPatButton.enabled = false;
+            if (spiderController.IsDead())
+            {
+                spawnButton.enabled = false;
+                fleeButton.enabled = false;
+                lookAtButton.enabled = false;
+                moveToPosButton.enabled = false;
+                moveToPatButton.enabled = false;
+            }
         }
     }
 

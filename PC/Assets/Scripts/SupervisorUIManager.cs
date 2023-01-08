@@ -16,6 +16,7 @@ public class SupervisorUIManager : MonoBehaviour
     //TODO get spider AC
     private GameObject spawnedSpider = null; //the currently spawned spider
     private SpiderController spiderController = null; //current spider controller
+    private float despawnDelay = 2.5f; //delay when despawning
 
     // Update is called once per frame
     private void Update()
@@ -109,10 +110,12 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Let object flee...");
 
-        //TODO
         //command object to flee
-        //if(!spider.IsDead())
-           // spider.Flee();
+        if(!spiderController.IsDead())
+             spiderController.Flee();
+
+        //despawn spider after short time
+        StartCoroutine(DespawnAfterTime());
 
         //reactivate SpawnButton and deactivate despawn buttons
         spawnButton.interactable = true;
@@ -121,26 +124,33 @@ public class SupervisorUIManager : MonoBehaviour
     }
 
 
+    //Coroutine used when spider flees to despawn the spider after some time
+    private IEnumerator DespawnAfterTime()
+    {
+        yield return new WaitForSeconds(despawnDelay);
+        DespawnButton();
+    }
+
+
     //LookAtPerson button - command phobia object (e.g. spider) to turn towards the VR user
     public void LookAtPersonButton()
     {
         Debug.Log("Let object look at person...");
 
-        //TODO
         //command object to look at person
-        //if (!spider.IsDead())
-           // spider.LookAtPerson();
+        if (!spiderController.IsDead())
+            spiderController.LookAtPerson();
     }
+
 
     //MoveToPosition button - command phobia object (e.g. spider) to move to a chosen position
     public void MoveToPosButton()
     {
         Debug.Log("Let object move to position...");
 
-        //TODO
         //command object  to move to chosen position
-        //if (!spider.IsDead())
-        //    spider.MoveToPosition(ChoosePosition());
+        if (!spiderController.IsDead())
+            spiderController.MoveToPosition(ChoosePosition());
     }
 
 

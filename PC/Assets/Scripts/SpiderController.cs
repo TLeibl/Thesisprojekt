@@ -238,15 +238,15 @@ public class SpiderController : MonoBehaviour
         spiderMovingToPos = true;
 
         //despawn spider after short time
-        StartCoroutine(DespawnAfterTime());
+        //StartCoroutine(DespawnAfterTime());
     }
 
-    //Coroutine used when spider flees to despawn the spider after some time
-    private IEnumerator DespawnAfterTime()
-    {
-        yield return new WaitForSeconds(despawnDelay);
-        DespawnSpider();
-    }
+    ////Coroutine used when spider flees to despawn the spider after some time
+    //private IEnumerator DespawnAfterTime()
+    //{
+    //    yield return new WaitForSeconds(despawnDelay);
+    //    DespawnSpider();
+    //}
 
 
     //method called by supervisor to let spider die

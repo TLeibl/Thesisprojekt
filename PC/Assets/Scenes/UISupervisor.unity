@@ -1227,6 +1227,9 @@ MonoBehaviour:
   spawnButton: {fileID: 1161720498}
   despawnButton: {fileID: 839740086}
   fleeButton: {fileID: 385243304}
+  lookAtButton: {fileID: 795732609}
+  moveToPosButton: {fileID: 1360254881}
+  moveToPatButton: {fileID: 2011118220}
 --- !u!4 &433809630
 Transform:
   m_ObjectHideFlags: 0
@@ -1277,6 +1280,17 @@ MonoBehaviour:
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
   infoLeft: Let spider @look at patient.
   infoRight: 
+--- !u!114 &795732609 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5499622844135788350, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
+  m_PrefabInstance: {fileID: 180860816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795732600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832932839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5499622844135788344, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
@@ -2102,6 +2116,17 @@ MonoBehaviour:
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
   infoLeft: "~Choose position in camera view \xB4to let spider move to."
   infoRight: 
+--- !u!114 &1360254881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5499622844135788350, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
+  m_PrefabInstance: {fileID: 1360254871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832932839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1360952402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3004,6 +3029,17 @@ MonoBehaviour:
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
   infoLeft: "Let spider @move near the patient \xB4and stop there."
   infoRight: 
+--- !u!114 &2011118220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5499622844135788350, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
+  m_PrefabInstance: {fileID: 141644787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011118211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2014971586
 GameObject:
   m_ObjectHideFlags: 0

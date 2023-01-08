@@ -8,15 +8,20 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class SupervisorUIManager : MonoBehaviour
 {
+    //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
     [SerializeField] private Button spawnButton = null;
     [SerializeField] private Button despawnButton = null;
     [SerializeField] private Button fleeButton = null;
+    [SerializeField] private Button lookAtButton = null;
+    [SerializeField] private Button moveToPosButton = null;
+    [SerializeField] private Button moveToPatButton = null;
 
-    //TODO get spider AC
+    //spider
     private GameObject spawnedSpider = null; //the currently spawned spider
     private SpiderController spiderController = null; //current spider controller
     private float despawnDelay = 2.5f; //delay when despawning
+
 
     // Update is called once per frame
     private void Update()
@@ -26,13 +31,14 @@ public class SupervisorUIManager : MonoBehaviour
             feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
 
         //if phobia object (e.g. spider) is dead - can only be despawned
-        //TODO
-        //if (spider.IsDead())
-        //{
-            //TODO anderen Buttons adden
+        if (spiderController.IsDead())
+        {
             spawnButton.enabled = false;
             fleeButton.enabled = false;
-        //}
+            lookAtButton.enabled = false;
+            moveToPosButton.enabled = false;
+            moveToPatButton.enabled = false;
+        }
     }
 
     //--------------------Arachnophobia Scenario Buttons--------------------
@@ -57,6 +63,9 @@ public class SupervisorUIManager : MonoBehaviour
 
         //restart scene for patient
         PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ResetScenario", true } });
+
+        //restart Supervisor UI
+        SceneManager.LoadScene("SupervisorUI");
     }
 
 
@@ -82,11 +91,17 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Spawn object...");
 
         //instantiate spider and get spider controller
-        spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-1.54f, 0.03f, 0.75f), Quaternion.identity, 0);
+        spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
         spiderController = spawnedSpider.GetComponent<SpiderController>();
 
         //Gray button out - can only spawn one object
         spawnButton.interactable = false;
+        //enable other buttons for spider control
+        despawnButton.interactable = true;
+        fleeButton.interactable = true;
+        lookAtButton.enabled = true;
+        moveToPosButton.enabled = true;
+        moveToPatButton.enabled = true;
     }
 
 
@@ -98,10 +113,8 @@ public class SupervisorUIManager : MonoBehaviour
         //destroy current spider object
         PhotonNetwork.Destroy(spawnedSpider);
 
-        //reactivate SpawnButton and deactivate despawn buttons
-        spawnButton.interactable = true;
-        despawnButton.interactable = false;
-        fleeButton.interactable = false;
+        //reactivate SpawnButton and deactivate other buttons
+        ResetButtons();
     }
 
 
@@ -118,9 +131,7 @@ public class SupervisorUIManager : MonoBehaviour
         StartCoroutine(DespawnAfterTime());
 
         //reactivate SpawnButton and deactivate despawn buttons
-        spawnButton.interactable = true;
-        despawnButton.interactable = false;
-        fleeButton.interactable = false;
+        ResetButtons();
     }
 
 
@@ -199,6 +210,19 @@ public class SupervisorUIManager : MonoBehaviour
         //TODO
 
         return position;
+    }
+
+
+    //reset buttons after spawned spider object has been destroyed
+    private void ResetButtons()
+    {
+        //reactivate SpawnButton and deactivate other buttons
+        spawnButton.interactable = true;
+        despawnButton.interactable = false;
+        fleeButton.interactable = false;
+        lookAtButton.enabled = false;
+        moveToPosButton.enabled = false;
+        moveToPatButton.enabled = false;
     }
 
 }

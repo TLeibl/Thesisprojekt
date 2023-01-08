@@ -211,10 +211,16 @@ public class VRCharController : MonoBehaviour
 		if (PhotonNetwork.CurrentRoom != null)
 			if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ResetScenario"] == true)
 				if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+                {
 					PhotonNetwork.LoadLevel("MapPhobia");
-					//SceneManager.LoadScene("MapPhobia");
+					PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ResetScenario", false } }); //reset property
+				}
 				else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
-					SceneManager.LoadScene("MapLearning");
+				{
+					PhotonNetwork.LoadLevel("MapLearning");
+					PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ResetScenario", false } }); //reset property
+				}
+					
 
 		//end application when scenario finished
 		if (PhotonNetwork.CurrentRoom != null)

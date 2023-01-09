@@ -203,9 +203,9 @@ public class VRCharController : MonoBehaviour
 
 #if (UNITY_ANDROID || UNITY_EDITOR)
 		// Quit key - go back to main menu
-		if (Input.GetKeyDown(quitKey))
-			PhotonNetwork.Disconnect();
-			SceneManager.LoadScene("MainMenuVR");
+		//if (Input.GetKeyDown(quitKey))
+		//	PhotonNetwork.Disconnect();
+		//	SceneManager.LoadScene("MainMenuVR");
 
 		//Reset application when supervisor pushed button
 		if (PhotonNetwork.CurrentRoom != null)

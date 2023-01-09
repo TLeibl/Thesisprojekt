@@ -115,6 +115,8 @@ public class SpiderController : MonoBehaviour
         Vector3 lookAtPosition = position;
         lookAtPosition.y = transform.position.y;
 
+        Debug.Log("SPIDER LOOK AT: " + lookAtPosition);
+
         transform.LookAt(lookAtPosition);
     }
 
@@ -166,6 +168,8 @@ public class SpiderController : MonoBehaviour
     //method called by supervisor to let spider walk to chosen position
     public void MoveToPosition(Vector3 position)
     {
+        Debug.Log("SPIDER MOVE TO PATIENT POSITION: " + position);
+
         LookAt(position);
         //Walk animation
         animator.SetBool("isWalking", true);
@@ -254,6 +258,8 @@ public class SpiderController : MonoBehaviour
             LookAt(newPos); //look at pos
             agent.SetDestination(newPos); //move there
         }
+
+        Debug.Log("SPIDER FLEE");
             
         spiderMovingToPos = true;
 

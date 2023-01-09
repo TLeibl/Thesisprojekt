@@ -17,20 +17,20 @@ MonoBehaviour:
   fontAsset: {fileID: 11400000, guid: 2ef190b77111ab84ba152f9da434fbae, type: 2}
   defaultColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
   fontStyles:
-  - tag: '`'
-    color: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 0}
+  - tag: "\xB4"
+    color: {r: 0.38823533, g: 0.38823533, b: 0.38823533, a: 1}
     bold: 0
     italic: 0
     underline: 0
     strikethrough: 0
   - tag: ~
-    color: {r: 0.22614808, g: 0.38942328, b: 0.3962264, a: 0}
+    color: {r: 0.7294118, g: 0.16862746, b: 0.24705884, a: 0}
     bold: 1
     italic: 0
     underline: 0
     strikethrough: 0
   - tag: '@'
-    color: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 0}
+    color: {r: 0.30980393, g: 0.49803925, b: 0.6784314, a: 0}
     bold: 1
     italic: 0
     underline: 0

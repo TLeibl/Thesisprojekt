@@ -103,14 +103,17 @@ public class SupervisorUIManager : MonoBehaviour
         spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
         spiderController = spawnedSpider.GetComponent<SpiderController>();
 
-        //Gray button out - can only spawn one object
-        spawnButton.interactable = false;
-        //enable other buttons for spider control
-        despawnButton.interactable = true;
-        fleeButton.interactable = true;
-        lookAtButton.enabled = true;
-        moveToPosButton.enabled = true;
-        moveToPatButton.enabled = true;
+        if(spawnedSpider != null) //if spider successfully spawned
+        {
+            //Gray button out - can only spawn one object
+            spawnButton.interactable = false;
+            //enable other buttons for spider control
+            despawnButton.interactable = true;
+            fleeButton.interactable = true;
+            lookAtButton.enabled = true;
+            moveToPosButton.enabled = true;
+            moveToPatButton.enabled = true;
+        } 
     }
 
 
@@ -227,9 +230,9 @@ public class SupervisorUIManager : MonoBehaviour
         spawnButton.interactable = true;
         despawnButton.interactable = false;
         fleeButton.interactable = false;
-        lookAtButton.enabled = false;
-        moveToPosButton.enabled = false;
-        moveToPatButton.enabled = false;
+        lookAtButton.interactable = false;
+        moveToPosButton.interactable = false;
+        moveToPatButton.interactable = false;
     }
 
 }

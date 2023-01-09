@@ -1933,8 +1933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: "@Spawn \xB4spider - ~Choose position in camera view \xB4where the spider
-    shall be placed.\n@Note: You can only place one spider at once."
+  infoLeft: "@Spawn \xB4spider - \n@Note: You can only place one spider at once."
   infoRight: 
 --- !u!1001 &1360254871
 PrefabInstance:

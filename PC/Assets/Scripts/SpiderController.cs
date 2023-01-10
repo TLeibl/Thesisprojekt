@@ -258,8 +258,6 @@ public class SpiderController : MonoBehaviour
             LookAt(newPos); //look at pos
             agent.SetDestination(newPos); //move there
         }
-
-        Debug.Log("SPIDER FLEE");
             
         spiderMovingToPos = true;
 

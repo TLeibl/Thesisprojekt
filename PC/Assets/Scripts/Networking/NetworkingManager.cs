@@ -67,6 +67,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
             SharedValues.Add("FeedbackValue", 0f); //shared feedback value
             SharedValues.Add("ChosenScenario", NetworkingManager.Scenario.notChosenYet); //the scenario chosen
             SharedValues.Add("ScenarioNotChosenYet", true); //false if scenario has been chosen
+            SharedValues.Add("SpiderInstantiated", false); //true when spider object has been instantiated by VR user
             SharedValues.Add("StoppedScenario", false); //true when supervisor pushed Stop button
             SharedValues.Add("ResetScenario", false); //true when supervisor pushed Reset button
             roomOptions.CustomRoomProperties = SharedValues;

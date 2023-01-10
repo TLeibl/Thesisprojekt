@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class SpiderController : MonoBehaviour
 {
     //bools for occuring events
-    private bool dead = false; 
+    private bool dead = false;
     private bool spiderSpawned = false;
     private bool spiderLooking = false;
     private bool spiderMovingToPos = false;
@@ -27,7 +27,7 @@ public class SpiderController : MonoBehaviour
     private bool inPatientRange = false; //if true spider is near patient
 
     private float fleeDistance = 4f; //distance for spider to flee
-    private float despawnDelay = 2.5f; //delay when despawning
+    //private float despawnDelay = 2.5f; //delay when despawning
 
 
     private void Awake()
@@ -83,7 +83,7 @@ public class SpiderController : MonoBehaviour
     //disable spider game object
     //public void DespawnSpider()
     //{
-    //    //gameObject.SetActive(false);
+    //    gameObject.SetActive(false);
     //    //reset bools
     //    spiderSpawned = false;
     //    spiderLooking = false;
@@ -99,7 +99,7 @@ public class SpiderController : MonoBehaviour
     private void ReturnToFloor()
     {
         //if not already on floor: set y to be on floor (reset y to groundedPosition.y)
-        if(!(transform.position.y == groundedPosition.y))
+        if (!(transform.position.y == groundedPosition.y))
         {
             transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z);
         }
@@ -114,6 +114,8 @@ public class SpiderController : MonoBehaviour
         //reset y axis so spider does not turn away from the ground
         Vector3 lookAtPosition = position;
         lookAtPosition.y = transform.position.y;
+
+        Debug.Log("SPIDER LOOK AT: " + lookAtPosition);
 
         transform.LookAt(lookAtPosition);
     }
@@ -146,7 +148,8 @@ public class SpiderController : MonoBehaviour
     // Let the spider look at a position, e.g. the patient.
     public void LookAtPerson()
     {
-        LookAt(patient.position);
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+            LookAt(patient.position);
 
         //set bool
         spiderLooking = true;
@@ -165,10 +168,12 @@ public class SpiderController : MonoBehaviour
     //method called by supervisor to let spider walk to chosen position
     public void MoveToPosition(Vector3 position)
     {
+        Debug.Log("SPIDER MOVE TO PATIENT POSITION: " + position);
+
         LookAt(position);
         //Walk animation
         animator.SetBool("isWalking", true);
-        
+
 
         agent.SetDestination(position);
         while (agent.remainingDistance > agent.stoppingDistance)
@@ -186,26 +191,32 @@ public class SpiderController : MonoBehaviour
     public void MoveToPatient()
     {
         spiderMovingToPatient = true;
-        MoveToPosition(patient.position);
+
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+            MoveToPosition(patient.position);
     }
 
 
     //method called by supervisor to let spider walk towards patient
     public void WalkTowards()
     {
-        //look at patient
-        LookAt(patient.position);
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+            //look at patient
+            LookAt(patient.position);
+
         //set bool
         spiderLooking = true;
         StartCoroutine("ResetSpiderLooking");
 
         //if not already there - move into direction of patient
-        if (!inPatientRange)
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
         {
-            MoveToPosition(patient.position);
-            spiderMovingToPatient = true;
+            if (!inPatientRange)
+            {
+                MoveToPosition(patient.position);
+                spiderMovingToPatient = true;
+            }
         }
-
     }
 
 
@@ -213,13 +224,17 @@ public class SpiderController : MonoBehaviour
     //TODO
     public void WalkOnto()
     {
-        //if not already there - look and move into direction of patient
-        WalkTowards();
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+        {
+            //if not already there - look and move into direction of patient
+            WalkTowards();
 
-        //climb onto patient
-        //if hand down - climb onto hand and up the arm
+            //climb onto patient
+            //if hand down - climb onto hand and up the arm
 
-        //else climb up the legs and onto the arm
+            //else climb up the legs and onto the arm
+
+        }
 
         spiderOntoPatient = true;
     }
@@ -228,25 +243,29 @@ public class SpiderController : MonoBehaviour
     //method called by supervisor to let spider run away from patient and despawn 
     public void Flee()
     {
-        //Walk animation
-        animator.SetBool("isWalking", true);
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+        {
+            //Walk animation
+            animator.SetBool("isWalking", true);
 
-        //move away from patient
-        //if not already on floor: get down
-        ReturnToFloor();
+            //move away from patient
+            //if not already on floor: get down
+            ReturnToFloor();
 
-        //run away
-        Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
-        Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
-        LookAt(newPos); //look at pos
-        agent.SetDestination(newPos); //move there
+            //run away
+            Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
+            Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
+            LookAt(newPos); //look at pos
+            agent.SetDestination(newPos); //move there
+        }
+
         spiderMovingToPos = true;
 
         //despawn spider after short time
         //StartCoroutine(DespawnAfterTime());
     }
 
-    //Coroutine used when spider flees to despawn the spider after some time
+    ////Coroutine used when spider flees to despawn the spider after some time
     //private IEnumerator DespawnAfterTime()
     //{
     //    yield return new WaitForSeconds(despawnDelay);
@@ -276,10 +295,10 @@ public class SpiderController : MonoBehaviour
         return dead;
     }
 
-    public bool IsSpawned()
-    {
-        return spiderSpawned;
-    }
+    //public bool IsSpawned()
+    //{
+    //    return spiderSpawned;
+    //}
 
     public bool IsLooking()
     {
@@ -302,3 +321,4 @@ public class SpiderController : MonoBehaviour
     }
 
 }
+

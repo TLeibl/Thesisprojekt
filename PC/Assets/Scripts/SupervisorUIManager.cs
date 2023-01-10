@@ -26,12 +26,25 @@ public class SupervisorUIManager : MonoBehaviour
     private void Awake()
     {
         ResetButtons(); //no actions before spider spawned
+        spawnButton.interactable = false; //until spider has been instantiated
     }
 
 
     // Update is called once per frame
     private void Update()
     {
+        //when spider instantiated by VR user - set object and enable functionalities
+        if(spawnedSpider == null)
+            if((bool)PhotonNetwork.CurrentRoom.CustomProperties["SpiderInstantiated"] == true)
+            {
+                //set spider GameObject
+                spawnedSpider = PhotonView.Find(2001).gameObject; //spider is second PhotonView after VR user
+                spiderController = spawnedSpider.GetComponent<SpiderController>();
+
+                if(spawnedSpider != null)
+                    spawnButton.interactable = true; //enable button
+            }
+
         //update FeedbackBar value
         if(feedbackBar != null)
             feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
@@ -41,11 +54,11 @@ public class SupervisorUIManager : MonoBehaviour
         {
             if (spiderController.IsDead())
             {
-                spawnButton.enabled = false;
-                fleeButton.enabled = false;
-                lookAtButton.enabled = false;
-                moveToPosButton.enabled = false;
-                moveToPatButton.enabled = false;
+                spawnButton.interactable = false;
+                fleeButton.interactable = false;
+                lookAtButton.interactable = false;
+                moveToPosButton.interactable = false;
+                moveToPatButton.interactable = false;
             }
         }
     }
@@ -100,19 +113,22 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Spawn object...");
 
         //instantiate spider and get spider controller
-        spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
-        spiderController = spawnedSpider.GetComponent<SpiderController>();
+        //spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
+        //spiderController = spawnedSpider.GetComponent<SpiderController>();
 
         if(spawnedSpider != null) //if spider successfully spawned
         {
+            //make Game Object visible
+            spawnedSpider.SetActive(true);
+
             //Gray button out - can only spawn one object
             spawnButton.interactable = false;
             //enable other buttons for spider control
             despawnButton.interactable = true;
             fleeButton.interactable = true;
-            lookAtButton.enabled = true;
-            moveToPosButton.enabled = true;
-            moveToPatButton.enabled = true;
+            lookAtButton.interactable = true;
+            moveToPosButton.interactable = true;
+            moveToPatButton.interactable = true;
         } 
     }
 
@@ -123,7 +139,10 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Despawn object...");
 
         //destroy current spider object
-        PhotonNetwork.Destroy(spawnedSpider);
+        //PhotonNetwork.Destroy(spawnedSpider);
+
+        //make Game Object invisible
+        spawnedSpider.SetActive(false);
 
         //reactivate SpawnButton and deactivate other buttons
         ResetButtons();

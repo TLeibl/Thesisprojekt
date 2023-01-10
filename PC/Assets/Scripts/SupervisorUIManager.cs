@@ -16,6 +16,7 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button lookAtButton = null;
     [SerializeField] private Button moveToPosButton = null;
     [SerializeField] private Button moveToPatButton = null;
+    [SerializeField] private Button stopSpiderButton = null;
 
     //spider
     private GameObject spawnedSpider = null; //the currently spawned spider
@@ -59,6 +60,7 @@ public class SupervisorUIManager : MonoBehaviour
                 lookAtButton.interactable = false;
                 moveToPosButton.interactable = false;
                 moveToPatButton.interactable = false;
+                stopSpiderButton.interactable = false;
             }
         }
     }
@@ -129,6 +131,7 @@ public class SupervisorUIManager : MonoBehaviour
             lookAtButton.interactable = true;
             moveToPosButton.interactable = true;
             moveToPatButton.interactable = true;
+            stopSpiderButton.interactable = true;
         } 
     }
 
@@ -173,6 +176,17 @@ public class SupervisorUIManager : MonoBehaviour
         DespawnButton();
     }
 
+
+    //StopSpider button - command phobia object (e.g. spider) to stop current action
+    public void StopSpiderButton()
+    {
+        Debug.Log("Spider stop...");
+
+        if (!spiderController.IsDead())
+        {
+            spiderController.Stop();
+        }
+    }
 
     //LookAtPerson button - command phobia object (e.g. spider) to turn towards the VR user
     public void LookAtPersonButton()
@@ -252,6 +266,7 @@ public class SupervisorUIManager : MonoBehaviour
         lookAtButton.interactable = false;
         moveToPosButton.interactable = false;
         moveToPatButton.interactable = false;
+        stopSpiderButton.interactable = false;
     }
 
 }

@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 324103747701810062}
   - component: {fileID: 324103747716221544}
   - component: {fileID: 324103747708574557}
+  - component: {fileID: 3288182283280031343}
   - component: {fileID: 324103747708574558}
   - component: {fileID: 324103747180016993}
   - component: {fileID: 5365412694893935226}
@@ -325,6 +326,18 @@ MonoBehaviour:
   HmdRotatesY: 1
   GravityModifier: 0.379
   useProfileData: 1
+--- !u!114 &3288182283280031343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324103747701850016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d068c114d1551494ea6263d2317029bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &324103747708574558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +389,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4019340258811016681}
+  - {fileID: 881151009618308450}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2038,7 +2052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd1ba2258d0db44944450f866cc139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: -1680190386980627800, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   animator: {fileID: 5222938324855962045}
 --- !u!114 &881151009618308450
 MonoBehaviour:

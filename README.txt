@@ -39,6 +39,8 @@ VERWENDETE ASSETS:
   > ReadyPlayerMe Walking-Animation
   > Mixamo Idle-Animation: https://www.mixamo.com/#/?page=1&query=idle&type=Motion%2CMotionPack 
 - Texturen:
-  > 
+  > Industrial Texturen: https://assetstore.unity.com/packages/2d/textures-materials/10-texture-sets-industrial-02-17624
+- Prefabs:
+  > Stahlträger: https://assetstore.unity.com/packages/3d/environments/industrial/free-steel-frame-pack-24793
 - Audio:
   > 

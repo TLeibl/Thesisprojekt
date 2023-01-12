@@ -10,6 +10,7 @@ public class SupervisorUIManager : MonoBehaviour
 {
     //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
+    //Arachnophobia
     [SerializeField] private Button spawnButton = null;
     [SerializeField] private Button despawnButton = null;
     [SerializeField] private Button fleeButton = null;
@@ -17,6 +18,8 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button moveToPosButton = null;
     [SerializeField] private Button moveToPatButton = null;
     [SerializeField] private Button stopSpiderButton = null;
+    //Machine Operating
+    [SerializeField] private Button alarmButton = null;
 
     //spawned object (e.g. spider or machine)
     private GameObject spawnedObject = null; //the currently spawned object
@@ -26,8 +29,15 @@ public class SupervisorUIManager : MonoBehaviour
 
     private void Awake()
     {
-        ResetButtons(); //no actions before spider spawned
-        spawnButton.interactable = false; //until spider has been instantiated
+        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+        {
+            ResetButtonsArachnophobia(); //no actions before spider spawned
+            spawnButton.interactable = false; //until spider has been instantiated
+        }
+        else if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+        {
+            alarmButton.interactable = false; //until machine has been instantiated
+        }
     }
 
 
@@ -40,12 +50,19 @@ public class SupervisorUIManager : MonoBehaviour
             {
                 //set spawned GameObject to control
                 spawnedObject = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user
+
                 //Arachnophobia
                 if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
                 {
                     spiderController = spawnedObject.GetComponent<SpiderController>(); //set spider controller
                     if (spawnedObject != null)
                         spawnButton.interactable = true; //enable spawn button
+                }
+                //Machine Operating
+                else if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+                {
+                    if(spawnedObject != null)
+                        alarmButton.interactable = true;
                 }
             }
 
@@ -157,7 +174,7 @@ public class SupervisorUIManager : MonoBehaviour
         spawnedObject.SetActive(false);
 
         //reactivate SpawnButton and deactivate other buttons
-        ResetButtons();
+        ResetButtonsArachnophobia();
     }
 
 
@@ -174,7 +191,7 @@ public class SupervisorUIManager : MonoBehaviour
         StartCoroutine(DespawnAfterTime());
 
         //reactivate SpawnButton and deactivate despawn buttons
-        ResetButtons();
+        ResetButtonsArachnophobia();
     }
 
 
@@ -243,6 +260,11 @@ public class SupervisorUIManager : MonoBehaviour
 
     //TODO buttons
 
+    public void AlarmButton()
+    {
+        //TODO Alarm starten
+    }
+
     //--------------------Functionalities--------------------
 
 
@@ -268,8 +290,8 @@ public class SupervisorUIManager : MonoBehaviour
     }
 
 
-    //reset buttons after spawned spider object has been destroyed
-    private void ResetButtons()
+    //Arachnophobia: reset buttons after spawned spider object has been destroyed
+    private void ResetButtonsArachnophobia()
     {
         //reactivate SpawnButton and deactivate other buttons
         spawnButton.interactable = true;

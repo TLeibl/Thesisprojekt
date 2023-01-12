@@ -36,7 +36,7 @@ public class SupervisorUIManager : MonoBehaviour
     {
         //when spider instantiated by VR user - set object and enable functionalities
         if(spawnedSpider == null)
-            if((bool)PhotonNetwork.CurrentRoom.CustomProperties["SpiderInstantiated"] == true)
+            if((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
             {
                 //set spider GameObject
                 spawnedSpider = PhotonView.Find(2001).gameObject; //spider is second PhotonView after VR user

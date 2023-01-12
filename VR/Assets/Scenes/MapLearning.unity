@@ -1430,6 +1430,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 666428849}
+    - target: {fileID: 462354328244732143, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.247
+      objectReference: {fileID: 0}
     - target: {fileID: 2399462484473400284, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_Mesh
       value: 

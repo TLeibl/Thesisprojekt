@@ -18,8 +18,8 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button moveToPatButton = null;
     [SerializeField] private Button stopSpiderButton = null;
 
-    //spider
-    private GameObject spawnedSpider = null; //the currently spawned spider
+    //spawned object (e.g. spider or machine)
+    private GameObject spawnedObject = null; //the currently spawned object
     private SpiderController spiderController = null; //current spider controller
     private float despawnDelay = 2.5f; //delay when despawning
 
@@ -35,15 +35,18 @@ public class SupervisorUIManager : MonoBehaviour
     private void Update()
     {
         //when spider instantiated by VR user - set object and enable functionalities
-        if(spawnedSpider == null)
+        if(spawnedObject == null)
             if((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
             {
-                //set spider GameObject
-                spawnedSpider = PhotonView.Find(2001).gameObject; //spider is second PhotonView after VR user
-                spiderController = spawnedSpider.GetComponent<SpiderController>();
-
-                if(spawnedSpider != null)
-                    spawnButton.interactable = true; //enable button
+                //set spawned GameObject to control
+                spawnedObject = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user
+                //Arachnophobia
+                if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+                {
+                    spiderController = spawnedObject.GetComponent<SpiderController>(); //set spider controller
+                    if (spawnedObject != null)
+                        spawnButton.interactable = true; //enable spawn button
+                }
             }
 
         //update FeedbackBar value
@@ -51,16 +54,19 @@ public class SupervisorUIManager : MonoBehaviour
             feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
 
         //if phobia object (e.g. spider) is dead - can only be despawned
-        if(spawnedSpider != null)
+        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
         {
-            if (spiderController.IsDead())
+            if (spawnedObject != null)
             {
-                spawnButton.interactable = false;
-                fleeButton.interactable = false;
-                lookAtButton.interactable = false;
-                moveToPosButton.interactable = false;
-                moveToPatButton.interactable = false;
-                stopSpiderButton.interactable = false;
+                if (spiderController.IsDead())
+                {
+                    spawnButton.interactable = false;
+                    fleeButton.interactable = false;
+                    lookAtButton.interactable = false;
+                    moveToPosButton.interactable = false;
+                    moveToPatButton.interactable = false;
+                    stopSpiderButton.interactable = false;
+                }
             }
         }
     }
@@ -109,6 +115,9 @@ public class SupervisorUIManager : MonoBehaviour
     //}
 
 
+    //-------------------------------ARACHNOPHOBIA BUTTONS---------------------------------
+
+
     //Spawn button - let the supervisor spawn the phobia object (e.g. spider)
     public void SpawnButton()
     {
@@ -118,10 +127,10 @@ public class SupervisorUIManager : MonoBehaviour
         //spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
         //spiderController = spawnedSpider.GetComponent<SpiderController>();
 
-        if(spawnedSpider != null) //if spider successfully spawned
+        if(spawnedObject != null) //if spider successfully spawned
         {
             //make Game Object visible
-            spawnedSpider.SetActive(true);
+            spawnedObject.SetActive(true);
 
             //Gray button out - can only spawn one object
             spawnButton.interactable = false;
@@ -145,7 +154,7 @@ public class SupervisorUIManager : MonoBehaviour
         //PhotonNetwork.Destroy(spawnedSpider);
 
         //make Game Object invisible
-        spawnedSpider.SetActive(false);
+        spawnedObject.SetActive(false);
 
         //reactivate SpawnButton and deactivate other buttons
         ResetButtons();
@@ -230,6 +239,9 @@ public class SupervisorUIManager : MonoBehaviour
     }
 
 
+    //-------------------------------MACHINE LEARNING BUTTONS---------------------------------
+
+    //TODO buttons
 
     //--------------------Functionalities--------------------
 
@@ -237,9 +249,9 @@ public class SupervisorUIManager : MonoBehaviour
     //method used to draw onto camera view - shall be seen by patient/scholar in scene
     //private void Draw()
     //{
-        //Debug.Log("Drawing...");
+    //Debug.Log("Drawing...");
 
-        //TODO Draw functionality
+    //TODO Draw functionality
     //}
 
 

@@ -11,6 +11,7 @@ public class SupervisorUIManager : MonoBehaviour
     //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
     //Arachnophobia
+    [SerializeField] private GameObject arachnophobiaButtons;
     [SerializeField] private Button spawnButton = null;
     [SerializeField] private Button despawnButton = null;
     [SerializeField] private Button fleeButton = null;
@@ -19,6 +20,7 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button moveToPatButton = null;
     [SerializeField] private Button stopSpiderButton = null;
     //Machine Operating
+    [SerializeField] private GameObject machineButtons;
     [SerializeField] private Button alarmButton = null;
 
     //spawned object (e.g. spider or machine)
@@ -31,11 +33,13 @@ public class SupervisorUIManager : MonoBehaviour
     {
         if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
         {
+            arachnophobiaButtons.SetActive(true); //show correct buttons
             ResetButtonsArachnophobia(); //no actions before spider spawned
             spawnButton.interactable = false; //until spider has been instantiated
         }
         else if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
         {
+            machineButtons.SetActive(true); //show correct buttons
             alarmButton.interactable = false; //until machine has been instantiated
         }
     }

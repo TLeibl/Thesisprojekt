@@ -1261,6 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feedbackBar: {fileID: 383977643}
+  arachnophobiaButtons: {fileID: 916200079}
   spawnButton: {fileID: 1161720498}
   despawnButton: {fileID: 839740086}
   fleeButton: {fileID: 385243304}
@@ -1268,6 +1269,7 @@ MonoBehaviour:
   moveToPosButton: {fileID: 1360254881}
   moveToPatButton: {fileID: 2011118220}
   stopSpiderButton: {fileID: 1881646520}
+  machineButtons: {fileID: 263577633}
   alarmButton: {fileID: 1858202148}
 --- !u!4 &433809630
 Transform:

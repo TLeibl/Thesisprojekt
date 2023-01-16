@@ -17,10 +17,18 @@ public class CharAC : MonoBehaviour
     private float currentMoveValue = 0.0f; //current movement value (Vector2 between x and y -1 to 1)
 
 
+    //sounds
+    private AudioSource audioSource = null; //current audio source
+    [SerializeField] private AudioClip[] footstepSounds; // an array of footstep sounds that will be randomly selected from.
+
+
     private void Start()
     {
         //try and set left hand controller as target device (to enable/disable walk animation)
         TrySetTargetDevice();
+
+        //set sound audio source
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -55,6 +63,7 @@ public class CharAC : MonoBehaviour
         {
             this.animator.SetBool("isWalking", true); //start animation
             this.animator.SetFloat("animSpeed", 1.0f); //set speed of animation
+            PlayRandomSound(footstepSounds); //play footstep sounds
         }
         else if (isStandingStill) //stop animation if true
         {
@@ -64,7 +73,8 @@ public class CharAC : MonoBehaviour
         else //start animation and move backwards
         {
             this.animator.SetBool("isWalking", true);
-            this.animator.SetFloat("animSpeed", -1.0f); 
+            this.animator.SetFloat("animSpeed", -1.0f);
+            PlayRandomSound(footstepSounds); //sounds
         }
 #endif
     }
@@ -93,45 +103,17 @@ public class CharAC : MonoBehaviour
 #endif
     }
 
-    //private void OnEnable()
-    //{
-    //    animate the legs - walk
-    //    this.move.action.started += this.AnimateLegs;
-    //    this.move.action.canceled += this.StopAnimateLegs;
-    //}
 
-
-    //private void OnDisable()
-    //{
-    //    stop animating the legs - go idle
-    //    this.move.action.started -= this.AnimateLegs;
-    //    this.move.action.canceled -= this.StopAnimateLegs;
-    //}
-
-
-    //method to start the walk animation
-    //private void AnimateLegs(InputAction.CallbackContext obj)
-    //{
-    //    //check whether movement is forwards or backwards
-    //    bool isWalkingForward = this.move.action.ReadValue<Vector2>().y > 0; //if greater zero bool is true = char should walk forward, else walk backwards
-
-    //    if (isWalkingForward) //start animation and move forward if true
-    //    {
-    //        this.animator.SetBool("isWalking", true); //start animation
-    //        this.animator.SetFloat("animSpeed", 1.0f); //set speed of animation
-    //    }
-    //    else //move backwards
-    //    {
-    //        this.animator.SetBool("isWalking", true);
-    //        this.animator.SetFloat("animSpeed", -1.0f); 
-    //    }
-    //}
-
-
-    ////method to stop the walk animation - go back to idle
-    //private void StopAnimateLegs(InputAction.CallbackContext obj)
-    //{
-    //    this.animator.SetBool("isWalking", false);
-    //    this.animator.SetFloat("animSpeed", 0.0f);
-    //}
+    //method called when a random sound out of a sound array is needed (e.g. when walking)
+    private void PlayRandomSound(AudioClip[] array)
+    {
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        int n = Random.Range(1, array.Length);
+        audioSource.clip = array[n];
+        audioSource.PlayOneShot(audioSource.clip);
+        // move picked sound to index 0 so it's not picked next time
+        array[n] = array[0];
+        array[0] = audioSource.clip;
+    }
 }

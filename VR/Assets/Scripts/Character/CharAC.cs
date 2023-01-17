@@ -45,8 +45,6 @@ public class CharAC : MonoBehaviour
 
 
     //enalbe/disable walk animation
-    //TODO test
-    //TODO animSpeed mehr anpassen?
     private void UpdateWalkAnimation()
     {
 #if UNITY_ANDROID

@@ -2068,64 +2068,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9173975432562651117, guid: e1949a7f29d114d459f315b3819dfb2d, type: 3}
   m_PrefabInstance: {fileID: 1402132066865387533}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &324103748472019041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7792878423621023712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec73b56301a5a9041850fcf3d1cc8f2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5222938324855962045}
-  leftFootPosWeight: 0
-  rightFootPosWeight: 0
-  leftFootRotWeight: 0.867
-  rightFootRotWeight: 0.867
-  footOffset: {x: 0, y: 0.13, z: 0}
-  raycastOffsetLeft: {x: 0, y: 0.5, z: 0}
-  raycastOffsRight: {x: 0, y: 0.5, z: 0}
---- !u!114 &324103748472019054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7792878423621023712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5dd1ba2258d0db44944450f866cc139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5222938324855962045}
-  footstepSounds: []
---- !u!114 &881151009618308450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7792878423621023712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 4
-    SynchronizeType: 1
-    Name: isWalking
-  - Type: 1
-    SynchronizeType: 1
-    Name: animSpeed
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
 --- !u!82 &6694020272683152837
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2222,3 +2164,67 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &324103748472019041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792878423621023712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec73b56301a5a9041850fcf3d1cc8f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5222938324855962045}
+  leftFootPosWeight: 0
+  rightFootPosWeight: 0
+  leftFootRotWeight: 0.867
+  rightFootRotWeight: 0.867
+  footOffset: {x: 0, y: 0.13, z: 0}
+  raycastOffsetLeft: {x: 0, y: 0.5, z: 0}
+  raycastOffsRight: {x: 0, y: 0.5, z: 0}
+--- !u!114 &324103748472019054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792878423621023712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5dd1ba2258d0db44944450f866cc139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5222938324855962045}
+  footstepSounds:
+  - {fileID: 8300000, guid: 2ce908f27d0db48f09d34722dd5f8651, type: 3}
+  - {fileID: 8300000, guid: f0592cf7ce15341f9be1576a4b8399f6, type: 3}
+  - {fileID: 8300000, guid: cf06010754d2a4c6a8deccb599898a5d, type: 3}
+  - {fileID: 8300000, guid: c447830d37dda42f683456348c3a1e1d, type: 3}
+  - {fileID: 8300000, guid: 359ba40405a554cce87152a3b06b4f2a, type: 3}
+  - {fileID: 8300000, guid: b54cedd01906b450aa92d7677342e654, type: 3}
+--- !u!114 &881151009618308450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792878423621023712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isWalking
+  - Type: 1
+    SynchronizeType: 1
+    Name: animSpeed
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0

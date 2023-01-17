@@ -43,4 +43,6 @@ VERWENDETE ASSETS:
 - Prefabs:
   > Stahlträger: https://assetstore.unity.com/packages/3d/environments/industrial/free-steel-frame-pack-24793
 - Audio:
-  > 
+  > Footstep Sounds: https://assetstore.unity.com/packages/3d/characters/humanoids/humans/human-character-fantasy-rpg-60016#description
+  > Ambiente Cellar: https://www.youtube.com/watch?v=b7jMJf9leZM
+  > Ambiente Machine room: https://www.youtube.com/watch?v=NeESf9aCZHQ

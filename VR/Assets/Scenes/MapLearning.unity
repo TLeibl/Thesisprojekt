@@ -1246,7 +1246,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: f9539f0ec613f6c4cb97bd0ba3251238, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: adee7540b3dddbe42b9086d5cacb9660, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1690,11 +1690,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4526880786662857559, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
   m_PrefabInstance: {fileID: 1535015861}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1535015863 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4526880786662857561, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
-  m_PrefabInstance: {fileID: 1535015861}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1570579127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1755,11 +1750,6 @@ PrefabInstance:
 --- !u!4 &1570579128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4526880786662857559, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
-  m_PrefabInstance: {fileID: 1570579127}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1570579129 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4526880786662857561, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
   m_PrefabInstance: {fileID: 1570579127}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1672061192
@@ -2084,11 +2074,6 @@ PrefabInstance:
 --- !u!4 &1768905453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4526880786662857559, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
-  m_PrefabInstance: {fileID: 1768905452}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1768905454 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4526880786662857561, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
   m_PrefabInstance: {fileID: 1768905452}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1813389524 stripped
@@ -3321,13 +3306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a32f5dc5429d5c4fbd0034cfa775433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levers:
-  - {fileID: 655046858}
-  normalButtons:
-  - {fileID: 2010895848026758496}
-  - {fileID: 1768905454}
-  - {fileID: 1535015863}
-  - {fileID: 1570579129}
   stopButton: {fileID: 1920838123}
   warningLamp: {fileID: 1731754171}
   warningLampOn: {fileID: 2100000, guid: 3d3810cf3fe6070498f736f5b8037f08, type: 2}
@@ -3389,11 +3367,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
---- !u!1 &2010895848026758496 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4526880786662857561, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
-  m_PrefabInstance: {fileID: 2010895848026758495}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2682620397436126728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4526880786662857559, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}

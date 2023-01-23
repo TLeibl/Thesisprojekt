@@ -28,9 +28,14 @@ public class SupervisorUIManager : MonoBehaviour
     private SpiderController spiderController = null; //current spider controller
     private float despawnDelay = 2.5f; //delay when despawning
 
+    //cameras to view scenario scene
+    private GameObject fpCamera = null; //first person view (view of VR user)
+    private GameObject tpCamera = null; //third person view
+
 
     private void Awake()
     {
+        //set correct SupervisorUI components
         if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
         {
             arachnophobiaButtons.SetActive(true); //show correct buttons
@@ -48,12 +53,17 @@ public class SupervisorUIManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //when spider instantiated by VR user - set object and enable functionalities
+        if(fpCamera == null && tpCamera == null)
+            //when cameras instantiated by VR user - set objects
+            fpCamera = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user (2000)
+            tpCamera = PhotonView.Find(2002).gameObject; //is third PhotonView after VR user
+
+        //when object to spawn instantiated by VR user - set object and enable functionalities
         if(spawnedObject == null)
             if((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
             {
                 //set spawned GameObject to control
-                spawnedObject = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user
+                spawnedObject = PhotonView.Find(2003).gameObject; //is fourth PhotonView after VR user
 
                 //Arachnophobia
                 if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)

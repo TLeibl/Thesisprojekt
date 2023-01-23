@@ -19,8 +19,8 @@ public class Spawner : MonoBehaviour
 
         if (cameraFP != null && cameraTP != null)
         {
-            cameraFP.transform.parent = this.transform.GetChild(1); //attach first person camera to VR player object
-            cameraFP.transform.position = this.transform.position; //set correct start position
+            cameraFP.transform.parent = this.transform.GetChild(3); //attach first person camera to VR player FPCameraAnchor
+            cameraFP.transform.position = this.transform.GetChild(3).position; //set correct start position
 
             cameraFP.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
             cameraTP.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);

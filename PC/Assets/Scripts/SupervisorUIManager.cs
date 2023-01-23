@@ -8,6 +8,8 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class SupervisorUIManager : MonoBehaviour
 {
+    private bool componentsSet = false; //true when UI components correctly set in UI
+
     //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
     //Arachnophobia
@@ -33,61 +35,22 @@ public class SupervisorUIManager : MonoBehaviour
     private GameObject tpCamera = null; //third person view
 
 
-    private void Awake()
-    {
-        //set correct SupervisorUI components
-        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
-        {
-            arachnophobiaButtons.SetActive(true); //show correct buttons
-            ResetButtonsArachnophobia(); //no actions before spider spawned
-            spawnButton.interactable = false; //until spider has been instantiated
-        }
-        else if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
-        {
-            machineButtons.SetActive(true); //show correct buttons
-            alarmButton.interactable = false; //until machine has been instantiated
-        }
-    }
-
 
     // Update is called once per frame
     private void Update()
     {
-        //if objects have been initialized by VR user and set not yet - set cameras
-        if(fpCamera == null && tpCamera == null)
-            if((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
-            {
-                //when cameras instantiated by VR user - set objects
-                fpCamera = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user (2000)
-                tpCamera = PhotonView.Find(2002).gameObject; //is third PhotonView after VR user
-            }
+        //set SupervisorUI components (buttons and cameras) correctly when szernario entered by VR user
+        //if not set yet
+        if (!componentsSet)
+            TrySetUIComponents();
+        if(spawnedObject == null) 
+            TrySetSpawnObject();
             
-
-        //when object to spawn instantiated by VR user - set object and enable functionalities
-        if(spawnedObject == null)
-            if((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
-            {
-                //set spawned GameObject to control
-                spawnedObject = PhotonView.Find(2003).gameObject; //is fourth PhotonView after VR user
-
-                //Arachnophobia
-                if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
-                {
-                    spiderController = spawnedObject.GetComponent<SpiderController>(); //set spider controller
-                    if (spawnedObject != null)
-                        spawnButton.interactable = true; //enable spawn button
-                }
-                //Machine Operating
-                else if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
-                {
-                    if(spawnedObject != null)
-                        alarmButton.interactable = true;
-                }
-            }
 
         //update FeedbackBar value
         if(feedbackBar != null)
             feedbackBar.fillAmount = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"];
+
 
         //if phobia object (e.g. spider) is dead - can only be despawned
         if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
@@ -105,6 +68,64 @@ public class SupervisorUIManager : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    //Set UI components like buttons and camera views
+    private void TrySetUIComponents()
+    {
+        //buttons
+        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+        {
+            arachnophobiaButtons.SetActive(true); //show correct buttons
+            ResetButtonsArachnophobia(); //no actions before spider spawned
+            spawnButton.interactable = false; //until spider has been instantiated
+        }
+        else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+        {
+            machineButtons.SetActive(true); //show correct buttons
+            alarmButton.interactable = false; //until machine has been instantiated
+        }
+
+        //cameras
+        //if objects have been initialized by VR user and set not yet - set cameras
+        if (fpCamera == null && tpCamera == null)
+            if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
+            {
+                //when cameras instantiated by VR user - set objects
+                fpCamera = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user (2000)
+                tpCamera = PhotonView.Find(2002).gameObject; //is third PhotonView after VR user
+            }
+
+
+        componentsSet = true;
+    }
+
+
+    //method used to set object spawned by VR user (e.g. spider or machine)
+    private void TrySetSpawnObject()
+    {
+        //when object to spawn instantiated by VR user - set object and enable functionalities
+        if (spawnedObject == null)
+            if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
+            {
+                //set spawned GameObject to control
+                spawnedObject = PhotonView.Find(2003).gameObject; //is fourth PhotonView after VR user
+
+                //Arachnophobia
+                if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+                {
+                    spiderController = spawnedObject.GetComponent<SpiderController>(); //set spider controller
+                    if (spawnedObject != null)
+                        spawnButton.interactable = true; //enable spawn button
+                }
+                //Machine Operating
+                else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+                {
+                    if (spawnedObject != null)
+                        alarmButton.interactable = true;
+                }
+            }
     }
 
     //--------------------Arachnophobia Scenario Buttons--------------------

@@ -53,10 +53,15 @@ public class SupervisorUIManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //if objects have been initialized by VR user and set not yet - set cameras
         if(fpCamera == null && tpCamera == null)
-            //when cameras instantiated by VR user - set objects
-            fpCamera = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user (2000)
-            tpCamera = PhotonView.Find(2002).gameObject; //is third PhotonView after VR user
+            if((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
+            {
+                //when cameras instantiated by VR user - set objects
+                fpCamera = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user (2000)
+                tpCamera = PhotonView.Find(2002).gameObject; //is third PhotonView after VR user
+            }
+            
 
         //when object to spawn instantiated by VR user - set object and enable functionalities
         if(spawnedObject == null)

@@ -18,45 +18,17 @@ public class EvaluationChartManager : MonoBehaviour
         //find EvaluationValueManager
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
 
-        //get DataDiagram object and script
-        
-
-        //Add lines for feedback and other values
-        AddLine(Color.red); //feedback
-        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
-        {
-            AddLine(Color.green); //spiderSpawned
-            AddLine(Color.blue); //spiderLooking
-            AddLine(Color.cyan); //spiderMovingToPos
-            AddLine(Color.gray); //spiderMovingToPatient
-            AddLine(Color.yellow); //spiderOntoPatient
-            AddLine(Color.black); //spiderDied
-        }
+        //get line chart object and script
+       
     }
 
-    //Add a line to the diagram.
-    private void AddLine(Color color)
+    private void FillFeedbackLine()
     {
-        //if (null == m_DataDiagram)
-        //    return;
-
-        //GameObject line = m_DataDiagram.AddLine(color.ToString(), color);
-        //if (null != line)
-        //    lineList.Add(line);
-
-        //SetLineValues(line);
+        //TODO Line: Feedback in LineChart-Skript - Data - DataSets füllen
     }
 
-    //Add all evaluation values to the specified line
-    //TODO (Werte von EvaluationValueManager)
-    public void SetLineValues(GameObject line)
+    private void FillEventLine()
     {
-        //if (null == m_DataDiagram)
-        //    return;
-
-        //foreach (GameObject l in lineList)
-        //{
-        //    m_DataDiagram.InputPoint(l, new Vector2(1, Random.value * 4f));
-        //}
+        //TODO Line: Events (wie Bool darstellen?) in LineChart-Skript - Data - DataSets füllen
     }
 }

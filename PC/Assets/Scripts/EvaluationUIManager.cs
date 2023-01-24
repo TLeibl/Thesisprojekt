@@ -10,6 +10,7 @@ public class EvaluationUIManager : MonoBehaviour
     public void BackButton()
     {
         //supervisor: leave room and go back to main menu 
+        Debug.Log("Leave room and go back to main menu...");
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("MainMenuPc");
     }

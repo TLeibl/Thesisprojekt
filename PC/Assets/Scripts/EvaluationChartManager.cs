@@ -1,25 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
+using AwesomeCharts;
 
 //Manager script to build line chart with the evaluation values.
 public class EvaluationChartManager : MonoBehaviour
 {
-    //TODO ANPASSEN!
+    private EvaluationValueManager valueManager = null; //value manager
 
-    List<GameObject> lineList = new List<GameObject>();
-
-    private EvaluationValueManager valueManager = null;
+    [SerializeField] private LineChart chart = null; //the line chart
 
     // Find EvaluationValueManager and set up line chart
     private void Start()
     {
         //find EvaluationValueManager
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
-
-        //get line chart object and script
-       
     }
 
     private void FillFeedbackLine()

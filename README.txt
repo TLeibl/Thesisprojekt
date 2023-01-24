@@ -34,6 +34,7 @@ VERWENDETE ASSETS:
 - Photon PUN 2 free
 - ReadyPlayerMe SDK
 - Simple Tooltip: https://assetstore.unity.com/packages/tools/gui/simple-tooltip-155804
+- Charts: https://assetstore.unity.com/packages/tools/gui/awesome-charts-and-graphs-138153
 - Avatare und Animationen:
   > ReadyPlayerMe Avatar
   > ReadyPlayerMe Walking-Animation

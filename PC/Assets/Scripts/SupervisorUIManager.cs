@@ -95,8 +95,15 @@ public class SupervisorUIManager : MonoBehaviour
                 //when cameras instantiated by VR user - set objects
                 fpCamera = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user (2000)
                 tpCamera = PhotonView.Find(2002).gameObject; //is third PhotonView after VR user
+
+                //set target display (
+                //TODO EVT ENTFERNEN WENN NICHT KAMERAS ANZEIGT
+                fpCamera.GetComponent<Camera>().targetDisplay = GameObject.Find("Main Camera").GetComponent<Camera>().targetDisplay;
+                tpCamera.GetComponent<Camera>().targetDisplay = GameObject.Find("Main Camera").GetComponent<Camera>().targetDisplay;
             }
 
+        Debug.Log("KAMERAS: " + Camera.allCameras);
+        Debug.Log("KAMERAS EINZELN: FP: " + fpCamera + " TP: " + tpCamera);
 
         componentsSet = true;
     }

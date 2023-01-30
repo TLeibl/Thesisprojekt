@@ -9,14 +9,16 @@ public class EvaluationValueManager : MonoBehaviour
 {
     //value lists (list for feedback values and every event occuring)
     //Arachnophobia
-    private List<float> feedbackValues = new List<float>();
-    private List<bool> spiderSpawnedList = new List<bool>();
-    private List<bool> spiderLookingList = new List<bool>();
-    private List<bool> spiderMovingList = new List<bool>();
-    private List<bool> spiderOntoPatientList = new List<bool>();
-    private List<bool> spiderDeadList = new List<bool>();
+    public List<float> feedbackValues = new List<float>();
+    public List<bool> spiderSpawnedList = new List<bool>();
+    public List<bool> spiderLookingList = new List<bool>();
+    public List<bool> spiderMovingList = new List<bool>();
+    public List<bool> spiderOntoPatientList = new List<bool>();
+    public List<bool> spiderDeadList = new List<bool>();
     //Machine Learning
-    private List<bool> machineAlarmList = new List<bool>();
+    public List<bool> machineAlarmList = new List<bool>();
+    //list to manage all lists in
+    public List<List<bool>> eventLists = new List<List<bool>>();
 
     //bools for occuring events
     //Arachnophobia
@@ -73,6 +75,8 @@ public class EvaluationValueManager : MonoBehaviour
     {
         //keep object during whole run
         DontDestroyOnLoad(this.gameObject);
+
+        SetupEventLists(); //add all lists to eventList for later use in EvaluationScenario
     }
 
 
@@ -96,6 +100,18 @@ public class EvaluationValueManager : MonoBehaviour
 
             timeElapsed = 0;
         }
+    }
+
+
+    //used in Awake() to add all lists to the eventList list
+    private void SetupEventLists()
+    {
+        eventLists.Add(spiderSpawnedList);
+        eventLists.Add(spiderLookingList);
+        eventLists.Add(spiderMovingList);
+        eventLists.Add(spiderOntoPatientList);
+        eventLists.Add(spiderDeadList);
+        eventLists.Add(machineAlarmList);
     }
 
 

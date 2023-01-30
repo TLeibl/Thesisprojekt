@@ -35,7 +35,9 @@ public class EvaluationChartManager : MonoBehaviour
     private void FillFeedbackLine()
     {
         //TODO
-        //Grid Config - set horizontal lines count
+        //Grid Config - set horizontal lines count to number of values in list
+        chart.GridConfig.HorizontalLinesCount = valueManager.feedbackValues.Count;
+
 
         //LineChart - Data - fill data in DataSets 
 
@@ -44,7 +46,14 @@ public class EvaluationChartManager : MonoBehaviour
     private void FillEventLine()
     {
         //TODO
-        //Grid Config - adapt horizontal lines count if necessary
+        //Grid Config - adapt horizontal lines count to highest number of entries in a list
+        int numberOfItems = 0;
+        foreach(List<bool> list in valueManager.eventLists)
+        {
+            if (list.Count > numberOfItems)
+                numberOfItems = list.Count;
+        }
+        chart.GridConfig.HorizontalLinesCount = numberOfItems;
 
         //LineChart - Data - fill data in DataSets --> if true own value for each event, if false 0
 

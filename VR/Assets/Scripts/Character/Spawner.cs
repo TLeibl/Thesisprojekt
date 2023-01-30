@@ -11,22 +11,7 @@ public class Spawner : MonoBehaviour
 
     //instantiate needed objects and set them for the master client (supervisor)
     private void Awake()
-    {
-        //Cameras
-        GameObject cameraFP = PhotonNetwork.Instantiate("FirstPersonCamera", new Vector3(0, 0, 0), Quaternion.identity, 0);
-        GameObject cameraTP = PhotonNetwork.Instantiate("ThirdPersonCamera", new Vector3(1.42f, 1.12f, 14.94f), Quaternion.identity, 0);
-
-
-        if (cameraFP != null && cameraTP != null)
-        {
-            cameraFP.transform.parent = this.transform.GetChild(3); //attach first person camera to VR player FPCameraAnchor
-            cameraFP.transform.position = this.transform.GetChild(3).position; //set correct start position
-
-            cameraFP.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
-            cameraTP.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
-        }
-            
-
+    {    
         //Map Arachnophobia
         if (SceneManager.GetActiveScene().name == "MapPhobia")
         { 

@@ -58,8 +58,11 @@ public class EvaluationChartManager : MonoBehaviour
         //LineChart - Data - fill data in DataSets --> if true own value for each event, if false 0
 
         bool eventHappened = false;
+        int eventValue = 0;
 
-        GetEventValue(eventHappened);
+        eventValue = GetEventValue(eventHappened);
+
+        //TODO fill line with values from the GetEventValue method
 
     }
 

@@ -9,6 +9,8 @@ public class EvaluationUIManager : MonoBehaviour
     //Back button functionality
     public void BackButton()
     {
+        Debug.Log("Ich bin der Back Button :)");
+
         //supervisor: leave room and go back to main menu 
         Debug.Log("Leave room and go back to main menu...");
         PhotonNetwork.LeaveRoom();

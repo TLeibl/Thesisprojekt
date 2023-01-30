@@ -10,22 +10,59 @@ public class EvaluationChartManager : MonoBehaviour
 {
     private EvaluationValueManager valueManager = null; //value manager
 
-    [SerializeField] private LineChart chart = null; //the line chart
+    private LineChart chart = null; //the line chart
 
     // Find EvaluationValueManager and set up line chart
-    private void Start()
+    private void Awake()
     {
         //find EvaluationValueManager
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
+
+        //set correct line chart for current scenario
+        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+        {
+            chart = GameObject.Find("ArachnophobiaChart").GetComponentInChildren<LineChart>();
+        }
+        else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+        {
+            chart = GameObject.Find("MachineLearningChart").GetComponentInChildren<LineChart>();
+        }
+
+        if(chart != null)
+            chart.gameObject.SetActive(true); //make chart visible
     }
 
     private void FillFeedbackLine()
     {
-        //TODO Line: Feedback in LineChart-Skript - Data - DataSets füllen
+        //TODO
+        //Grid Config - set horizontal lines count
+
+        //LineChart - Data - fill data in DataSets 
+
     }
 
     private void FillEventLine()
     {
-        //TODO Line: Events (wie Bool darstellen?) in LineChart-Skript - Data - DataSets füllen
+        //TODO
+        //Grid Config - adapt horizontal lines count if necessary
+
+        //LineChart - Data - fill data in DataSets --> if true own value for each event, if false 0
+
+        bool eventHappened = false;
+
+        GetEventValue(eventHappened);
+
+    }
+
+
+    private int GetEventValue(bool eventHappened)
+    {
+        //TODO
+        int individualValue = 0;
+
+        //get individual value from e.g. hashmap
+        //Spawned = 100, LookAt = 20, Moving = 40, OntoPatient = 60
+
+        return individualValue;
     }
 }

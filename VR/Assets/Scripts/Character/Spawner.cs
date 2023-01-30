@@ -35,8 +35,8 @@ public class Spawner : MonoBehaviour
 
             if (spawnedSpider != null)
                 spawnedSpider.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
-            spawnedSpider.SetActive(false);
-            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
+                spawnedSpider.SetActive(false);
+                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
         }
         //Map Learning
         else if (SceneManager.GetActiveScene().name == "MapLearning")

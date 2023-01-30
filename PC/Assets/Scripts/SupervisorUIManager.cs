@@ -34,6 +34,16 @@ public class SupervisorUIManager : MonoBehaviour
     private GameObject fpCamera = null; //first person view (view of VR user)
     private GameObject tpCamera = null; //third person view
 
+    //evaluation value manager to safe current values 
+    private EvaluationValueManager valueManager = null;
+
+
+    private void Awake()
+    {
+        //set evaluation value manager
+        valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
+    }
+
 
 
     // Update is called once per frame
@@ -86,24 +96,6 @@ public class SupervisorUIManager : MonoBehaviour
             machineButtons.SetActive(true); //show correct buttons
             alarmButton.interactable = false; //until machine has been instantiated
         }
-
-        //cameras
-        //if objects have been initialized by VR user and set not yet - set cameras
-        if (fpCamera == null && tpCamera == null)
-            if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
-            {
-                //when cameras instantiated by VR user - set objects
-                fpCamera = PhotonView.Find(2001).gameObject; //is second PhotonView after VR user (2000)
-                tpCamera = PhotonView.Find(2002).gameObject; //is third PhotonView after VR user
-
-                //set target display (
-                //TODO EVT ENTFERNEN WENN NICHT KAMERAS ANZEIGT
-                fpCamera.GetComponent<Camera>().targetDisplay = GameObject.Find("Main Camera").GetComponent<Camera>().targetDisplay;
-                tpCamera.GetComponent<Camera>().targetDisplay = GameObject.Find("Main Camera").GetComponent<Camera>().targetDisplay;
-            }
-
-        Debug.Log("KAMERAS: " + Camera.allCameras);
-        Debug.Log("KAMERAS EINZELN: FP: " + fpCamera + " TP: " + tpCamera);
 
         componentsSet = true;
     }
@@ -196,6 +188,9 @@ public class SupervisorUIManager : MonoBehaviour
             //make Game Object visible
             spawnedObject.SetActive(true);
 
+            //update EvaluationValueManager value
+            valueManager.SpiderSpawned = true;
+
             //Gray button out - can only spawn one object
             spawnButton.interactable = false;
             //enable other buttons for spider control
@@ -214,11 +209,11 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Despawn object...");
 
-        //destroy current spider object
-        //PhotonNetwork.Destroy(spawnedSpider);
-
         //make Game Object invisible
         spawnedObject.SetActive(false);
+
+        //update EvaluationValueManager value
+        valueManager.SpiderSpawned = false;
 
         //reactivate SpawnButton and deactivate other buttons
         ResetButtonsArachnophobia();
@@ -258,6 +253,10 @@ public class SupervisorUIManager : MonoBehaviour
         if (!spiderController.IsDead())
         {
             spiderController.Stop();
+
+            //update EvaluationValueManager value
+            valueManager.SpiderMovingToPos = false;
+            valueManager.SpiderMovingToPatient = false;
         }
     }
 
@@ -268,7 +267,13 @@ public class SupervisorUIManager : MonoBehaviour
 
         //command object to look at person
         if (!spiderController.IsDead())
+        {
             spiderController.LookAtPerson();
+
+            //update EvaluationValueManager value
+            valueManager.SpiderLooking = true;
+            StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.SpiderLooking));
+        }
     }
 
 
@@ -279,7 +284,16 @@ public class SupervisorUIManager : MonoBehaviour
 
         //command object  to move to chosen position
         if (!spiderController.IsDead())
-            spiderController.MoveToPosition(ChoosePosition());
+        {
+            bool reachedPos = false;
+            reachedPos = spiderController.MoveToPosition(ChoosePosition());
+
+            //update EvaluationValueManager value
+            valueManager.SpiderMovingToPos = true;
+            if(reachedPos)
+                //update EvaluationValueManager value
+                StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.SpiderLooking));
+        } 
     }
 
 
@@ -289,7 +303,16 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object move to person...");
         
         if (!spiderController.IsDead())
-            spiderController.MoveToPatient();
+        {
+            bool reachedPos = false;
+            reachedPos = spiderController.MoveToPatient();
+
+            //update EvaluationValueManager value
+            valueManager.SpiderMovingToPos = true;
+            if (reachedPos)
+                //update EvaluationValueManager value
+                StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.SpiderLooking));
+        }
     }
 
 
@@ -310,6 +333,16 @@ public class SupervisorUIManager : MonoBehaviour
     public void AlarmButton()
     {
         //TODO Alarm starten
+
+        //update EvaluationValueManager value
+        valueManager.MachineAlarmActive = true;
+
+        bool alarmSolved = false;
+        //alarmSolved = ..........
+        if(alarmSolved)
+            //update EvaluationValueManager value
+            StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.MachineAlarmActive));
+
     }
 
     //--------------------Functionalities--------------------

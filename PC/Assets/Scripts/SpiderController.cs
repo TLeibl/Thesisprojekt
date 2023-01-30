@@ -7,14 +7,6 @@ using UnityEngine.SceneManagement;
 //script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
 public class SpiderController : MonoBehaviour
 {
-    //bools for occuring events
-    private bool dead = false; 
-    private bool spiderSpawned = false;
-    private bool spiderLooking = false;
-    private bool spiderMovingToPos = false;
-    private bool spiderMovingToPatient = false;
-    private bool spiderOntoPatient = false;
-
     //references
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
@@ -28,6 +20,8 @@ public class SpiderController : MonoBehaviour
 
     private float fleeDistance = 4f; //distance for spider to flee
     //private float despawnDelay = 2.5f; //delay when despawning
+
+    private bool dead = false; //true when spider is spawned and dead
 
 
     private void Awake()
@@ -130,10 +124,6 @@ public class SpiderController : MonoBehaviour
 
         //stop movement
         agent.SetDestination(transform.position);
-
-        //set bool
-        spiderMovingToPos = false;
-        spiderMovingToPatient = false;
     }
 
 
@@ -151,22 +141,11 @@ public class SpiderController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MapPhobia")
             LookAt(patient.position);
 
-        //set bool
-        spiderLooking = true;
-        StartCoroutine("ResetSpiderLooking");
-    }
-
-
-    //reset spiderLooking after amount of time so EvaluationValueManager value is changed in time interval
-    private IEnumerator ResetSpiderLooking()
-    {
-        yield return new WaitForSecondsRealtime(1f);
-        spiderLooking = false;
     }
 
 
     //method called by supervisor to let spider walk to chosen position
-    public void MoveToPosition(Vector3 position)
+    public bool MoveToPosition(Vector3 position)
     {
         Debug.Log("SPIDER MOVE TO PATIENT POSITION: " + position);
 
@@ -181,19 +160,16 @@ public class SpiderController : MonoBehaviour
             //walk until position reached
         }
         animator.SetBool("isWalking", false);
-        //reset bools
-        spiderMovingToPos = false;
-        spiderMovingToPatient = false;
+        return true;
     }
 
 
     //method called by supervisor to let spider walk to patient
-    public void MoveToPatient()
+    public bool MoveToPatient()
     {
-        spiderMovingToPatient = true;
-
         if (SceneManager.GetActiveScene().name == "MapPhobia")
             MoveToPosition(patient.position);
+            return true;
     }
 
 
@@ -204,17 +180,12 @@ public class SpiderController : MonoBehaviour
             //look at patient
             LookAt(patient.position);
 
-        //set bool
-        spiderLooking = true;
-        StartCoroutine("ResetSpiderLooking");
-
         //if not already there - move into direction of patient
         if (SceneManager.GetActiveScene().name == "MapPhobia")
         {
             if (!inPatientRange)
             {
                 MoveToPosition(patient.position);
-                spiderMovingToPatient = true;
             }
         }
     }
@@ -235,8 +206,6 @@ public class SpiderController : MonoBehaviour
             //else climb up the legs and onto the arm
 
         }
-
-        spiderOntoPatient = true;
     }
 
 
@@ -258,8 +227,6 @@ public class SpiderController : MonoBehaviour
             LookAt(newPos); //look at pos
             agent.SetDestination(newPos); //move there
         }
-            
-        spiderMovingToPos = true;
 
         //despawn spider after short time
         //StartCoroutine(DespawnAfterTime());
@@ -281,8 +248,6 @@ public class SpiderController : MonoBehaviour
 
         //Death animation
         animator.SetBool("dead", true);
-
-        //set bool
         dead = true;
     }
 
@@ -294,30 +259,4 @@ public class SpiderController : MonoBehaviour
     {
         return dead;
     }
-
-    //public bool IsSpawned()
-    //{
-    //    return spiderSpawned;
-    //}
-
-    public bool IsLooking()
-    {
-        return spiderLooking;
-    }
-
-    public bool IsMovingToPos()
-    {
-        return spiderMovingToPos;
-    }
-
-    public bool IsMovingToPatient()
-    {
-        return spiderMovingToPatient;
-    }
-
-    public bool IsOntoPatient()
-    {
-        return spiderOntoPatient;
-    }
-
 }

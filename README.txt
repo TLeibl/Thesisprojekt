@@ -1,5 +1,5 @@
 PROJEKTNAME:
-Verteilte Therapieumgebung in Virtual Reality [Thesis-Projekt]
+Verteilte Therapie- und Lernumgebung in Virtual Reality [Thesis-Projekt]
 
 Tabea Leibl[204105]
 
@@ -16,10 +16,9 @@ LINK ZUM PROJEKT:
 
 =======
 BESONDERHEITEN DES PROJEKTS:
-Die VR-Brille (Oculus/Meta Quest 2) muss an den Computer oder Laptop angeschlossen sein und eingerichtet worden sein. 
-SteamVR muss hierauf aktiviert und eingerichtet werden und die benötigten Geräte (VR-Brille, VR-Controller) müssen 
-verbunden sein. Alle Geräte müssen von SteamVR erkannt worden sein.
-Daraufhin kann das Spiel gestartet werden.
+Die Anwendung muss auf der VR-Brille (Oculus / Meta Quest 2) installiert worden sein.
+Die Oculus App muss auf einem separaten Gerät installiert und erfolgreich mit der Meta Quest 2 verbunden worden sein. 
+Daraufhin kann die Anwendung gestartet werden.
 
 Achtung: Szenen, welche neu hinzugefügt werden, müssen in den Build Settings aktiviert sowie in den BuildTools (Skript) 
 für das entsprechende Szenario in die Liste scenesToEnable hinzugefügt werden.

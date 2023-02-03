@@ -2769,6 +2769,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba71efe8b1301a49bea464dd9daf7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feedbackValues: []
+  spiderSpawnedList: 
+  spiderLookingList: 
+  spiderMovingList: 
+  spiderOntoPatientList: 
+  spiderDeadList: 
+  machineAlarmList: 
 --- !u!4 &1641465277
 Transform:
   m_ObjectHideFlags: 0
@@ -3222,7 +3229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: "@Spawn \xB4spider - \n@Note: You can only place one spider at once."
+  infoLeft: "@Activate \xB4machine alarm."
   infoRight: 
 --- !u!114 &1858202150
 MonoBehaviour:

@@ -8,9 +8,9 @@ using AwesomeCharts;
 //Manager script to build line chart with the evaluation values.
 public class EvaluationChartManager : MonoBehaviour
 {
-    private EvaluationValueManager valueManager = null; //value manager
+    [SerializeField] private LineChart chart = null; //the line chart
 
-    private LineChart chart = null; //the line chart
+    private EvaluationValueManager valueManager = null; //value manager
 
     //Hashtable for individual event values used as Y value in the chart
     Hashtable individualYValues = new Hashtable(){
@@ -28,16 +28,6 @@ public class EvaluationChartManager : MonoBehaviour
     {
         //find EvaluationValueManager
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
-
-        //set correct line chart for current scenario
-        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
-        {
-            chart = GameObject.Find("ArachnophobiaChart").GetComponentInChildren<LineChart>();
-        }
-        else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
-        {
-            chart = GameObject.Find("MachineLearningChart").GetComponentInChildren<LineChart>();
-        }
 
         if(chart != null)
         {

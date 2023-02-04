@@ -45,7 +45,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
             //only if scholar/patient - send to scenario
             if (!PhotonNetwork.IsMasterClient)
             {
-                StartCoroutine(sendToScenario());
+                StartCoroutine(SendToScenario());
             }
         }
         
@@ -110,7 +110,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     }
 
     //coroutine until scenario has been set by supervisor
-    public IEnumerator sendToScenario()
+    public IEnumerator SendToScenario()
     {
         Debug.Log("Wait for supervisor to choose scenario...");
         while ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ScenarioNotChosenYet"])

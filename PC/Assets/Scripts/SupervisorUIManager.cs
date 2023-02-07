@@ -45,7 +45,6 @@ public class SupervisorUIManager : MonoBehaviour
     }
 
 
-
     // Update is called once per frame
     private void Update()
     {

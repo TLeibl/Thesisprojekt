@@ -32,6 +32,7 @@ public class MachineController : MonoBehaviour
     {
         if(interacted == triggerEventAt)
         {
+            interacted = 0; //reset
             warningLampEnabled = true;
             LampSwitchOn(); //switch lamp on
             triggerEventAt = Random.Range(1, 15); //reset triggerEventAt value to random new value
@@ -40,7 +41,7 @@ public class MachineController : MonoBehaviour
 
 
     //method to switch lamp on = change material 
-    private void LampSwitchOn()
+    public void LampSwitchOn()
     {
         StartCoroutine(LampBlinking());
     }

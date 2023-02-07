@@ -43,7 +43,7 @@ public class PlayerUIManager : MonoBehaviour
     public float CalculateCurrentFeedbackValue(float currentFeedbackValue, float triggerValue)
     {
         //increase/decrease feedback value the more trigger is pressed or released
-        //if value has only slighty changed: leave it constant - return from method
+        //if value has only slightly changed: leave it constant - return from method
         if (Mathf.Approximately(triggerValue, lastTriggerValue))
             return currentFeedbackValue;
         else if (triggerValue > lastTriggerValue) //trigger is pressed more

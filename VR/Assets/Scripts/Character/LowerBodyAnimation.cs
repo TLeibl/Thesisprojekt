@@ -20,6 +20,7 @@ public class LowerBodyAnimation : MonoBehaviour
     [SerializeField] private Vector3 raycastOffsRight;
 
 
+    //method called by the Animation Controller when an animation is started
     private void OnAnimatorIK(int layerIndex)
     {
         //get foot positions

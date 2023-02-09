@@ -92,7 +92,7 @@ public class SpiderController : MonoBehaviour
     //method used to let spider return to the floor (e.g. when dying)
     private void ReturnToFloor()
     {
-        //if not already on floor: set y to be on floor (reset y to groundedPosition.y)
+        //if not already on floor: go back to starting position
         if (!(transform.position.y == groundedPosition.y))
         {
             transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z);

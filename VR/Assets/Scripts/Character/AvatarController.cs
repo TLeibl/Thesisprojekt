@@ -27,7 +27,7 @@ public class AvatarController : MonoBehaviour
     [SerializeField] private MapTransforms leftHand;
     [SerializeField] private MapTransforms rightHand;
 
-    [SerializeField] private float turnSmoothness; //for turning off the head
+    [SerializeField] private float turnSmoothness; //for turning of the head
     [SerializeField] private Transform ikHead;
     [SerializeField] private Vector3 headBodyOffset; //height offset
 

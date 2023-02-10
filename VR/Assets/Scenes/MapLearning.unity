@@ -1582,7 +1582,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35704
+  m_Name: pb_Mesh632040
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1927,6 +1927,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 460679097776824145}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MachineController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
 --- !u!4 &1535015862 stripped
@@ -1988,6 +2004,22 @@ PrefabInstance:
     - target: {fileID: 4526880786662857561, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
       propertyPath: m_Name
       value: Button (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 460679097776824145}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MachineController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
@@ -2313,6 +2345,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 460679097776824145}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MachineController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
 --- !u!4 &1768905453 stripped
@@ -2453,7 +2501,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-404094
+  m_Name: pb_Mesh-941882
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3758,6 +3806,22 @@ PrefabInstance:
     - target: {fileID: 4526880786662857561, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 460679097776824145}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MachineController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526880787008103956, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e57827ac120aa2499631fdb1524a25d, type: 3}

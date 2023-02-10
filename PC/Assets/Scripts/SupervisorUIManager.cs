@@ -28,6 +28,7 @@ public class SupervisorUIManager : MonoBehaviour
     //spawned object (e.g. spider or machine)
     private GameObject spawnedObject = null; //the currently spawned object
     private SpiderController spiderController = null; //current spider controller
+    private MachineController machineController = null; //current machine controller
     private float despawnDelay = 2.5f; //delay when despawning
 
     //cameras to view scenario scene
@@ -128,6 +129,7 @@ public class SupervisorUIManager : MonoBehaviour
                 else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
                 {
                     if (spawnedObject != null)
+                        machineController = spawnedObject.GetComponent<MachineController>(); //set machine controller
                         alarmButton.interactable = true;
                 }
             }
@@ -333,18 +335,15 @@ public class SupervisorUIManager : MonoBehaviour
 
     //-------------------------------MACHINE LEARNING BUTTONS---------------------------------
 
-    //TODO buttons
-
     public void AlarmButton()
     {
-        //TODO Alarm starten
-
+        //start alarm in machine controller
+        machineController.StartAlarmManually();
         //update EvaluationValueManager value
         valueManager.MachineAlarmActive = true;
 
-        bool alarmSolved = false;
-        //alarmSolved = ..........
-        if(alarmSolved)
+        //if alarm has been solved - reset value manager bool
+        if(!machineController.WarningLampEnabled)
             //update EvaluationValueManager value
             StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.MachineAlarmActive));
 

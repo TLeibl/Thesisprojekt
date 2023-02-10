@@ -36,7 +36,7 @@ public class MachineController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (interacted == triggerEventAt)
+        if(interacted == triggerEventAt)
         {
             interacted = 0; //reset
             warningLampEnabled = true;
@@ -66,7 +66,7 @@ public class MachineController : MonoBehaviour
         lampRenderer.material = warningLampOn;
         yield return new WaitForSeconds(4f);
         lampRenderer.material = warningLampOff;
-        if (warningLampEnabled)
+        if(warningLampEnabled)
             StartCoroutine(LampBlinking());
     }
 
@@ -81,6 +81,6 @@ public class MachineController : MonoBehaviour
     //called by buttons - if selected increase interacted value
     public void InteractedWithButton()
     {
-        interacted += 1;
+        interacted += 1; 
     }
 }

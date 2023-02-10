@@ -55,47 +55,15 @@ public class SpiderController : MonoBehaviour
     }
 
 
-    //------------------------SPAWN AND DESPAWN-----------------------
-
-    /// <summary>
-    /// Method to let the spider spawn e.g. enable the game object 
-    /// </summary>
-    /// <param name="position">the position the spider shall be spawned</param>
-    //public void SpawnSpider(Vector3 position)
-    //{
-    //    //set disabled spider to choosen position
-    //    gameObject.transform.position = position;
-
-    //    //enable spider
-    //    gameObject.SetActive(true);
-
-    //    //set bool
-    //    spiderSpawned = true;
-    //}
-
-
-    //disable spider game object
-    //public void DespawnSpider()
-    //{
-    //    gameObject.SetActive(false);
-    //    //reset bools
-    //    spiderSpawned = false;
-    //    spiderLooking = false;
-    //    spiderMovingToPatient = false;
-    //    spiderMovingToPos = false;
-    //    spiderOntoPatient = false;
-    //}
-
-
     //---------------------------MOVEMENT-----------------------------
 
     //method used to let spider return to the floor (e.g. when dying)
-    private void ReturnToFloor()
+    private void DropToFloor()
     {
-        //if not already on floor: go back to starting position
+        //if not already on floor: set y to be on floor (reset y to groundedPosition.y)
         if (!(transform.position.y == groundedPosition.y))
         {
-            transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z); //change y axis value so spider is grounded
         }
     }
 
@@ -218,10 +186,6 @@ public class SpiderController : MonoBehaviour
             animator.SetBool("isWalking", true);
 
             //move away from patient
-            //if not already on floor: get down
-            ReturnToFloor();
-
-            //run away
             Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
             Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
             LookAt(newPos); //look at pos
@@ -244,7 +208,7 @@ public class SpiderController : MonoBehaviour
     public void Die()
     {
         //if not already there drop to the ground
-        ReturnToFloor();
+        DropToFloor();
 
         //Death animation
         animator.SetBool("dead", true);

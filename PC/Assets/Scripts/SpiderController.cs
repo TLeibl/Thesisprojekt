@@ -57,14 +57,15 @@ public class SpiderController : MonoBehaviour
     //---------------------------MOVEMENT-----------------------------
 
     //method used to let spider return to the floor (e.g. when dying)
-    private void ReturnToFloor()
+    private void DropToFloor()
     {
         //if not already on floor: set y to be on floor (reset y to groundedPosition.y)
         if(!(transform.position.y == groundedPosition.y))
         {
-            transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z); //change y axis value so spider is grounded
         }
     }
+
 
     /// <summary>
     /// Let the spider look at a position, e.g. the patient.
@@ -184,10 +185,6 @@ public class SpiderController : MonoBehaviour
             animator.SetBool("isWalking", true);
 
             //move away from patient
-            //if not already on floor: get down
-            ReturnToFloor();
-
-            //run away
             Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
             Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
             LookAt(newPos); //look at pos
@@ -209,12 +206,12 @@ public class SpiderController : MonoBehaviour
     //method called by supervisor to let spider die
     public void Die()
     {
+        dead = true;
         //if not already there drop to the ground
-        ReturnToFloor();
+        DropToFloor();
 
         //Death animation
         animator.SetBool("dead", true);
-        dead = true;
     }
 
 

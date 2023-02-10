@@ -107,14 +107,21 @@ public class SupervisorUIManager : MonoBehaviour
         if (spawnedObject == null)
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == true)
             {
-                //set spawned GameObject to control
-                spawnedObject = PhotonView.Find(2003).gameObject; //is fourth PhotonView after VR user
+                //try to set spawned GameObject to control
+                try
+                {
+                    spawnedObject = PhotonView.Find(2110).gameObject; //runtime PhotonID of spider is 2110
+                }
+                catch
+                {
+                    Debug.Log("Spawned Object not found yet.");
+                }
 
                 //Arachnophobia
                 if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
                 {
-                    spiderController = spawnedObject.GetComponent<SpiderController>(); //set spider controller
                     if (spawnedObject != null)
+                        spiderController = spawnedObject.GetComponent<SpiderController>(); //set spider controller
                         spawnButton.interactable = true; //enable spawn button
                 }
                 //Machine Operating

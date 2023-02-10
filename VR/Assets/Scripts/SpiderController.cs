@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class SpiderController : MonoBehaviour
 {
     //references
+    public Vector3 groundedPosition = Vector3.zero; //position of the spider when sitting on the floor to return to 
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
-    private Vector3 groundedPosition = Vector3.zero; //position of the spider when sitting on the floor to return to (only usage of y value)
 
     //distance to patient
     [SerializeField] private float patientDistance = 0.0f; //distance of spider to patient

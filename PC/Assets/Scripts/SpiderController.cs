@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class SpiderController : MonoBehaviour
 {
     //references
+    public Vector3 groundedPosition = Vector3.zero; //position of the spider when sitting on the floor to return to 
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
-    private Vector3 groundedPosition = Vector3.zero; //position of the spider when sitting on the floor to return to (only usage of y value)
 
     //distance to patient
     [SerializeField] private float patientDistance = 0.0f; //distance of spider to patient
@@ -53,39 +53,6 @@ public class SpiderController : MonoBehaviour
             inPatientRange = true;
         else inPatientRange = false;
     }
-
-
-    //------------------------SPAWN AND DESPAWN-----------------------
-
-    /// <summary>
-    /// Method to let the spider spawn e.g. enable the game object 
-    /// </summary>
-    /// <param name="position">the position the spider shall be spawned</param>
-    //public void SpawnSpider(Vector3 position)
-    //{
-    //    //set disabled spider to choosen position
-    //    gameObject.transform.position = position;
-
-    //    //enable spider
-    //    gameObject.SetActive(true);
-
-    //    //set bool
-    //    spiderSpawned = true;
-    //}
-
-
-    //disable spider game object
-    //public void DespawnSpider()
-    //{
-    //    gameObject.SetActive(false);
-    //    //reset bools
-    //    spiderSpawned = false;
-    //    spiderLooking = false;
-    //    spiderMovingToPatient = false;
-    //    spiderMovingToPos = false;
-    //    spiderOntoPatient = false;
-    //}
-
 
     //---------------------------MOVEMENT-----------------------------
 
@@ -140,7 +107,6 @@ public class SpiderController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
             LookAt(patient.position);
-
     }
 
 

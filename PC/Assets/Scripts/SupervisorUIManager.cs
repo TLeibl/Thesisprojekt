@@ -185,10 +185,6 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Spawn object...");
 
-        //instantiate spider and get spider controller
-        //spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
-        //spiderController = spawnedSpider.GetComponent<SpiderController>();
-
         if(spawnedObject != null) //if spider successfully spawned
         {
             //make Game Object visible
@@ -217,6 +213,9 @@ public class SupervisorUIManager : MonoBehaviour
 
         //make Game Object invisible
         spawnedObject.SetActive(false);
+        //reset spider position and animation
+        spawnedObject.transform.position = new Vector3(spiderController.groundedPosition.x, spiderController.groundedPosition.y, spiderController.groundedPosition.z);
+        spiderController.Stop();
 
         //update EvaluationValueManager value
         valueManager.SpiderSpawned = false;

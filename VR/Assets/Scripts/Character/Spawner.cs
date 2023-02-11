@@ -7,40 +7,30 @@ using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour
 {
-    private bool objectInstantiated = false;
-
     //instantiate needed objects and set them for the master client (supervisor)
     private void Awake()
     {    
         //Map Arachnophobia
-        if (SceneManager.GetActiveScene().name == "MapPhobia")
+        if (SceneManager.GetActiveScene().name == "MapPhobia" && (bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == false)
         {
-            if (!objectInstantiated)
-            {
-                //instantiate spider for master client to use
-                GameObject spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
-                objectInstantiated = true;
+            //instantiate spider for master client to use
+            GameObject spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
 
-                if (spawnedSpider != null)
-                    spawnedSpider.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
-                spawnedSpider.SetActive(false);
-                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
-            }
+            if (spawnedSpider != null)
+                spawnedSpider.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
+            spawnedSpider.SetActive(false);
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
         }
         //Map Learning
-        else if (SceneManager.GetActiveScene().name == "MapLearning")
+        else if (SceneManager.GetActiveScene().name == "MapLearning" && (bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == false)
         {
-            if(!objectInstantiated)
-            {
-                //instantiate machine for master client to use
-                GameObject spawnedMachine = PhotonNetwork.Instantiate("Machine", new Vector3(1.509f, 0.308f, 2.686f), Quaternion.identity, 0);
-                objectInstantiated = true;
+            //instantiate machine for master client to use
+            GameObject spawnedMachine = PhotonNetwork.Instantiate("Machine", new Vector3(1.509f, 0.308f, 2.686f), Quaternion.identity, 0);
 
-                if (spawnedMachine != null)
-                    spawnedMachine.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
+            if (spawnedMachine != null)
+                spawnedMachine.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
 
-                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
-            }
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
         }
 
     }

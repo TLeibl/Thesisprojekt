@@ -31,10 +31,6 @@ public class SupervisorUIManager : MonoBehaviour
     private MachineController machineController = null; //current machine controller
     private float despawnDelay = 2.5f; //delay when despawning
 
-    //cameras to view scenario scene
-    private GameObject fpCamera = null; //first person view (view of VR user)
-    private GameObject tpCamera = null; //third person view
-
     //evaluation value manager to safe current values 
     private EvaluationValueManager valueManager = null;
 
@@ -392,8 +388,30 @@ public class SupervisorUIManager : MonoBehaviour
         stopSpiderButton.interactable = false;
     }
 
+
+    //method used in Awake() to disable all object related buttons until the object has been instantiated and set
     private void DisableObjectRelatedButtons()
     {
+        if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+        {
+            spawnButton.interactable = false;
+            despawnButton.interactable = false;
+            fleeButton.interactable = false;
+            lookAtButton.interactable = false;
+            moveToPosButton.interactable = false;
+            moveToPatButton.interactable = false;
+            stopSpiderButton.interactable = false;
+        }
+        else
+        {
+            alarmButton.interactable = false;
+        }
+    }
 
+
+    //method used by RoomViewController script to get the spawned object
+    public GameObject GetSpawnedObject()
+    {
+        return spawnedObject;
     }
 }

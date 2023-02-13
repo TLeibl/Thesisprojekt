@@ -650,6 +650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrUser: {fileID: 769838438}
   spawnedObject: {fileID: 389062439}
+  objectActivatedMaterial: {fileID: 2100000, guid: 7077575fa740a264aacc394ddd6c62b4, type: 2}
+  actionMaterial: {fileID: 2100000, guid: 90b5d604801022b4ab401ead70c015ae, type: 2}
   uiManager: {fileID: 433809629}
 --- !u!1 &263577633
 GameObject:
@@ -666,7 +668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &263577634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -987,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7686015939626448170, guid: bbc17a025b66528408158101459d1a9a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc17a025b66528408158101459d1a9a, type: 3}
@@ -1830,17 +1832,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884180599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 639.2071, y: 280.3958, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 434, y: 139.99997, z: 0}
+  m_LocalScale: {x: 2.180827, y: 2.180827, z: 2.180827}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 769838437}
   - {fileID: 1246758971}
   - {fileID: 239572499}
   - {fileID: 353546148}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1852979314}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &916200079
 GameObject:
@@ -2226,6 +2228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrUser: {fileID: 769838438}
   spawnedObject: {fileID: 353546149}
+  objectActivatedMaterial: {fileID: 2100000, guid: 7077575fa740a264aacc394ddd6c62b4, type: 2}
+  actionMaterial: {fileID: 2100000, guid: 90b5d604801022b4ab401ead70c015ae, type: 2}
   uiManager: {fileID: 433809629}
 --- !u!1001 &1246758970
 PrefabInstance:
@@ -3553,6 +3557,7 @@ RectTransform:
   - {fileID: 2014971587}
   - {fileID: 1255444105}
   - {fileID: 383977642}
+  - {fileID: 884180600}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3918,7 +3923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788351, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 211.99994
+      value: 367.4
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788351, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3972,7 +3977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: "@Despawn \xB4spider - it runs away and vanishes."
+  infoLeft: "@Stop \xB4spider - it stops any action currently performing."
   infoRight: 
 --- !u!114 &1881646522
 MonoBehaviour:
@@ -4336,8 +4341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: "~Reset \xB4the scenario (spider will be despawned, all objects return
-    to their places)."
+  infoLeft: "~Reset \xB4the scenario (e.g. spider will be despawned, all objects
+    return to their places)."
   infoRight: 
 --- !u!1001 &2884722176226225415
 PrefabInstance:

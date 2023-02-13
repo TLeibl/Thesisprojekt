@@ -31,6 +31,8 @@ public class SupervisorUIManager : MonoBehaviour
     private MachineController machineController = null; //current machine controller
     private float despawnDelay = 2.5f; //delay when despawning
 
+    private bool uiInitialized = false; //check if UI has been initialized
+
     //evaluation value manager to safe current values 
     private EvaluationValueManager valueManager = null;
 
@@ -39,19 +41,22 @@ public class SupervisorUIManager : MonoBehaviour
     {
         //set evaluation value manager
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
-
-        //set SupervisorUI components (buttons and cameras) 
-        SetUIComponents();
-        //disable them until spawned object set
-        DisableObjectRelatedButtons();
     }
 
 
     // Update is called once per frame
     private void Update()
     {
+        //try to set SupervisorUI components (buttons and cameras) 
+        if (!uiInitialized)
+        {
+            TrySetUIComponents();
+            //if initialized - disable them until spawned object set
+            if(uiInitialized)
+                DisableObjectRelatedButtons();
+        }
         //try to set spawned object if not set yet (possible after VR user spawned it)
-        if(spawnedObject == null) 
+        if (spawnedObject == null) 
             TrySetSpawnObject();
             
 
@@ -80,16 +85,17 @@ public class SupervisorUIManager : MonoBehaviour
 
 
     //Set UI components like buttons and camera views
-    private void SetUIComponents()
+    private void TrySetUIComponents()
     {
         if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
         {
             //Buttons
             arachnophobiaButtons.SetActive(true); //show correct buttons
-            ResetButtonsArachnophobia(); //no actions before spider spawned
-            spawnButton.interactable = false; //until spider has been instantiated
+            DisableObjectRelatedButtons(); //no actions before spider spawned
             //Room views
             phobiaRoomViewComponents.SetActive(true); //show correct room view 
+
+            uiInitialized = true; //success
         }
         else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
         {
@@ -98,6 +104,8 @@ public class SupervisorUIManager : MonoBehaviour
             alarmButton.interactable = false; //until machine has been instantiated
             //Room views
             learningRoomViewComponents.SetActive(true); //show correct room view
+
+            uiInitialized = true; //success
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 //script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
 public class SpiderController : MonoBehaviour
@@ -12,6 +13,7 @@ public class SpiderController : MonoBehaviour
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
+    private PhotonView pv = null; //the photon view of the spider (to send RPCs)
 
     //distance to patient
     [SerializeField] private float patientDistance = 0.0f; //distance of spider to patient
@@ -29,8 +31,11 @@ public class SpiderController : MonoBehaviour
         //set references
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient
+        if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient and set own PhotonView
+        {
             patient = GameObject.Find("OVRPlayerController").transform;
+            pv = gameObject.GetComponent<PhotonView>();
+        }
 
         groundedPosition = this.transform.position;
     }
@@ -39,8 +44,13 @@ public class SpiderController : MonoBehaviour
     private void Update()
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
+        {
             //update distance to patient
             CalculatePatientDistance();
+
+            //update values for supervisor UI room view
+            UpdateRPCValues();
+        }
     }
 
 
@@ -216,12 +226,13 @@ public class SpiderController : MonoBehaviour
     }
 
 
-    //---------------------------GETTER-----------------------------
+    //---------------------------SETTER-----------------------------
 
-
-    public bool IsDead()
+    private void UpdateRPCValues()
     {
-        return dead;
+        pv.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
+        pv.RPC("SetCurrentObjectRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
     }
+
 }
 

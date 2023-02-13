@@ -13,6 +13,9 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
  */
 public class VRCharController : MonoBehaviour
 {
+	//Components for RPCs
+	private PhotonView pv = null; //PhotonView used for sending RPCs
+
 	//Give Feedback
 	[SerializeField] PlayerUIManager uiManager = null; //the player UI manager
 	private InputDevice targetDevice; //the device used to get an input value (e.g. right hand controller)
@@ -117,6 +120,8 @@ public class VRCharController : MonoBehaviour
 
 		//try and set right hand controller as target device (e.g. for giving feedback)
 		TrySetTargetDevice();
+
+		pv = gameObject.GetComponent<PhotonView>(); //set Photon View
 	}
 
 
@@ -169,8 +174,9 @@ public class VRCharController : MonoBehaviour
 		if (!targetDevice.isValid)
 			TrySetTargetDevice();
 
-		//update feedback value
+		//update feedback value and supervisor room view status
 		UpdateFeedback();
+		UpdateRPCValues();
 
 		//update position and orientation
 		if (!playerControllerEnabled)
@@ -662,4 +668,11 @@ public class VRCharController : MonoBehaviour
     {
 		return currentFeedbackValue;
     }
+
+
+	private void UpdateRPCValues()
+	{
+		pv.RPC("SetCurrentVRUserPosition", RpcTarget.MasterClient, gameObject.transform.position);
+		pv.RPC("SetCurrentVRUserRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
+	}
 }

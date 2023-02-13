@@ -422,4 +422,10 @@ public class SupervisorUIManager : MonoBehaviour
     {
         return spawnedObject;
     }
+
+    //method used by RoomViewController script to get the EvaluationValueManager
+    public EvaluationValueManager GetValueManager()
+    {
+        return valueManager;
+    }
 }

@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class MachineController : MonoBehaviour
 {
+    private PhotonView pv = null; //Photon View for sending RPCs
+
+
     //interactables
     [SerializeField] private GameObject stopButton = null;
 
@@ -27,6 +31,7 @@ public class MachineController : MonoBehaviour
 
     private void Start()
     {
+        pv = gameObject.GetComponent<PhotonView>();
         lampRenderer = warningLamp.GetComponent<MeshRenderer>(); //set warning lamp renderer
 
         triggerEventAt = Random.Range(1, 15); //initialize triggerEventAt value
@@ -36,6 +41,7 @@ public class MachineController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //start event if enough interaction
         if (interacted == triggerEventAt)
         {
             interacted = 0; //reset
@@ -82,5 +88,21 @@ public class MachineController : MonoBehaviour
     public void InteractedWithButton()
     {
         interacted += 1;
+    }
+
+
+    //-------------------------Setter-------------------------
+   //method called by machine components when used to update supervisor room view
+    public void UpdateRPCValueToTrue()
+    {
+        //TODO wie Wert für alle Objekte auf Maschine?
+        pv.RPC("SetObjectUsed", RpcTarget.MasterClient, true);
+    }
+
+    //method called by machine components when usage stops to update supervisor room view
+    public void UpdateRPCValueToFalse()
+    {
+        //TODO wie Wert für alle Objekte auf Maschine?
+        pv.RPC("SetObjectUsed", RpcTarget.MasterClient, false);
     }
 }

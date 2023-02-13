@@ -8,12 +8,11 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class SupervisorUIManager : MonoBehaviour
 {
-    private bool componentsSet = false; //true when UI components correctly set in UI
-
     //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
     //Arachnophobia
-    [SerializeField] private GameObject arachnophobiaButtons;
+    [SerializeField] private GameObject phobiaRoomViewComponents = null;
+    [SerializeField] private GameObject arachnophobiaButtons = null;
     [SerializeField] private Button spawnButton = null;
     [SerializeField] private Button despawnButton = null;
     [SerializeField] private Button fleeButton = null;
@@ -22,6 +21,7 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button moveToPatButton = null;
     [SerializeField] private Button stopSpiderButton = null;
     //Machine Operating
+    [SerializeField] private GameObject learningRoomViewComponents = null;
     [SerializeField] private GameObject machineButtons;
     [SerializeField] private Button alarmButton = null;
 
@@ -43,16 +43,18 @@ public class SupervisorUIManager : MonoBehaviour
     {
         //set evaluation value manager
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
+
+        //set SupervisorUI components (buttons and cameras) 
+        SetUIComponents();
+        //disable them until spawned object set
+        DisableObjectRelatedButtons();
     }
 
 
     // Update is called once per frame
     private void Update()
     {
-        //set SupervisorUI components (buttons and cameras) correctly when szernario entered by VR user
-        //if not set yet
-        if (!componentsSet)
-            TrySetUIComponents();
+        //try to set spawned object if not set yet (possible after VR user spawned it)
         if(spawnedObject == null) 
             TrySetSpawnObject();
             
@@ -82,22 +84,25 @@ public class SupervisorUIManager : MonoBehaviour
 
 
     //Set UI components like buttons and camera views
-    private void TrySetUIComponents()
+    private void SetUIComponents()
     {
-        //buttons
         if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
         {
+            //Buttons
             arachnophobiaButtons.SetActive(true); //show correct buttons
             ResetButtonsArachnophobia(); //no actions before spider spawned
             spawnButton.interactable = false; //until spider has been instantiated
+            //Room views
+            phobiaRoomViewComponents.SetActive(true); //show correct room view 
         }
         else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
         {
+            //Buttons
             machineButtons.SetActive(true); //show correct buttons
             alarmButton.interactable = false; //until machine has been instantiated
+            //Room views
+            learningRoomViewComponents.SetActive(true); //show correct room view
         }
-
-        componentsSet = true;
     }
 
 
@@ -387,4 +392,8 @@ public class SupervisorUIManager : MonoBehaviour
         stopSpiderButton.interactable = false;
     }
 
+    private void DisableObjectRelatedButtons()
+    {
+
+    }
 }

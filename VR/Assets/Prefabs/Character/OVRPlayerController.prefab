@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 324103747232393677}
   - component: {fileID: 324103747232393678}
   - component: {fileID: 324103747232393679}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 324103747933824864}
   - component: {fileID: 324103747933824870}
   - component: {fileID: 324103747933824871}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ControlFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324103748246818865}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: DisplayFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3892002113134389390, guid: 50b45ee32b55a7845a24f4d5c8194db1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3892002113134389391, guid: 50b45ee32b55a7845a24f4d5c8194db1, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1227,7 +1227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3892002113635060322, guid: 50b45ee32b55a7845a24f4d5c8194db1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3892002113635060323, guid: 50b45ee32b55a7845a24f4d5c8194db1, type: 3}
       propertyPath: m_Pivot.x

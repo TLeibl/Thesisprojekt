@@ -43,9 +43,10 @@ public class SupervisorUIManager : MonoBehaviour
 
     private void Awake()
     {
-        //set evaluation value manager
+        //set needed objects and own mouse cursor
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        Cursor.SetCursor(mouseCursor, default, CursorMode.Auto);
     }
 
 

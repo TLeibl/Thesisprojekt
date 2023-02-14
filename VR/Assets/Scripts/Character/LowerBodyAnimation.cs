@@ -37,14 +37,6 @@ public class LowerBodyAnimation : MonoBehaviour
         //if left foot is down - set weights, position and rotation of it
         if (isLeftFootDown)
         {
-            //TODO löschen
-            //this.animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, this.leftFootPosWeight);
-            //this.animator.SetIKPosition(AvatarIKGoal.LeftFoot, hitLeftFoot.point + this.footOffset);
-
-            //Quaternion leftFootRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(transform.forward, hitLeftFoot.normal), hitLeftFoot.normal);
-            //this.animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, this.leftFootRotWeight);
-            //this.animator.SetIKRotation(AvatarIKGoal.LeftFoot, leftFootRotation);
-
             SetFootWeightsAndPosition(AvatarIKGoal.LeftFoot, this.leftFootPosWeight, this.leftFootRotWeight, hitLeftFoot);
         }
         else //if not: do not calculate weights
@@ -55,14 +47,6 @@ public class LowerBodyAnimation : MonoBehaviour
         //if right foot is down - set weights, position and rotation of it
         if (isRightFootDown)
         {
-            //TODO löschen
-            //this.animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, this.rightFootPosWeight);
-            //this.animator.SetIKPosition(AvatarIKGoal.RightFoot, hitRightFoot.point + this.footOffset);
-
-            //Quaternion rightFootRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(transform.forward, hitRightFoot.normal), hitRightFoot.normal);
-            //this.animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, this.rightFootRotWeight);
-            //this.animator.SetIKRotation(AvatarIKGoal.RightFoot, rightFootRotation);
-
             SetFootWeightsAndPosition(AvatarIKGoal.RightFoot, this.rightFootPosWeight,this.rightFootRotWeight, hitRightFoot);
         }
         else //if not: do not calculate weights

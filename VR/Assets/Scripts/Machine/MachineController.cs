@@ -7,7 +7,6 @@ public class MachineController : MonoBehaviour
 {
     private PhotonView pv = null; //Photon View for sending RPCs
 
-
     //interactables
     [SerializeField] private GameObject stopButton = null;
 

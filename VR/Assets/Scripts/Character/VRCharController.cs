@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
-using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -208,10 +207,6 @@ public class VRCharController : MonoBehaviour
 
 
 #if (UNITY_ANDROID || UNITY_EDITOR)
-		// Quit key - go back to main menu
-		//if (Input.GetKeyDown(quitKey))
-		//	PhotonNetwork.Disconnect();
-		//	SceneManager.LoadScene("MainMenuVR");
 
 		//Reset application when supervisor pushed button
 		if (PhotonNetwork.CurrentRoom != null)
@@ -549,9 +544,6 @@ public class VRCharController : MonoBehaviour
     {
 		//get all usable devices (headset and controllers) 
 		List<InputDevice> devices = new List<InputDevice>();
-
-		//to get all devices
-		//InputDevices.GetDevices(devices);
 
 		//get right hand controller out of devices because we only need input values for this one (feedback)
 		InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;

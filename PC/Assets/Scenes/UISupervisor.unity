@@ -1051,7 +1051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7686015939626448170, guid: bbc17a025b66528408158101459d1a9a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc17a025b66528408158101459d1a9a, type: 3}
@@ -1501,7 +1501,7 @@ GameObject:
   - component: {fileID: 572319617}
   - component: {fileID: 572319616}
   - component: {fileID: 572319615}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Web (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1696,6 +1696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VRUser
       objectReference: {fileID: 0}
+    - target: {fileID: 2003186441981021371, guid: 7620029bc74396d4e9d00bfc80a130a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4325071108752310663, guid: 7620029bc74396d4e9d00bfc80a130a5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1763,6 +1767,10 @@ PrefabInstance:
     - target: {fileID: 4685165417767740804, guid: 7620029bc74396d4e9d00bfc80a130a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -183.322
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030518744982453166, guid: 7620029bc74396d4e9d00bfc80a130a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7620029bc74396d4e9d00bfc80a130a5, type: 3}
@@ -2904,7 +2912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: "~Choose position in camera view \xB4to let spider move to."
+  infoLeft: "~Choose position in room views \xB4to let spider move to.\n@After clicking
+    the button you have to choose a position on the map.\nButtons will be greyed
+    out until you have chosen a position."
   infoRight: 
 --- !u!114 &1360254881 stripped
 MonoBehaviour:
@@ -4043,7 +4053,7 @@ GameObject:
   - component: {fileID: 1875736109}
   - component: {fileID: 1875736108}
   - component: {fileID: 1875736107}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Web
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4814,6 +4824,10 @@ PrefabInstance:
       propertyPath: learningRoomViewComponents
       value: 
       objectReference: {fileID: 1170732153}
+    - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
+      propertyPath: roomViewEnvironmentWalkable.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 2884722176340821467, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -4827,6 +4841,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 884180600}
     m_Modifications:
+    - target: {fileID: 4834521276243782795, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834521277334675743, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834521277344984341, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4834521277379453254, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4878,6 +4904,22 @@ PrefabInstance:
     - target: {fileID: 4834521277379453255, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834521277482591840, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834521277560228467, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834521277586316784, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834521278333740588, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85ef4f8bebf19c74195dc70bc2bd9a6e, type: 3}

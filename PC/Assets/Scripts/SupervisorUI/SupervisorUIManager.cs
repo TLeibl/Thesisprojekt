@@ -10,6 +10,7 @@ public class SupervisorUIManager : MonoBehaviour
 {
     //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
+    private Camera mainCamera = null;
     //Arachnophobia
     [SerializeField] private GameObject phobiaRoomViewComponents = null;
     [SerializeField] private GameObject arachnophobiaButtons = null;
@@ -30,10 +31,12 @@ public class SupervisorUIManager : MonoBehaviour
     private SpiderController spiderController = null; //current spider controller
     private MachineController machineController = null; //current machine controller
     private float despawnDelay = 2.5f; //delay when despawning
+    //needed variables for controlling object
+    [SerializeField] private LayerMask roomViewEnvironmentWalkable;
 
     private bool uiInitialized = false; //check if UI has been initialized
 
-    //evaluation value manager to safe current values 
+    //evaluation value manager to save current values 
     private EvaluationValueManager valueManager = null;
 
 
@@ -41,6 +44,7 @@ public class SupervisorUIManager : MonoBehaviour
     {
         //set evaluation value manager
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
 
@@ -172,22 +176,6 @@ public class SupervisorUIManager : MonoBehaviour
     }
 
 
-    //Draw button - if chosen let supervisor draw onto camera view
-    //public void DrawButton()
-    //{
-        //Debug.Log("Start drawing...");
-
-        //TODO
-        //Knopf soll gewählt werden können und währenddessen gehighlighted sein, statt Maus Pinsel, danach wd
-        //anklicken Knopf und alles wd normal, andere Knöpfe solange malen nicht anklickbar außer Stop!
-
-        //highlight button if not already pressed - else make it normal again
-
-        //draw
-        //Draw();
-    //}
-
-
     //-------------------------------ARACHNOPHOBIA BUTTONS---------------------------------
 
 
@@ -302,14 +290,33 @@ public class SupervisorUIManager : MonoBehaviour
         if (!spiderController.IsDead())
         {
             bool reachedPos = false;
+
+            DisableObjectRelatedButtons(); //grey buttons out until position has been chosen
+
+            Debug.Log("Choose position...");
+            StartCoroutine(WaitforClick()); //wait until user has chosen a position with left mouse click
             reachedPos = spiderController.MoveToPosition(ChoosePosition());
 
-            //update EvaluationValueManager value
-            valueManager.SpiderMovingToPos = true;
-            if(reachedPos)
-                //update EvaluationValueManager value
+            ResetButtonsRoomView(); //reset buttons after choosing position
+            valueManager.SpiderMovingToPos = true; //update EvaluationValueManager value
+
+            //pos reached - update EvaluationValueManager value
+            if (reachedPos)
                 StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.SpiderLooking));
         } 
+    }
+
+    //Coroutine used to select a position only after the left mouse button has been pushed.
+    private IEnumerator WaitforClick()
+    {
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                yield break;
+            }
+            yield return null;
+        }
     }
 
 
@@ -361,23 +368,20 @@ public class SupervisorUIManager : MonoBehaviour
     //--------------------Functionalities--------------------
 
 
-    //method used to draw onto camera view - shall be seen by patient/scholar in scene
-    //private void Draw()
-    //{
-    //Debug.Log("Drawing...");
-
-    //TODO Draw functionality
-    //}
-
-
     //method used to let supervisor choose a position in the camera view 
     private Vector3 ChoosePosition()
     {
-        Debug.Log("Choose position...");
+        Debug.Log("Set Position");
 
         Vector3 position = new Vector3();
 
-        //TODO
+        //set ray from camera to where mouse position is pointing
+        Ray rayToEnvironment = mainCamera.ScreenPointToRay(Input.mousePosition);
+        //if ray hits something with correct layer - choose that position
+        if(Physics.Raycast(rayToEnvironment, out RaycastHit hit, float.MaxValue, roomViewEnvironmentWalkable))
+        {
+            position = hit.point;
+        }
 
         return position;
     }
@@ -394,6 +398,20 @@ public class SupervisorUIManager : MonoBehaviour
         moveToPosButton.interactable = false;
         moveToPatButton.interactable = false;
         stopSpiderButton.interactable = false;
+    }
+
+
+    //Arachnophobia: reset buttons after chosen a position on the room view
+    private void ResetButtonsRoomView()
+    {
+        //reactivate SpawnButton and deactivate other buttons
+        spawnButton.interactable = false;
+        despawnButton.interactable = true;
+        fleeButton.interactable = true;
+        lookAtButton.interactable = true;
+        moveToPosButton.interactable = true;
+        moveToPatButton.interactable = true;
+        stopSpiderButton.interactable = true;
     }
 
 

@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
@@ -17,8 +15,6 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField createInput = null; //create lobby text input field
     [SerializeField] private TMP_InputField joinInput = null; //join lobby text input field
 
-    private bool joined = false; //scholar/patient has joined - true
-
 
     //all possible scenarios that can be chosen by the supervisor
     public enum Scenario
@@ -29,26 +25,10 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     }
 
 
-
     private void Awake()
     {
         //keep object during whole run
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    //Update method to check whether a scenario has been chosen and send scholar/patient to it
-    private void Update()
-    {
-        //patient/scholar (VR = Android user) joined a room - send to scenario when chosen
-        if (joined)
-        {
-            //only if scholar/patient - send to scenario
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                StartCoroutine(SendToScenario());
-            }
-        }
-        
     }
 
 
@@ -102,28 +82,5 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         {
             SceneManager.LoadScene("ChooseScenario");
         }
-        //patient/scholar (VR = Android user) joined a room - send to waiting screen
-        else
-        {
-            joined = true; //scholar/patient joined
-            //wait until scenario has been chosen by supervisor and then sent to map
-            SceneManager.LoadScene("WaitingScene");
-        }
-    }
-
-    //coroutine until scenario has been set by supervisor
-    public IEnumerator SendToScenario()
-    {
-        Debug.Log("Wait for supervisor to choose scenario...");
-        while ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ScenarioNotChosenYet"])
-        {
-            yield return null;
-        }
-        Debug.Log("Scenario chosen. Go to scenario...");
-
-        if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.Arachnophobia)
-            SceneManager.LoadScene("MapPhobia");
-        else if ((Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == Scenario.MachineOperating)
-            SceneManager.LoadScene("MapLearning");
     }
 }

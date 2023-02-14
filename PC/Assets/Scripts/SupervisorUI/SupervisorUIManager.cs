@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -369,7 +368,6 @@ public class SupervisorUIManager : MonoBehaviour
         if(!machineController.WarningLampEnabled)
             //update EvaluationValueManager value
             StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.MachineAlarmActive));
-
     }
 
     //--------------------Functionalities--------------------

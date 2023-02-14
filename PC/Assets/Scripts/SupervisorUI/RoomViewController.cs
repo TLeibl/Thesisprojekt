@@ -168,7 +168,6 @@ public class RoomViewController : MonoBehaviour
         }
     }
 
-
     private void UpdateVRUser()
     {
         //update pos and rot

@@ -4785,6 +4785,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 383977643}
     - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
+      propertyPath: mouseCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 72619b8ffa15e9043afb6a12bd3f3b03, type: 3}
+    - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
       propertyPath: spawnButton
       value: 
       objectReference: {fileID: 1161720498}
@@ -4800,6 +4804,10 @@ PrefabInstance:
       propertyPath: machineButtons
       value: 
       objectReference: {fileID: 263577633}
+    - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
+      propertyPath: mouseCrosshair
+      value: 
+      objectReference: {fileID: 2800000, guid: f075078d92956834cb9d44a676b42558, type: 3}
     - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
       propertyPath: moveToPatButton
       value: 

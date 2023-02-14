@@ -10,6 +10,7 @@ public class SupervisorUIManager : MonoBehaviour
 {
     //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
+    [SerializeField] private Texture2D mouseCursor, mouseCrosshair; //textures for the mouse
     private Camera mainCamera = null;
     //Arachnophobia
     [SerializeField] private GameObject phobiaRoomViewComponents = null;
@@ -291,6 +292,10 @@ public class SupervisorUIManager : MonoBehaviour
         {
             bool reachedPos = false;
 
+            //change cursor
+            Vector2 cursorOffset = new Vector2(mouseCrosshair.width / 2, mouseCrosshair.height / 2); //set the cursor origin to its centre. (default is upper left corner)
+            Cursor.SetCursor(mouseCrosshair, cursorOffset, CursorMode.Auto); //adapt mouse texture
+
             DisableObjectRelatedButtons(); //grey buttons out until position has been chosen
 
             Debug.Log("Choose position...");
@@ -298,6 +303,7 @@ public class SupervisorUIManager : MonoBehaviour
             reachedPos = spiderController.MoveToPosition(ChoosePosition());
 
             ResetButtonsRoomView(); //reset buttons after choosing position
+            Cursor.SetCursor(mouseCursor, default, CursorMode.Auto); //reset cursor
             valueManager.SpiderMovingToPos = true; //update EvaluationValueManager value
 
             //pos reached - update EvaluationValueManager value

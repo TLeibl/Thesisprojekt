@@ -76,6 +76,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
             PhotonNetwork.CreateRoom(createInput.text, roomOptions);
             //enable having supervisor and VR user in different scenes
             PhotonNetwork.AutomaticallySyncScene = false;
+            PhotonNetwork.CurrentRoom.IsOpen = true; //set room open for VR user
 
             Debug.Log("Room successfully created. Waiting for scholar/patient...");
         }  

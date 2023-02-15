@@ -17,6 +17,8 @@ public class RoomViewController : MonoBehaviour
     private bool performingAction = false;
     private bool objectCurrentlyUsed = false;
 
+    private bool objectInstantiated = false; //check if spider instantiated
+
     //used materials
     private MeshRenderer vrUserRenderer = null; //to set VRUser material
     private MeshRenderer objectRenderer = null; //to set spawned object material 
@@ -51,34 +53,35 @@ public class RoomViewController : MonoBehaviour
         //set EvaluationValueManager
         valueManager = uiManager.GetValueManager();
 
-        //set VRUser mesh renderer
+        //set room view object mesh renderers
         vrUserRenderer = vrUser.GetComponent<MeshRenderer>();
+        objectRenderer = spawnedObject.GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        //try to set spawned object (possible after VR user instantiated it and supervisor set it)
-        if(spawnedObject == null)
+        //Arachnophobia: check if spider is ready if not instantiated yet 
+        if (!objectInstantiated && currentScenario == NetworkingManager.Scenario.Arachnophobia)
         {
-            TrySetSpawnedObject();
+            if(uiManager.GetSpawnedObject() != null)
+            {
+                objectInstantiated = true;
+            }
         }
 
-        //update values
-        if (currentScenario == NetworkingManager.Scenario.Arachnophobia)
+
+        //update values if object instantiated
+        if (objectInstantiated)
         {
-            UpdateSpiderPosAndRot();
+            if (currentScenario == NetworkingManager.Scenario.Arachnophobia)
+            {
+                UpdateSpiderPosAndRot();
+            }
+
+            UpdateStatus();
+            UpdateVRUser();
         }
-
-        UpdateStatus();
-        UpdateVRUser();
-    }
-
-    //Get spawned object from SupervisorUIManager.
-    private void TrySetSpawnedObject()
-    {
-        spawnedObject = uiManager.GetSpawnedObject();
-        objectRenderer = spawnedObject.GetComponent<MeshRenderer>();
     }
 
 
@@ -116,23 +119,29 @@ public class RoomViewController : MonoBehaviour
     //method used by UpdateStatus to update spider visibility and color
     private void UpdateSpiderStatus()
     {
-        //show spider if spawned
-        if (valueManager.SpiderSpawned)
-            spawnedObject.SetActive(true);
-        else spawnedObject.SetActive(false);
+        try
+        {
+            if(spawnedObject)
+            //show spider if spawned
+            if (valueManager.SpiderSpawned)
+                spawnedObject.SetActive(true);
+            else spawnedObject.SetActive(false);
 
-        //update object color
-        if (valueManager.SpiderSpawned || valueManager.SpiderLooking || valueManager.SpiderMovingToPos
-            || valueManager.SpiderMovingToPatient || valueManager.SpiderOntoPatient)
-        {
-            objectRenderer.material = actionMaterial;
+            //update object color
+            if (valueManager.SpiderSpawned || valueManager.SpiderLooking || valueManager.SpiderMovingToPos
+                || valueManager.SpiderMovingToPatient || valueManager.SpiderOntoPatient)
+            {
+                objectRenderer.material = actionMaterial;
+            }
+            else if (valueManager.SpiderDead)
+                objectRenderer.material = inactiveMaterial;
+            else
+            {
+                objectRenderer.material = spiderMaterial;
+            }
         }
-        else if (valueManager.SpiderDead)
-            objectRenderer.material = inactiveMaterial;
-        else
-        {
-            objectRenderer.material = spiderMaterial;
-        }
+        catch { }
+        
     }
 
 

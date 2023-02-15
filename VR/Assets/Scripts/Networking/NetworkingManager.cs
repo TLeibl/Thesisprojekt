@@ -48,13 +48,6 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
                 StartCoroutine(sendToScenario());
             }
         }
-
-        try
-        {
-            Debug.Log("CURRENT ROOM: " + PhotonNetwork.CurrentRoom.Name);
-        }
-        catch { }
-
     }
 
 
@@ -68,8 +61,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         if (joinInput != null && joinInput.text != "")
             Debug.Log("Joining room...");
         //join room with name like input text
-        //PhotonNetwork.JoinRoom(joinInput.text);
-        PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.JoinRoom(joinInput.text);
     }
 
     public override void OnJoinedRoom()

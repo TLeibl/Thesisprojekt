@@ -172,7 +172,7 @@ public class SupervisorUIManager : MonoBehaviour
         PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ResetScenario", true } });
 
         //restart Supervisor UI
-        SceneManager.LoadScene("SupervisorUI");
+        SceneManager.LoadScene("UISupervisor");
     }
 
 

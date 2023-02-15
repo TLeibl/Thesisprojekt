@@ -127,7 +127,6 @@ public class VRCharController : MonoBehaviour
 
 	private void Awake()
 	{
-		gameObject.GetComponent<PhotonView>().ViewID = 1; //ensure that ViewID stays the same
 		Controller = gameObject.GetComponent<CharacterController>();
 
 		if (Controller == null)

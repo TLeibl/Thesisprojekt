@@ -904,6 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12dc7c170a446fc4486523ee41c62686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundedPosition: {x: 0, y: 0, z: 0}
   patientDistance: 0
 --- !u!114 &4302622337322434805
 MonoBehaviour:

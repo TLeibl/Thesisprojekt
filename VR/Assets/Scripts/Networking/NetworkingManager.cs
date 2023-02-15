@@ -81,6 +81,13 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("WaitingScene");
     }
 
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        base.OnJoinRoomFailed(returnCode, message);
+        Debug.Log("JoinRoom failed!");
+    }
+
     //coroutine until scenario has been set by supervisor
     public IEnumerator sendToScenario()
     {

@@ -121,7 +121,6 @@ public class RoomViewController : MonoBehaviour
     {
         try
         {
-            if(spawnedObject)
             //show spider if spawned
             if (valueManager.SpiderSpawned)
                 spawnedObject.SetActive(true);
@@ -141,7 +140,6 @@ public class RoomViewController : MonoBehaviour
             }
         }
         catch { }
-        
     }
 
 

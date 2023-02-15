@@ -124,7 +124,7 @@ public class SupervisorUIManager : MonoBehaviour
                 //try to set spawned GameObject to control
                 try
                 {
-                    spawnedObject = PhotonView.Find(2110).gameObject; //runtime PhotonID of spider is 2110
+                    spawnedObject = PhotonView.Find(3000).gameObject; //set PhotonID of spawned object is 3000
                 }
                 catch
                 {

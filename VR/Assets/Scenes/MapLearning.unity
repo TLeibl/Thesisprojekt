@@ -368,7 +368,7 @@ Transform:
   - {fileID: 1535015862}
   - {fileID: 1570579128}
   m_Father: {fileID: 1075230949}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &399163630 stripped
 Transform:
@@ -933,7 +933,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30544
+  m_Name: pb_Mesh30478
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1687,7 +1687,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1075230949}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1731754173
 CapsuleCollider:
@@ -2088,7 +2088,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2638
+  m_Name: pb_Mesh-2686
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2490,6 +2490,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.247
       objectReference: {fileID: 0}
+    - target: {fileID: 2394082010631388263, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2399462484473400284, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2500,12 +2504,16 @@ PrefabInstance:
       objectReference: {fileID: 1387911710}
     - target: {fileID: 2852705552785650826, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1342
+      value: 1351
       objectReference: {fileID: 0}
     - target: {fileID: 3974620550819050718, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 629ab6ecbfa26bb42a8b21561e659cac, type: 2}
+    - target: {fileID: 4041828220146919253, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4443481988038500366, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2518,13 +2526,17 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1387911710}
+    - target: {fileID: 5619245095246319476, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7955559335992796864, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1954655180}
     - target: {fileID: 7955559335992796864, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 430
+      value: 439
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8862757626146112106, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}

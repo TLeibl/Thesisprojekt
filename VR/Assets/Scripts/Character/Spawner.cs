@@ -17,20 +17,26 @@ public class Spawner : MonoBehaviour
             GameObject spawnedSpider = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0);
 
             if (spawnedSpider != null)
-                spawnedSpider.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
-            spawnedSpider.SetActive(false);
-            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
+            {
+                spawnedSpider.GetComponent<PhotonView>().ViewID = 3000; //set custom ViewID
+                spawnedSpider.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
+                spawnedSpider.SetActive(false);
+                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
+            } 
         }
         //Map Learning
         else if (SceneManager.GetActiveScene().name == "MapLearning" && (bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == false)
         {
-            //instantiate machine for master client to use
+            //instantiate machine for master client to use 
             GameObject spawnedMachine = PhotonNetwork.Instantiate("Machine", new Vector3(1.509f, 0.308f, 2.686f), Quaternion.identity, 0);
 
             if (spawnedMachine != null)
-                spawnedMachine.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient);
+            {
+                spawnedMachine.GetComponent<PhotonView>().ViewID = 3000; //set custom ViewID
+                spawnedMachine.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
 
-            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
+                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
+            }
         }
 
     }

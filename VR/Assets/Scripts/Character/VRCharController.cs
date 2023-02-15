@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -126,6 +127,7 @@ public class VRCharController : MonoBehaviour
 
 	private void Awake()
 	{
+		gameObject.GetComponent<PhotonView>().ViewID = 1; //ensure that ViewID stays the same
 		Controller = gameObject.GetComponent<CharacterController>();
 
 		if (Controller == null)
@@ -213,12 +215,12 @@ public class VRCharController : MonoBehaviour
 			if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["ResetScenario"] == true)
 				if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
                 {
-					PhotonNetwork.LoadLevel("MapPhobia");
+					SceneManager.LoadScene("MapPhobia");
 					PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ResetScenario", false } }); //reset property
 				}
 				else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
 				{
-					PhotonNetwork.LoadLevel("MapLearning");
+					SceneManager.LoadScene("MapLearning");
 					PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ResetScenario", false } }); //reset property
 				}
 					

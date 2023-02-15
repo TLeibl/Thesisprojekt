@@ -9,7 +9,7 @@ public class SupervisorUIManager : MonoBehaviour
 {
     //UI components
     [SerializeField] private Image feedbackBar = null; //the feedback display
-    [SerializeField] private Texture2D mouseCursor, mouseCrosshair; //textures for the mouse
+    [SerializeField] private Texture2D mouseCrosshair; //mouse cursor texture for choosing a position in room view
     private Camera mainCamera = null;
     //Arachnophobia
     [SerializeField] private GameObject phobiaRoomViewComponents = null;
@@ -45,7 +45,6 @@ public class SupervisorUIManager : MonoBehaviour
         //set needed objects and own mouse cursor
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        Cursor.SetCursor(mouseCursor, default, CursorMode.Auto);
     }
 
 
@@ -303,7 +302,7 @@ public class SupervisorUIManager : MonoBehaviour
             reachedPos = spiderController.MoveToPosition(ChoosePosition());
 
             ResetButtonsRoomView(); //reset buttons after choosing position
-            Cursor.SetCursor(mouseCursor, default, CursorMode.Auto); //reset cursor
+            Cursor.SetCursor(default, default, CursorMode.Auto); //reset cursor
             valueManager.SpiderMovingToPos = true; //update EvaluationValueManager value
 
             //pos reached - update EvaluationValueManager value

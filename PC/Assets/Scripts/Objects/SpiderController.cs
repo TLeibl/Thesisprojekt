@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 //script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
 public class SpiderController : MonoBehaviour
@@ -12,6 +13,7 @@ public class SpiderController : MonoBehaviour
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
+    private PhotonView pv = null; //the photon view of the spider (to send RPCs)
 
     //distance to patient
     [SerializeField] private float patientDistance = 0.0f; //distance of spider to patient
@@ -22,6 +24,11 @@ public class SpiderController : MonoBehaviour
     //private float despawnDelay = 2.5f; //delay when despawning
 
     private bool dead = false; //true when spider is spawned and dead
+    public bool Dead
+    {
+        get { return dead; }
+        set { dead = value; }
+    }
 
 
     private void Awake()
@@ -30,7 +37,10 @@ public class SpiderController : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         if(SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient
+        {
             patient = GameObject.Find("OVRPlayerController").transform;
+            pv = gameObject.GetComponent<PhotonView>();
+        }
 
         groundedPosition = this.transform.position;
     }
@@ -53,6 +63,20 @@ public class SpiderController : MonoBehaviour
             inPatientRange = true;
         else inPatientRange = false;
     }
+
+    //------------------------SPAWN/DESPAWN---------------------------
+
+    public void Spawn()
+    {
+        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = true;
+    }
+
+
+    public void Despawn()
+    {
+        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false;
+    }
+
 
     //---------------------------MOVEMENT-----------------------------
 
@@ -214,12 +238,11 @@ public class SpiderController : MonoBehaviour
         animator.SetBool("dead", true);
     }
 
+    //---------------------------SETTER-----------------------------
 
-    //---------------------------GETTER-----------------------------
-
-
-    public bool IsDead()
+    private void UpdateRPCValues()
     {
-        return dead;
+        pv.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
+        pv.RPC("SetCurrentObjectRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
     }
 }

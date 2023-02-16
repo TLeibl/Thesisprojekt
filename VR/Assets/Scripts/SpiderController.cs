@@ -24,6 +24,11 @@ public class SpiderController : MonoBehaviour
     //private float despawnDelay = 2.5f; //delay when despawning
 
     private bool dead = false; //true when spider is spawned and dead
+    public bool Dead
+    {
+        get { return dead; }
+        set { dead = value; }
+    }
 
 
     private void Awake()
@@ -62,6 +67,21 @@ public class SpiderController : MonoBehaviour
         if (patientDistance <= nearPatient)
             inPatientRange = true;
         else inPatientRange = false;
+    }
+
+    //------------------------SPAWN/DESPAWN---------------------------
+
+    public void Spawn()
+    {
+        //gameObject.SetActive(true);
+        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = true;
+    }
+
+
+    public void Despawn()
+    {
+        //gameObject.SetActive(false);
+        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false;
     }
 
 

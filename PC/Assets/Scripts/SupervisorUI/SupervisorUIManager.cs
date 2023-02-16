@@ -74,7 +74,7 @@ public class SupervisorUIManager : MonoBehaviour
         {
             if (spawnedObject != null)
             {
-                if (spiderController.IsDead())
+                if (spiderController.Dead)
                 {
                     spawnButton.interactable = false;
                     fleeButton.interactable = false;
@@ -184,10 +184,11 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Spawn object...");
 
-        if(spawnedObject != null) //if spider successfully spawned
+        if(spawnedObject != null) //if spider successfully set
         {
             //make Game Object visible
-            spawnedObject.SetActive(true);
+            //spawnedObject.SetActive(true);
+            spiderController.Spawn();
 
             //update EvaluationValueManager value
             valueManager.SpiderSpawned = true;
@@ -211,7 +212,8 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Despawn object...");
 
         //make Game Object invisible
-        spawnedObject.SetActive(false);
+        //spawnedObject.SetActive(false);
+        spiderController.Despawn();
         //reset spider position and animation
         spawnedObject.transform.position = new Vector3(spiderController.groundedPosition.x, spiderController.groundedPosition.y, spiderController.groundedPosition.z);
         spiderController.Stop();
@@ -230,7 +232,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object flee...");
 
         //command object to flee
-        if(!spiderController.IsDead())
+        if(!spiderController.Dead)
              spiderController.Flee();
 
         //despawn spider after short time
@@ -254,7 +256,7 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Spider stop...");
 
-        if (!spiderController.IsDead())
+        if (!spiderController.Dead)
         {
             spiderController.Stop();
 
@@ -270,7 +272,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object look at person...");
 
         //command object to look at person
-        if (!spiderController.IsDead())
+        if (!spiderController.Dead)
         {
             spiderController.LookAtPerson();
 
@@ -287,7 +289,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object move to position...");
 
         //command object  to move to chosen position
-        if (!spiderController.IsDead())
+        if (!spiderController.Dead)
         {
             bool reachedPos = false;
 
@@ -330,7 +332,7 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Let object move to person...");
         
-        if (!spiderController.IsDead())
+        if (!spiderController.Dead)
         {
             bool reachedPos = false;
             reachedPos = spiderController.MoveToPatient();

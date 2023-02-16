@@ -33,6 +33,7 @@ public class SupervisorUIManager : MonoBehaviour
     private float despawnDelay = 2.5f; //delay when despawning
     //needed variables for controlling object
     [SerializeField] private LayerMask roomViewEnvironmentWalkable;
+    private PhotonView objectPV = null; //photon view to send RPCs to (ergo of the spawned object)
 
     private bool uiInitialized = false; //check if UI has been initialized
 
@@ -135,15 +136,22 @@ public class SupervisorUIManager : MonoBehaviour
                 if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
                 {
                     if (spawnedObject != null)
-                        spiderController = spawnedObject.GetComponent<SpiderController>(); //set spider controller
+                    {
+                        //set components of spawned object
+                        spiderController = spawnedObject.GetComponent<SpiderController>(); 
+                        objectPV = spawnedObject.GetComponent<PhotonView>(); 
                         spawnButton.interactable = true; //enable spawn button
+                    }
                 }
                 //Machine Operating
                 else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
                 {
                     if (spawnedObject != null)
+                    {
                         machineController = spawnedObject.GetComponent<MachineController>(); //set machine controller
+                        objectPV = spawnedObject.GetComponent<PhotonView>();
                         alarmButton.interactable = true;
+                    }
                 }
             }
     }
@@ -186,9 +194,8 @@ public class SupervisorUIManager : MonoBehaviour
 
         if(spawnedObject != null) //if spider successfully set
         {
-            //make Game Object visible
-            //spawnedObject.SetActive(true);
-            spiderController.Spawn();
+            //RPC call to make Game Object visible
+            objectPV.RPC("Spawn", RpcTarget.All, true);
 
             //update EvaluationValueManager value
             valueManager.SpiderSpawned = true;
@@ -211,12 +218,11 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Despawn object...");
 
-        //make Game Object invisible
-        //spawnedObject.SetActive(false);
-        spiderController.Despawn();
+        //RPC call to make Game Object invisible
+        objectPV.RPC("Spawn", RpcTarget.All, false);
         //reset spider position and animation
         spawnedObject.transform.position = new Vector3(spiderController.groundedPosition.x, spiderController.groundedPosition.y, spiderController.groundedPosition.z);
-        spiderController.Stop();
+        objectPV.RPC("Stop", RpcTarget.All);
 
         //update EvaluationValueManager value
         valueManager.SpiderSpawned = false;
@@ -231,9 +237,9 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Let object flee...");
 
-        //command object to flee
+        //RPC call to object - command to flee
         if(!spiderController.Dead)
-             spiderController.Flee();
+            objectPV.RPC("Flee", RpcTarget.All);
 
         //despawn spider after short time
         StartCoroutine(DespawnAfterTime());
@@ -258,7 +264,8 @@ public class SupervisorUIManager : MonoBehaviour
 
         if (!spiderController.Dead)
         {
-            spiderController.Stop();
+            //RPC call to object
+            objectPV.RPC("Stop", RpcTarget.All);
 
             //update EvaluationValueManager value
             valueManager.SpiderMovingToPos = false;
@@ -274,7 +281,8 @@ public class SupervisorUIManager : MonoBehaviour
         //command object to look at person
         if (!spiderController.Dead)
         {
-            spiderController.LookAtPerson();
+            //RPC call to object
+            objectPV.RPC("LookAtPerson", RpcTarget.All);
 
             //update EvaluationValueManager value
             valueManager.SpiderLooking = true;
@@ -301,6 +309,12 @@ public class SupervisorUIManager : MonoBehaviour
 
             Debug.Log("Choose position...");
             StartCoroutine(WaitforClick()); //wait until user has chosen a position with left mouse click
+
+            //TODO in Coroutine direkt auch Aufruf RPC einbauen? +  reachedPos-Kontrolle?
+            //TODO reachedPos anders abfragen bis Pos erreicht - evt RPC zurück? / Coroutine
+            //RPC call to object
+            objectPV.RPC("MoveToPos", RpcTarget.All, ChoosePosition());
+
             reachedPos = spiderController.MoveToPosition(ChoosePosition());
 
             ResetButtonsRoomView(); //reset buttons after choosing position
@@ -335,7 +349,11 @@ public class SupervisorUIManager : MonoBehaviour
         if (!spiderController.Dead)
         {
             bool reachedPos = false;
-            reachedPos = spiderController.MoveToPatient();
+            //reachedPos = spiderController.MoveToPatient();
+            //TODO reachedPos anders checken
+
+            //RPC call to object
+            objectPV.RPC("MoveToPerson", RpcTarget.All);
 
             //update EvaluationValueManager value
             valueManager.SpiderMovingToPos = true;
@@ -352,7 +370,7 @@ public class SupervisorUIManager : MonoBehaviour
         Debug.Log("Let object move onto person...");
 
         //TODO MoveOntoPerson Button
-        //if(!spiderController.IsDead())
+        //if(!spiderController.Dead)
     }
 
 
@@ -360,8 +378,8 @@ public class SupervisorUIManager : MonoBehaviour
 
     public void AlarmButton()
     {
-        //start alarm in machine controller
-        machineController.StartAlarmManually();
+        //RPC call to object to start alarm manually
+        objectPV.RPC("StartAlarmManually", RpcTarget.All);
         //update EvaluationValueManager value
         valueManager.MachineAlarmActive = true;
 

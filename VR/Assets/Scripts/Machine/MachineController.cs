@@ -52,7 +52,8 @@ public class MachineController : MonoBehaviour
 
 
     //method called by supervisor to start alarm
-    public void StartAlarmManually()
+    [PunRPC]
+    protected void StartAlarmManually()
     {
         LampSwitchOn(); //call method to switch on lamp
     }

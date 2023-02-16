@@ -36,7 +36,7 @@ public class SpiderController : MonoBehaviour
         //set references
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        if(SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient
+        if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient and set own PhotonView
         {
             patient = GameObject.Find("OVRPlayerController").transform;
             pv = gameObject.GetComponent<PhotonView>();
@@ -49,8 +49,13 @@ public class SpiderController : MonoBehaviour
     private void Update()
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
+        {
             //update distance to patient
             CalculatePatientDistance();
+
+            //update values for supervisor UI room view
+            UpdateRPCValues();
+        }
     }
 
 
@@ -64,32 +69,25 @@ public class SpiderController : MonoBehaviour
         else inPatientRange = false;
     }
 
-    //------------------------SPAWN/DESPAWN---------------------------
+    //------------------------RPCs---------------------------
 
-    public void Spawn()
+    //RPC called by SupervisorUIManager to let spider (de)spawn
+    [PunRPC]
+    protected void Spawn(bool spawn)
     {
-        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = true;
+        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = spawn;
     }
 
-
-    public void Despawn()
-    {
-        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false;
-    }
-
-
-    //---------------------------MOVEMENT-----------------------------
 
     //method used to let spider return to the floor (e.g. when dying)
     private void DropToFloor()
     {
         //if not already on floor: set y to be on floor (reset y to groundedPosition.y)
-        if(!(transform.position.y == groundedPosition.y))
+        if (!(transform.position.y == groundedPosition.y))
         {
             transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z); //change y axis value so spider is grounded
         }
     }
-
 
     /// <summary>
     /// Let the spider look at a position, e.g. the patient.
@@ -107,8 +105,9 @@ public class SpiderController : MonoBehaviour
     }
 
 
-    //method called by supervisor to let spider stop and return to idle
-    public void Stop()
+    //RPC called by supervisor to let spider stop and return to idle
+    [PunRPC]
+    protected void Stop()
     {
         //stop animations
         animator.SetBool("isWalking", false);
@@ -120,7 +119,8 @@ public class SpiderController : MonoBehaviour
 
 
     //method to let spider struggle if taken by VR character
-    public void Struggle()
+    [PunRPC]
+    protected void Struggle()
     {
         //struggle animation
         animator.SetBool("isStruggling", true);
@@ -128,63 +128,38 @@ public class SpiderController : MonoBehaviour
 
 
     // Let the spider look at a position, e.g. the patient.
-    public void LookAtPerson()
+    [PunRPC]
+    protected void LookAtPerson()
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
             LookAt(patient.position);
+
     }
 
-
-    //method called by supervisor to let spider walk to chosen position
-    public bool MoveToPosition(Vector3 position)
+    //method called by supervisor to let spider walk to patient
+    [PunRPC]
+    protected bool MoveToPerson()
     {
-        Debug.Log("SPIDER MOVE TO PATIENT POSITION: " + position);
-
-        LookAt(position);
-        //Walk animation
-        animator.SetBool("isWalking", true);
-        
-
-        agent.SetDestination(position);
-        while (agent.remainingDistance > agent.stoppingDistance)
-        {
-            //walk until position reached
-        }
-        animator.SetBool("isWalking", false);
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+            MoveToPosition(patient.position);
         return true;
     }
 
 
-    //method called by supervisor to let spider walk to patient
-    public bool MoveToPatient()
+    //method called by supervisor to let spider walk to chosen position
+    [PunRPC]
+    protected bool MoveToPos(Vector3 chosenPos)
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
-            MoveToPosition(patient.position);
-            return true;
-    }
-
-
-    //method called by supervisor to let spider walk towards patient
-    public void WalkTowards()
-    {
-        if (SceneManager.GetActiveScene().name == "MapPhobia")
-            //look at patient
-            LookAt(patient.position);
-
-        //if not already there - move into direction of patient
-        if (SceneManager.GetActiveScene().name == "MapPhobia")
-        {
-            if (!inPatientRange)
-            {
-                MoveToPosition(patient.position);
-            }
-        }
+            MoveToPosition(chosenPos);
+        return true;
     }
 
 
     //method called by supervisor to let spider walk towards patient and climb onto him or her
     //TODO
-    public void WalkOnto()
+    [PunRPC]
+    protected void WalkOnto()
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
         {
@@ -201,7 +176,8 @@ public class SpiderController : MonoBehaviour
 
 
     //method called by supervisor to let spider run away from patient and despawn 
-    public void Flee()
+    [PunRPC]
+    protected void Flee()
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
         {
@@ -214,35 +190,68 @@ public class SpiderController : MonoBehaviour
             LookAt(newPos); //look at pos
             agent.SetDestination(newPos); //move there
         }
-
-        //despawn spider after short time
-        //StartCoroutine(DespawnAfterTime());
     }
-
-    ////Coroutine used when spider flees to despawn the spider after some time
-    //private IEnumerator DespawnAfterTime()
-    //{
-    //    yield return new WaitForSeconds(despawnDelay);
-    //    DespawnSpider();
-    //}
 
 
     //method called by supervisor to let spider die
-    public void Die()
+    [PunRPC]
+    protected void Die()
     {
-        dead = true;
         //if not already there drop to the ground
         DropToFloor();
 
         //Death animation
         animator.SetBool("dead", true);
+        dead = true;
     }
 
-    //---------------------------SETTER-----------------------------
+
+    //---------------------------USED METHODS-----------------------------
+
+    //method used to let spider walk to chosen position
+    public bool MoveToPosition(Vector3 position)
+    {
+        Debug.Log("Move To Position: " + position);
+
+        LookAt(position);
+        //Walk animation
+        animator.SetBool("isWalking", true);
+
+
+        agent.SetDestination(position);
+        while (agent.remainingDistance > agent.stoppingDistance)
+        {
+            //walk until position reached
+        }
+        animator.SetBool("isWalking", false);
+        return true;
+    }
+
+
+    //method called by supervisor to let spider walk towards patient
+    private void WalkTowards()
+    {
+        if (SceneManager.GetActiveScene().name == "MapPhobia")
+        {
+            //look at patient
+            LookAt(patient.position);
+
+            //if not already there - move into direction of patient
+            if (!inPatientRange)
+            {
+                MoveToPosition(patient.position);
+            }
+        }
+    }
+
+
+    //------------------------UPDATE RPCs--------------------
 
     private void UpdateRPCValues()
     {
-        pv.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
-        pv.RPC("SetCurrentObjectRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
+        //TODO Fix
+        //pv.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
+        //pv.RPC("SetCurrentObjectRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
     }
+
 }

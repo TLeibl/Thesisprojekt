@@ -34,11 +34,6 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
-  - ClickRpc
-  - DestroyRpc
-  - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
   - SetCurrentObjectPosition
   - SetCurrentObjectRotation
   - SetCurrentVRUserPosition
@@ -46,6 +41,12 @@ MonoBehaviour:
   - SetPerformingAction
   - SetObjectUsed
   - SetViewID
+  - Spawn
+  - ClickRpc
+  - DestroyRpc
+  - DestroySpaceship
+  - Fire
+  - RespawnSpaceship
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

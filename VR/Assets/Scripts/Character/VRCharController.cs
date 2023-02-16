@@ -665,7 +665,8 @@ public class VRCharController : MonoBehaviour
 
 	private void UpdateRPCValues()
 	{
-		pv.RPC("SetCurrentVRUserPosition", RpcTarget.MasterClient, gameObject.transform.position);
-		pv.RPC("SetCurrentVRUserRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
+		//TODO Fix
+		//pv.RPC("SetCurrentVRUserPosition", RpcTarget.MasterClient, gameObject.transform.position);
+		//pv.RPC("SetCurrentVRUserRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
 	}
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class MachineController : MonoBehaviour
 {
@@ -47,7 +48,8 @@ public class MachineController : MonoBehaviour
 
 
     //method called by supervisor to start alarm
-    public void StartAlarmManually()
+    [PunRPC]
+    protected void StartAlarmManually()
     {
         LampSwitchOn(); //call method to switch on lamp
     }

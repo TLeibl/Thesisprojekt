@@ -23,8 +23,7 @@ public class Spawner : MonoBehaviour
             {
                 spawnedObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
 
-                //spawnedObject.SetActive(false);
-                spawnedObject.transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false;
+                spawnedObject.transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //set invisible until officially spawned
                 PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
             }
         }

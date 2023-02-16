@@ -76,10 +76,6 @@ public class SpiderController : MonoBehaviour
     protected void Spawn(bool spawn)
     {
         transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = spawn;
-
-        //if despawn: reset position
-        if(!spawn)
-            transform.position = new Vector3(groundedPosition.x, groundedPosition.y, groundedPosition.z);
     }
 
 
@@ -120,12 +116,12 @@ public class SpiderController : MonoBehaviour
     [PunRPC]
     protected void Stop()
     {
-        //stop animations
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isAttacking", false);
-
         try
         {
+            //stop animations
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isAttacking", false);
+
             //stop movement
             agent.SetDestination(transform.position);
         }
@@ -140,8 +136,12 @@ public class SpiderController : MonoBehaviour
     [PunRPC]
     protected void Struggle()
     {
-        //struggle animation
-        animator.SetBool("isStruggling", true);
+        try
+        {
+            //struggle animation
+            animator.SetBool("isStruggling", true);
+        }
+        catch { }
     }
 
 
@@ -200,7 +200,7 @@ public class SpiderController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
         {
-            try 
+            try
             {
                 //move away from patient
                 Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
@@ -223,12 +223,16 @@ public class SpiderController : MonoBehaviour
     [PunRPC]
     protected void Die()
     {
-        //if not already there drop to the ground
-        DropToFloor();
+        try
+        {
+            //if not already there drop to the ground
+            DropToFloor();
 
-        //Death animation
-        animator.SetBool("dead", true);
-        dead = true;
+            //Death animation
+            animator.SetBool("dead", true);
+            dead = true;
+        }
+        catch { }
     }
 
 
@@ -297,4 +301,3 @@ public class SpiderController : MonoBehaviour
     }
 
 }
-

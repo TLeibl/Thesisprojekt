@@ -116,12 +116,12 @@ public class SpiderController : MonoBehaviour
     [PunRPC]
     protected void Stop()
     {
-        //stop animations
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isAttacking", false);
-
         try
         {
+            //stop animations
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isAttacking", false);
+
             //stop movement
             agent.SetDestination(transform.position);
         }
@@ -136,8 +136,12 @@ public class SpiderController : MonoBehaviour
     [PunRPC]
     protected void Struggle()
     {
-        //struggle animation
-        animator.SetBool("isStruggling", true);
+        try
+        {
+            //struggle animation
+            animator.SetBool("isStruggling", true);
+        }
+        catch { }
     }
 
 
@@ -219,12 +223,16 @@ public class SpiderController : MonoBehaviour
     [PunRPC]
     protected void Die()
     {
-        //if not already there drop to the ground
-        DropToFloor();
+        try
+        {
+            //if not already there drop to the ground
+            DropToFloor();
 
-        //Death animation
-        animator.SetBool("dead", true);
-        dead = true;
+            //Death animation
+            animator.SetBool("dead", true);
+            dead = true;
+        }
+        catch { }
     }
 
 

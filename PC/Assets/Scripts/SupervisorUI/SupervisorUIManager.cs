@@ -220,9 +220,7 @@ public class SupervisorUIManager : MonoBehaviour
 
         //RPC call to make Game Object invisible
         objectPV.RPC("Spawn", RpcTarget.All, false);
-        //reset spider position and animation
-        spawnedObject.transform.position = new Vector3(spiderController.groundedPosition.x, spiderController.groundedPosition.y, spiderController.groundedPosition.z);
-        objectPV.RPC("Stop", RpcTarget.All);
+        objectPV.RPC("Stop", RpcTarget.All); //stop potential current action
 
         //update EvaluationValueManager value
         valueManager.SpiderSpawned = false;

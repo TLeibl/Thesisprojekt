@@ -76,6 +76,10 @@ public class SpiderController : MonoBehaviour
     protected void Spawn(bool spawn)
     {
         transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = spawn;
+
+        //if despawn: reset position
+        if(!spawn)
+            transform.position = new Vector3(groundedPosition.x, groundedPosition.y, groundedPosition.z);
     }
 
 

@@ -50,6 +50,7 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
             SharedValues.Add("ObjectInstantiated", false); //true when spider object has been instantiated by VR user
             SharedValues.Add("StoppedScenario", false); //true when supervisor pushed Stop button
             SharedValues.Add("ResetScenario", false); //true when supervisor pushed Reset button
+            SharedValues.Add("SpiderReachedCurrentGoal", false); //true if spider reached its goal - after that set to false
             roomOptions.CustomRoomProperties = SharedValues;
 
             //create and join room with input text as name

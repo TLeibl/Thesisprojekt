@@ -297,8 +297,6 @@ public class SupervisorUIManager : MonoBehaviour
         //command object  to move to chosen position
         if (!spiderController.Dead)
         {
-            bool reachedPos = false;
-
             //change cursor
             Vector2 cursorOffset = new Vector2(mouseCrosshair.width / 2, mouseCrosshair.height / 2); //set the cursor origin to its centre. (default is upper left corner)
             Cursor.SetCursor(mouseCrosshair, cursorOffset, CursorMode.Auto); //adapt mouse texture
@@ -308,19 +306,15 @@ public class SupervisorUIManager : MonoBehaviour
             Debug.Log("Choose position...");
             StartCoroutine(WaitforClick()); //wait until user has chosen a position with left mouse click
 
-            //TODO in Coroutine direkt auch Aufruf RPC einbauen? +  reachedPos-Kontrolle?
-            //TODO reachedPos anders abfragen bis Pos erreicht - evt RPC zurück? / Coroutine
             //RPC call to object
             objectPV.RPC("MoveToPos", RpcTarget.All, ChoosePosition());
-
-            reachedPos = spiderController.MoveToPosition(ChoosePosition());
 
             ResetButtonsRoomView(); //reset buttons after choosing position
             Cursor.SetCursor(default, default, CursorMode.Auto); //reset cursor
             valueManager.SpiderMovingToPos = true; //update EvaluationValueManager value
 
             //pos reached - update EvaluationValueManager value
-            if (reachedPos)
+            if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["SpiderReachedCurrentGoal"])
                 StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.SpiderLooking));
         } 
     }
@@ -346,17 +340,14 @@ public class SupervisorUIManager : MonoBehaviour
         
         if (!spiderController.Dead)
         {
-            bool reachedPos = false;
-            //reachedPos = spiderController.MoveToPatient();
-            //TODO reachedPos anders checken
-
             //RPC call to object
             objectPV.RPC("MoveToPerson", RpcTarget.All);
 
             //update EvaluationValueManager value
             valueManager.SpiderMovingToPos = true;
-            if (reachedPos)
-                //update EvaluationValueManager value
+
+            //pos reached - update EvaluationValueManager value
+            if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["SpiderReachedCurrentGoal"])
                 StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.SpiderLooking));
         }
     }

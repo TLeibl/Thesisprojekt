@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Photon.Pun;
 
 //script to call in supervisor UI to let spider move, stop or despawn and control the spider animator
@@ -255,7 +256,8 @@ public class SpiderController : MonoBehaviour
             {
                 //walk until position reached
             }
-            animator.SetBool("isWalking", false);
+            animator.SetBool("isWalking", false); //reset animation
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "SpiderReachedCurrentGoal", true } }); //reset value to signalize that the position has been reached
             return true;
         }
         catch

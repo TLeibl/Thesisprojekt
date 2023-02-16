@@ -44,12 +44,17 @@ MonoBehaviour:
   - MoveToPerson
   - WalkOnto
   - StartAlarmManually
+  - SetCurrentObjectPosition
+  - SetCurrentObjectRotation
+  - SetCurrentVRUserPosition
+  - SetCurrentVRUserRotation
+  - SetPerformingAction
+  - SetObjectUsed
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
-  - Spawn
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

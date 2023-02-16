@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 public class MachineController : MonoBehaviour
 {
+    private PhotonView roomViewPV = null; //Photon View of room view for sending RPCs to
+
     //interactables
     [SerializeField] private GameObject stopButton = null;
 
@@ -28,6 +31,8 @@ public class MachineController : MonoBehaviour
 
     private void Start()
     {
+        roomViewPV = PhotonView.Find(6); //set PhotonView - ID set to 6 in UISupervisor scene
+
         lampRenderer = warningLamp.GetComponent<MeshRenderer>(); //set warning lamp renderer
 
         triggerEventAt = Random.Range(1, 15); //initialize triggerEventAt value
@@ -37,7 +42,8 @@ public class MachineController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(interacted == triggerEventAt)
+        //start event if enough interaction
+        if (interacted == triggerEventAt)
         {
             interacted = 0; //reset
             warningLampEnabled = true;
@@ -68,7 +74,7 @@ public class MachineController : MonoBehaviour
         lampRenderer.material = warningLampOn;
         yield return new WaitForSeconds(4f);
         lampRenderer.material = warningLampOff;
-        if(warningLampEnabled)
+        if (warningLampEnabled)
             StartCoroutine(LampBlinking());
     }
 
@@ -83,6 +89,22 @@ public class MachineController : MonoBehaviour
     //called by buttons - if selected increase interacted value
     public void InteractedWithButton()
     {
-        interacted += 1; 
+        interacted += 1;
+    }
+
+
+    //-------------------------Setter-------------------------
+    //method called by machine components when used to update supervisor room view
+    public void UpdateRPCValueToTrue()
+    {
+        //TODO wie Wert für alle Objekte auf Maschine?
+        roomViewPV.RPC("SetObjectUsed", RpcTarget.MasterClient, true);
+    }
+
+    //method called by machine components when usage stops to update supervisor room view
+    public void UpdateRPCValueToFalse()
+    {
+        //TODO wie Wert für alle Objekte auf Maschine?
+        roomViewPV.RPC("SetObjectUsed", RpcTarget.MasterClient, false);
     }
 }

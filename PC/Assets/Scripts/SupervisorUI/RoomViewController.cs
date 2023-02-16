@@ -56,6 +56,8 @@ public class RoomViewController : MonoBehaviour
         //set room view object mesh renderers
         vrUserRenderer = vrUser.GetComponent<MeshRenderer>();
         objectRenderer = spawnedObject.GetComponent<MeshRenderer>();
+
+        spawnedObject.SetActive(false); //set room view object invisible until spawned in phobia scene
     }
 
     // Update is called once per frame
@@ -195,7 +197,7 @@ public class RoomViewController : MonoBehaviour
 
     //set by VRCharController - current VR avatar position
     [PunRPC]
-    void SetCurrentVRUserPosition(Vector3 pos)
+    protected void SetCurrentVRUserPosition(Vector3 pos)
     {
         vrUserPos = pos;
     }
@@ -203,7 +205,7 @@ public class RoomViewController : MonoBehaviour
 
     //set by VRCharController - current VR avatar rotation
     [PunRPC]
-    void SetCurrentVRUserRotation(Vector3 rot)
+    protected void SetCurrentVRUserRotation(Vector3 rot)
     {
         vrUserRot = rot;
     }
@@ -211,7 +213,7 @@ public class RoomViewController : MonoBehaviour
 
     //set by SpiderController - current spider object position
     [PunRPC]
-    void SetCurrentObjectPosition(Vector3 pos)
+    protected void SetCurrentObjectPosition(Vector3 pos)
     {
         objectPos = pos;
     }
@@ -219,7 +221,7 @@ public class RoomViewController : MonoBehaviour
 
     //set by SpiderController - current spider object rotation
     [PunRPC]
-    void SetCurrentObjectRotation(Vector3 rot)
+    protected void SetCurrentObjectRotation(Vector3 rot)
     {
         objectRot = rot;
     }
@@ -227,7 +229,7 @@ public class RoomViewController : MonoBehaviour
 
     //set by MachineController - true if e.g. button is used
     [PunRPC]
-    void SetObjectUsed(bool currentlyUsed)
+    protected void SetObjectUsed(bool currentlyUsed)
     {
         objectCurrentlyUsed = currentlyUsed;
     }

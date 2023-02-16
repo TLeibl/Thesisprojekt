@@ -14,7 +14,7 @@ public class SpiderController : MonoBehaviour
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
-    private PhotonView pv = null; //the photon view of the spider (to send RPCs)
+    private PhotonView roomViewPV = null; //the photon view of the supervisor photon view (to send RPCs)
 
     //distance to patient
     [SerializeField] private float patientDistance = 0.0f; //distance of spider to patient
@@ -37,10 +37,10 @@ public class SpiderController : MonoBehaviour
         //set references
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient and set own PhotonView
+        if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient and set PhotonView for room view
         {
             patient = GameObject.Find("OVRPlayerController").transform;
-            pv = gameObject.GetComponent<PhotonView>();
+            roomViewPV = PhotonView.Find(5); //ID set to 5 in UISupervisor scene
         }
 
         groundedPosition = this.transform.position;
@@ -297,9 +297,8 @@ public class SpiderController : MonoBehaviour
 
     private void UpdateRPCValues()
     {
-        //TODO Fix
-        //pv.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
-        //pv.RPC("SetCurrentObjectRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
+        roomViewPV.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
+        roomViewPV.RPC("SetCurrentObjectRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
     }
 
 }

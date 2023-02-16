@@ -49,6 +49,12 @@ MonoBehaviour:
   - SetCurrentVRUserPosition
   - SetCurrentVRUserRotation
   - SetPerformingAction
+  - ClickRpc
+  - DestroyRpc
+  - DestroySpaceship
+  - Fire
+  - RespawnSpaceship
+  - SetObjectUsed
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

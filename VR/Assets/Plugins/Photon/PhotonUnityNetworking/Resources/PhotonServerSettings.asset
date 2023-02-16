@@ -35,12 +35,20 @@ MonoBehaviour:
   StartInOfflineMode: 0
   RpcList:
   - Spawn
+  - Flee
+  - Die
+  - Stop
+  - Struggle
+  - LookAtPerson
+  - MoveToPos
+  - MoveToPerson
+  - WalkOnto
+  - StartAlarmManually
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
-  - Spawn
   - Spawn
   DisableAutoOpenWizard: 1
   ShowSettings: 0

@@ -34,19 +34,21 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - Spawn
+  - Flee
+  - Die
+  - Stop
+  - Struggle
+  - LookAtPerson
+  - MoveToPos
+  - MoveToPerson
+  - WalkOnto
+  - StartAlarmManually
   - SetCurrentObjectPosition
   - SetCurrentObjectRotation
   - SetCurrentVRUserPosition
   - SetCurrentVRUserRotation
   - SetPerformingAction
-  - SetObjectUsed
-  - SetViewID
-  - Spawn
-  - ClickRpc
-  - DestroyRpc
-  - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

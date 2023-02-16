@@ -99,9 +99,16 @@ public class SpiderController : MonoBehaviour
         Vector3 lookAtPosition = position;
         lookAtPosition.y = transform.position.y;
 
-        Debug.Log("SPIDER LOOK AT: " + lookAtPosition);
+        Debug.Log("Spider look at: " + lookAtPosition);
 
-        transform.LookAt(lookAtPosition);
+        try
+        {
+            transform.LookAt(lookAtPosition);
+        }
+        catch
+        {
+            Debug.Log("Spider of supervisor scene (shall not move) or something went wrong!");
+        }
     }
 
 
@@ -113,8 +120,15 @@ public class SpiderController : MonoBehaviour
         animator.SetBool("isWalking", false);
         animator.SetBool("isAttacking", false);
 
-        //stop movement
-        agent.SetDestination(transform.position);
+        try
+        {
+            //stop movement
+            agent.SetDestination(transform.position);
+        }
+        catch
+        {
+            Debug.Log("Spider of supervisor scene (shall not move) or something went wrong!");
+        }
     }
 
 
@@ -168,6 +182,7 @@ public class SpiderController : MonoBehaviour
 
             //climb onto patient
             //if hand down - climb onto hand and up the arm
+            //TODO try-catch
 
             //else climb up the legs and onto the arm
 
@@ -181,14 +196,21 @@ public class SpiderController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
         {
-            //Walk animation
-            animator.SetBool("isWalking", true);
+            try 
+            {
+                //move away from patient
+                Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
+                Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
+                LookAt(newPos); //look at pos
+                agent.SetDestination(newPos); //move there
 
-            //move away from patient
-            Vector3 dirAway = (transform.position - patient.transform.position).normalized; //determine normalized direction away from patient
-            Vector3 newPos = transform.position + (dirAway * fleeDistance); //define new position for spider to run to 
-            LookAt(newPos); //look at pos
-            agent.SetDestination(newPos); //move there
+                //Walk animation
+                animator.SetBool("isWalking", true);
+            }
+            catch
+            {
+                Debug.Log("Spider of supervisor scene (shall not move) or something went wrong!");
+            }
         }
     }
 
@@ -213,18 +235,27 @@ public class SpiderController : MonoBehaviour
     {
         Debug.Log("Move To Position: " + position);
 
-        LookAt(position);
-        //Walk animation
-        animator.SetBool("isWalking", true);
-
-
-        agent.SetDestination(position);
-        while (agent.remainingDistance > agent.stoppingDistance)
+        try
         {
-            //walk until position reached
+            LookAt(position);
+            //Walk animation
+            animator.SetBool("isWalking", true);
+
+
+            agent.SetDestination(position);
+            while (agent.remainingDistance > agent.stoppingDistance)
+            {
+                //walk until position reached
+            }
+            animator.SetBool("isWalking", false);
+            return true;
         }
-        animator.SetBool("isWalking", false);
-        return true;
+        catch
+        {
+            Debug.Log("Spider of supervisor scene (shall not move) or something went wrong!");
+        }
+
+        return false;
     }
 
 
@@ -233,13 +264,20 @@ public class SpiderController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MapPhobia")
         {
-            //look at patient
-            LookAt(patient.position);
-
-            //if not already there - move into direction of patient
-            if (!inPatientRange)
+            try
             {
-                MoveToPosition(patient.position);
+                //look at patient
+                LookAt(patient.position);
+
+                //if not already there - move into direction of patient
+                if (!inPatientRange)
+                {
+                    MoveToPosition(patient.position);
+                }
+            }
+            catch
+            {
+                Debug.Log("Spider of supervisor scene (shall not move) or something went wrong!");
             }
         }
     }

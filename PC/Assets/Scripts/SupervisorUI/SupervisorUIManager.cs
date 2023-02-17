@@ -77,6 +77,10 @@ public class SupervisorUIManager : MonoBehaviour
             {
                 if (spiderController.Dead)
                 {
+                    //update EvaluationValueManager value
+                    valueManager.SpiderDead = true;
+
+                    //disable buttons
                     spawnButton.interactable = false;
                     fleeButton.interactable = false;
                     lookAtButton.interactable = false;
@@ -84,6 +88,10 @@ public class SupervisorUIManager : MonoBehaviour
                     moveToPatButton.interactable = false;
                     stopSpiderButton.interactable = false;
                 }
+
+                //if spider is not onto patient anymore - update EvaluationValueManager value
+                if(!spiderController.OntoPatient)
+                    valueManager.SpiderOntoPatient = false;
             }
         }
     }
@@ -98,7 +106,8 @@ public class SupervisorUIManager : MonoBehaviour
             arachnophobiaButtons.SetActive(true); //show correct buttons
             DisableObjectRelatedButtons(); //no actions before spider spawned
             //Room views
-            phobiaRoomViewComponents.SetActive(true); //show correct room view 
+            phobiaRoomViewComponents.SetActive(true); //show correct room view
+            PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "RoomViewSet", true } }); //set value for VR app to know the room view is set
 
             uiInitialized = true; //success
         }
@@ -358,8 +367,14 @@ public class SupervisorUIManager : MonoBehaviour
     {
         Debug.Log("Let object move onto person...");
 
-        //TODO MoveOntoPerson Button
-        //if(!spiderController.Dead)
+        if (!spiderController.Dead)
+        {
+            //RPC call to object
+            objectPV.RPC("WalkOnto", RpcTarget.All);
+
+            //update EvaluationValueManager value
+            valueManager.SpiderOntoPatient = true;
+        }
     }
 
 

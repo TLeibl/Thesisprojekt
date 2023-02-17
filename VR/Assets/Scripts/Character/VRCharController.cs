@@ -14,7 +14,7 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class VRCharController : MonoBehaviour
 {
 	//Components for RPCs
-	private PhotonView roomViewPV = null; //the photon view of the supervisor photon view (to send RPCs)
+	private PhotonView roomViewPV = null; //the photon view of the supervisor room view (to send RPCs)
 
 	//Give Feedback
 	[SerializeField] PlayerUIManager uiManager = null; //the player UI manager
@@ -120,14 +120,8 @@ public class VRCharController : MonoBehaviour
 
 		//try and set right hand controller as target device (e.g. for giving feedback)
 		TrySetTargetDevice();
-
-		//set PhotonView for room view
-		if (SceneManager.GetActiveScene().name == "MapPhobia") 
-		{
-			roomViewPV = PhotonView.Find(5); //Arachnophobia RoomView ID set to 5 in UISupervisor scene
-		}
-		else if (SceneManager.GetActiveScene().name == "MapLearning") 
-			roomViewPV = PhotonView.Find(6); //Machine Learning RoomView ID set to 6 in UISupervisor scene
+		//try set room view photon view
+		//TrySetRoomViewPV();
 	}
 
 
@@ -179,10 +173,13 @@ public class VRCharController : MonoBehaviour
 		//if targetDevice is not valid yet - set it
 		if (!targetDevice.isValid)
 			TrySetTargetDevice();
+		//if roomViewPV not set yet - set it
+		//if (roomViewPV == null)
+			//TrySetRoomViewPV();
 
 		//update feedback value and supervisor room view status
 		UpdateFeedback();
-		UpdateRPCValues();
+		//UpdateRPCValues();
 
 		//update position and orientation
 		if (!playerControllerEnabled)
@@ -567,6 +564,21 @@ public class VRCharController : MonoBehaviour
 		targetDevice = devices[0];
 	}
 
+	private void TrySetRoomViewPV()
+    {
+		Debug.Log("TrySetRoomViewPV");
+
+		if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["RoomViewSet"] == true) //if correct room view has been set
+        {
+			if (SceneManager.GetActiveScene().name == "MapPhobia")
+			{
+				roomViewPV = PhotonView.Find(5); //Arachnophobia RoomView ID set to 5 in UISupervisor scene
+			}
+			else if (SceneManager.GetActiveScene().name == "MapLearning")
+				roomViewPV = PhotonView.Find(6); //Machine Learning RoomView ID set to 6 in UISupervisor scene
+		}
+	}
+
 
 	/// <summary>
 	/// Gets the move scale multiplier.
@@ -668,10 +680,12 @@ public class VRCharController : MonoBehaviour
 		return currentFeedbackValue;
     }
 
+	//--------------------------RPCs------------------------
 
 	private void UpdateRPCValues()
 	{
-		roomViewPV.RPC("SetCurrentVRUserPosition", RpcTarget.MasterClient, gameObject.transform.position);
-	    roomViewPV.RPC("SetCurrentVRUserRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
+		if(roomViewPV != null)
+			roomViewPV.RPC("SetCurrentVRUserPosition", RpcTarget.MasterClient, gameObject.transform.position);
+			roomViewPV.RPC("SetCurrentVRUserRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
 	}
 }

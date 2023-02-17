@@ -50,6 +50,7 @@ MonoBehaviour:
   - SetCurrentVRUserRotation
   - SetPerformingAction
   - SetObjectUsed
+  - SetRoomViewPV
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship

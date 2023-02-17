@@ -8,9 +8,6 @@ public class MachineController : MonoBehaviour
 {
     private PhotonView roomViewPV = null; //Photon View of room view for sending RPCs to
 
-    //interactables
-    [SerializeField] private GameObject stopButton = null;
-
     //events
     private int interacted = 0; //increased when interactable (e.g. button and lever) used - triggers events
     private int triggerEventAt = 0; //value at which event is triggered

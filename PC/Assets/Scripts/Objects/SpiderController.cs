@@ -14,6 +14,7 @@ public class SpiderController : MonoBehaviour
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
+    private GameObject patientArmSpawnPoint = null; //the spot on which the spider spawns when WalkOnto
     private PhotonView roomViewPV = null; //the photon view of the supervisor photon view (to send RPCs)
 
     //distance to patient
@@ -31,6 +32,13 @@ public class SpiderController : MonoBehaviour
         set { dead = value; }
     }
 
+    private bool ontoPatient = false; //true when spider is onto patient
+    public bool OntoPatient
+    {
+        get { return ontoPatient; }
+        set { ontoPatient = value; }
+    }
+
 
     private void Awake()
     {
@@ -40,7 +48,8 @@ public class SpiderController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient and set PhotonView for room view
         {
             patient = GameObject.Find("OVRPlayerController").transform;
-            roomViewPV = PhotonView.Find(5); //ID set to 5 in UISupervisor scene
+            patientArmSpawnPoint = patient.Find("SpiderSpawnPoint").gameObject;
+            //roomViewPV = PhotonView.Find(5); //Arachnophobia RoomView ID set to 5 in UISupervisor scene
         }
 
         groundedPosition = this.transform.position;
@@ -55,7 +64,13 @@ public class SpiderController : MonoBehaviour
             CalculatePatientDistance();
 
             //update values for supervisor UI room view
-            UpdateRPCValues();
+            //UpdateRPCValues();
+
+            //if still onto patient - update position in sync with patient's arm
+            if (ontoPatient)
+            {
+                transform.position = patientArmSpawnPoint.transform.position;
+            }
         }
     }
 
@@ -87,6 +102,8 @@ public class SpiderController : MonoBehaviour
         if (!(transform.position.y == groundedPosition.y))
         {
             transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z); //change y axis value so spider is grounded
+
+            ontoPatient = false; //reset ontoPatient in case spider was onto patient
         }
     }
 
@@ -185,11 +202,9 @@ public class SpiderController : MonoBehaviour
             //if not already there - look and move into direction of patient
             WalkTowards();
 
-            //climb onto patient
-            //if hand down - climb onto hand and up the arm
-            //TODO try-catch
-
-            //else climb up the legs and onto the arm
+            //climb onto patient - spawn at set spawn point on the arm of the patient
+            transform.position = patientArmSpawnPoint.transform.position;
+            //bool used to keep the position while onto patient
 
         }
     }
@@ -246,6 +261,8 @@ public class SpiderController : MonoBehaviour
 
         try
         {
+            DropToFloor();
+
             LookAt(position);
             //Walk animation
             animator.SetBool("isWalking", true);
@@ -276,13 +293,16 @@ public class SpiderController : MonoBehaviour
         {
             try
             {
-                //look at patient
-                LookAt(patient.position);
-
-                //if not already there - move into direction of patient
-                if (!inPatientRange)
+                if (!ontoPatient)
                 {
-                    MoveToPosition(patient.position);
+                    //look at patient
+                    LookAt(patient.position);
+
+                    //if not already there - move into direction of patient
+                    if (!inPatientRange)
+                    {
+                        MoveToPosition(patient.position);
+                    }
                 }
             }
             catch
@@ -297,7 +317,8 @@ public class SpiderController : MonoBehaviour
 
     private void UpdateRPCValues()
     {
-        roomViewPV.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
+        if (roomViewPV != null)
+            roomViewPV.RPC("SetCurrentObjectPosition", RpcTarget.MasterClient, gameObject.transform.position);
         roomViewPV.RPC("SetCurrentObjectRotation", RpcTarget.MasterClient, gameObject.transform.rotation);
     }
 

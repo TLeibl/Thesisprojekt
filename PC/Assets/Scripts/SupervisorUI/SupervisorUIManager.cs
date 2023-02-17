@@ -20,6 +20,7 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private Button lookAtButton = null;
     [SerializeField] private Button moveToPosButton = null;
     [SerializeField] private Button moveToPatButton = null;
+    [SerializeField] private Button moveOntoPatButton = null;
     [SerializeField] private Button stopSpiderButton = null;
     //Machine Operating
     [SerializeField] private GameObject learningRoomViewComponents = null;
@@ -439,6 +440,7 @@ public class SupervisorUIManager : MonoBehaviour
         lookAtButton.interactable = true;
         moveToPosButton.interactable = true;
         moveToPatButton.interactable = true;
+        moveOntoPatButton.interactable = true;
         stopSpiderButton.interactable = true;
     }
 
@@ -454,6 +456,7 @@ public class SupervisorUIManager : MonoBehaviour
             lookAtButton.interactable = false;
             moveToPosButton.interactable = false;
             moveToPatButton.interactable = false;
+            moveOntoPatButton.interactable = false;
             stopSpiderButton.interactable = false;
         }
         else

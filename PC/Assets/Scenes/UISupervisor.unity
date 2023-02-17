@@ -3745,7 +3745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788344, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5499622844135788349, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
       propertyPath: m_Color.b
@@ -4314,6 +4314,17 @@ MonoBehaviour:
   infoLeft: "Let spider @climb onto person.\n~Choose position on the VR avatar \xB4where
     the spider shall go to."
   infoRight: 
+--- !u!114 &1880211788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5499622844135788350, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
+  m_PrefabInstance: {fileID: 1835980120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880211779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1881646517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4959,6 +4970,10 @@ PrefabInstance:
       propertyPath: stopSpiderButton
       value: 
       objectReference: {fileID: 1881646520}
+    - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
+      propertyPath: moveOntoPatButton
+      value: 
+      objectReference: {fileID: 1880211788}
     - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
       propertyPath: arachnophobiaButtons
       value: 

@@ -54,8 +54,8 @@ public class NetworkingManager : MonoBehaviourPunCallbacks
     //method called by Join button
     public void JoinRoom()
     {
-        //TODO ZU TESTZWECKEN! RAUS WENN TEST TASTATUR! 
-        joinInput.text = "a";
+        //TODO remove for build
+        joinInput.text = "test";
 
 
         if (joinInput != null && joinInput.text != "")

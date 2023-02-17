@@ -124,10 +124,10 @@ public class VRCharController : MonoBehaviour
 		//set PhotonView for room view
 		if (SceneManager.GetActiveScene().name == "MapPhobia") 
 		{
-			roomViewPV = PhotonView.Find(5); //ID set to 5 in UISupervisor scene
+			roomViewPV = PhotonView.Find(5); //Arachnophobia RoomView ID set to 5 in UISupervisor scene
 		}
 		else if (SceneManager.GetActiveScene().name == "MapLearning") 
-			roomViewPV = PhotonView.Find(6); //ID set to 6 in UISupervisor scene
+			roomViewPV = PhotonView.Find(6); //Machine Learning RoomView ID set to 6 in UISupervisor scene
 	}
 
 

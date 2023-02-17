@@ -16,8 +16,9 @@ public class Spawner : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MapPhobia" 
             && (bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == false)
         {
-            //instantiate spider for master client to use
-            spawnedObject = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0).gameObject;
+            if(spawnedObject == null)
+                //instantiate spider for master client to use
+                spawnedObject = PhotonNetwork.Instantiate("Spider", new Vector3(-0.15f, 0.03f, 13.75f), Quaternion.identity, 0).gameObject;
 
             if (spawnedObject != null)
             {
@@ -30,8 +31,9 @@ public class Spawner : MonoBehaviour
         //Map Learning
         else if (SceneManager.GetActiveScene().name == "MapLearning" && (bool)PhotonNetwork.CurrentRoom.CustomProperties["ObjectInstantiated"] == false)
         {
-            //instantiate machine for master client to use 
-            spawnedObject = PhotonNetwork.Instantiate("Machine", new Vector3(1.509f, 0.308f, 2.686f), Quaternion.identity, 0);
+            if(spawnedObject == null)
+                //instantiate machine for master client to use 
+                spawnedObject = PhotonNetwork.Instantiate("Machine", new Vector3(1.509f, 0.308f, 2.686f), Quaternion.identity, 0);
 
             if (spawnedObject != null)
             {

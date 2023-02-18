@@ -87,6 +87,7 @@ public class SupervisorUIManager : MonoBehaviour
                     lookAtButton.interactable = false;
                     moveToPosButton.interactable = false;
                     moveToPatButton.interactable = false;
+                    moveOntoPatButton.interactable = false;
                     stopSpiderButton.interactable = false;
                 }
 
@@ -218,6 +219,7 @@ public class SupervisorUIManager : MonoBehaviour
             lookAtButton.interactable = true;
             moveToPosButton.interactable = true;
             moveToPatButton.interactable = true;
+            moveOntoPatButton.interactable = true;
             stopSpiderButton.interactable = true;
         } 
     }
@@ -426,6 +428,7 @@ public class SupervisorUIManager : MonoBehaviour
         lookAtButton.interactable = false;
         moveToPosButton.interactable = false;
         moveToPatButton.interactable = false;
+        moveOntoPatButton.interactable = false;
         stopSpiderButton.interactable = false;
     }
 

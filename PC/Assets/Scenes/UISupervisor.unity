@@ -4311,8 +4311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: "Let spider @climb onto person.\n~Choose position on the VR avatar \xB4where
-    the spider shall go to."
+  infoLeft: Let spider @climb onto person.
   infoRight: 
 --- !u!114 &1880211788 stripped
 MonoBehaviour:

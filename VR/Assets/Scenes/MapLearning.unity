@@ -1170,7 +1170,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35692
+  m_Name: pb_Mesh60450
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1667,7 +1667,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-28576
+  m_Name: pb_Mesh-54298
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2152,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 1387911710}
     - target: {fileID: 2852705552785650826, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 1351
+      value: 1366
       objectReference: {fileID: 0}
     - target: {fileID: 3665785494411433289, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_IsActive
@@ -2180,7 +2180,7 @@ PrefabInstance:
       objectReference: {fileID: 1387911710}
     - target: {fileID: 5619245095246319476, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7955559335992796864, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_Mesh
@@ -2188,7 +2188,7 @@ PrefabInstance:
       objectReference: {fileID: 1954655180}
     - target: {fileID: 7955559335992796864, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
       propertyPath: m_VersionIndex
-      value: 439
+      value: 454
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8862757626146112106, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
@@ -2877,10 +2877,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a32f5dc5429d5c4fbd0034cfa775433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopButton: {fileID: 0}
-  warningLamp: {fileID: 0}
+  stopButton: {fileID: 460679097776824147}
+  warningLamp: {fileID: 460679097776824146}
   warningLampOn: {fileID: 2100000, guid: 3d3810cf3fe6070498f736f5b8037f08, type: 2}
   warningLampOff: {fileID: 2100000, guid: 24484f4fe854869488aeed5575391406, type: 2}
+--- !u!1 &460679097776824146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5619245095246319475, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
+  m_PrefabInstance: {fileID: 460679097776824142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &460679097776824147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5784525350102432225, guid: 8b559781ec354c24a8f42c9fe70d83bf, type: 3}
+  m_PrefabInstance: {fileID: 460679097776824142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8226625153769208631
 PrefabInstance:
   m_ObjectHideFlags: 0

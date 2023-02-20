@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
         {
             if(spawnedObject == null)
                 //instantiate machine for master client to use 
-                spawnedObject = PhotonNetwork.Instantiate("Machine", new Vector3(1.509f, 0.308f, 2.686f), Quaternion.identity, 0);
+                spawnedObject = PhotonNetwork.Instantiate("Machine", new Vector3(-1.45f, 0.308f, -1.12f), Quaternion.identity, 0);
 
             if (spawnedObject != null)
             {

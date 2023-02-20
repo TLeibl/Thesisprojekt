@@ -48,7 +48,7 @@ public class SpiderController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MapPhobia") //if in MapPhobia scene - search patient and set PhotonView for room view
         {
             patient = GameObject.Find("OVRPlayerController").transform;
-            patientArmSpawnPoint = patient.Find("SpiderSpawnPoint").gameObject;
+            patientArmSpawnPoint = GameObject.Find("SpiderSpawnPoint");
             //roomViewPV = PhotonView.Find(5); //Arachnophobia RoomView ID set to 5 in UISupervisor scene
         }
     }

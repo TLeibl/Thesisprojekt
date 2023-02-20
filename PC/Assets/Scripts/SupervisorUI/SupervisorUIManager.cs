@@ -15,6 +15,7 @@ public class SupervisorUIManager : MonoBehaviour
     [SerializeField] private GameObject phobiaRoomViewComponents = null;
     [SerializeField] private GameObject arachnophobiaButtons = null;
     [SerializeField] private Button spawnButton = null;
+    [SerializeField] private Button spawnOntoPersonButton = null;
     [SerializeField] private Button despawnButton = null;
     [SerializeField] private Button fleeButton = null;
     [SerializeField] private Button lookAtButton = null;
@@ -83,6 +84,7 @@ public class SupervisorUIManager : MonoBehaviour
 
                     //disable buttons
                     spawnButton.interactable = false;
+                    spawnOntoPersonButton.interactable = false;
                     fleeButton.interactable = false;
                     lookAtButton.interactable = false;
                     moveToPosButton.interactable = false;
@@ -213,6 +215,7 @@ public class SupervisorUIManager : MonoBehaviour
 
             //Gray button out - can only spawn one object
             spawnButton.interactable = false;
+            spawnOntoPersonButton.interactable = false;
             //enable other buttons for spider control
             despawnButton.interactable = true;
             fleeButton.interactable = true;
@@ -222,6 +225,33 @@ public class SupervisorUIManager : MonoBehaviour
             moveOntoPatButton.interactable = true;
             stopSpiderButton.interactable = true;
         } 
+    }
+
+    //let the phobia object (e.g. spider) spawn at a defined point on the VR avatar
+    public void SpawnOntoPersonButton()
+    {
+        Debug.Log("Spawn object onto person...");
+
+        if (spawnedObject != null) //if spider successfully set
+        {
+            //RPC call to make Game Object visible
+            objectPV.RPC("SpawnOntoPerson", RpcTarget.All, true);
+
+            //update EvaluationValueManager value
+            valueManager.SpiderSpawned = true;
+
+            //Gray buttons out - can only spawn one object & can not move that object away from the VR avatar spot
+            spawnButton.interactable = false;
+            spawnOntoPersonButton.interactable = false;
+            fleeButton.interactable = false;
+            lookAtButton.interactable = false;
+            moveToPosButton.interactable = false;
+            moveToPatButton.interactable = false;
+            moveOntoPatButton.interactable = false;
+            stopSpiderButton.interactable = false;
+            //enable only despawn button
+            despawnButton.interactable = true;
+        }
     }
 
 
@@ -429,6 +459,7 @@ public class SupervisorUIManager : MonoBehaviour
     {
         //reactivate SpawnButton and deactivate other buttons
         spawnButton.interactable = true;
+        spawnOntoPersonButton.interactable = true;
         despawnButton.interactable = false;
         fleeButton.interactable = false;
         lookAtButton.interactable = false;
@@ -442,8 +473,9 @@ public class SupervisorUIManager : MonoBehaviour
     //Arachnophobia: reset buttons after chosen a position on the room view
     private void ResetButtonsRoomView()
     {
-        //reactivate SpawnButton and deactivate other buttons
+        //deactivate SpawnButton and reactivate other buttons
         spawnButton.interactable = false;
+        spawnOntoPersonButton.interactable = false;
         despawnButton.interactable = true;
         fleeButton.interactable = true;
         lookAtButton.interactable = true;
@@ -460,6 +492,7 @@ public class SupervisorUIManager : MonoBehaviour
         if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
         {
             spawnButton.interactable = false;
+            spawnOntoPersonButton.interactable = false;
             despawnButton.interactable = false;
             fleeButton.interactable = false;
             lookAtButton.interactable = false;

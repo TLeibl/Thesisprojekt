@@ -4311,7 +4311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: Let spider @climb onto person.
+  infoLeft: Let spider @climb onto person and sit on the left arm.
   infoRight: 
 --- !u!114 &1880211788 stripped
 MonoBehaviour:
@@ -4710,7 +4710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTooltipStyle: {fileID: 11400000, guid: 1f0cc7a28e7642f4697d87459836c5a9, type: 2}
-  infoLeft: "Let spider @move near the patient \xB4and stop there."
+  infoLeft: "Let spider @move near the person \xB4and stop there."
   infoRight: 
 --- !u!114 &2011118220 stripped
 MonoBehaviour:

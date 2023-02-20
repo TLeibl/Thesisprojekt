@@ -385,15 +385,21 @@ public class SupervisorUIManager : MonoBehaviour
 
     public void AlarmButton()
     {
+        //disable button until alarm is over
+        alarmButton.interactable = false;
+
         //RPC call to object to start alarm manually
         objectPV.RPC("StartAlarmManually", RpcTarget.All);
         //update EvaluationValueManager value
         valueManager.MachineAlarmActive = true;
 
         //if alarm has been solved - reset value manager bool
-        if(!machineController.WarningLampEnabled)
+        if (!machineController.WarningLampEnabled)
+        {
+            alarmButton.interactable = true; //reset button
             //update EvaluationValueManager value
             StartCoroutine(valueManager.ResetBoolAfterTime(valueManager.MachineAlarmActive));
+        }
     }
 
     //--------------------Functionalities--------------------

@@ -10,7 +10,7 @@ using Photon.Pun;
 public class SpiderController : MonoBehaviour
 {
     //references
-    public Vector3 groundedPosition = Vector3.zero; //position of the spider when sitting on the floor to return to 
+    public Vector3 groundedPosition; //position of the spider when sitting on the floor to return to 
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
@@ -51,8 +51,6 @@ public class SpiderController : MonoBehaviour
             patientArmSpawnPoint = patient.Find("SpiderSpawnPoint").gameObject;
             //roomViewPV = PhotonView.Find(5); //Arachnophobia RoomView ID set to 5 in UISupervisor scene
         }
-
-        groundedPosition = this.transform.position;
     }
 
 
@@ -95,6 +93,7 @@ public class SpiderController : MonoBehaviour
 
         //if despawn - reset pos 
         if (!spawn)
+            Stop();
             transform.position = groundedPosition;
     }
 

@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour
 
             if (spawnedObject != null)
             {
+                spawnedObject.GetComponent<SpiderController>().groundedPosition = spawnedObject.transform.position; //set grounded pos of object
                 spawnedObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
 
                 spawnedObject.transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //set invisible until officially spawned

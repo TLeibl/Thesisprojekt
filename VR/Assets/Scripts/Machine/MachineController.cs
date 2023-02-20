@@ -13,7 +13,7 @@ public class MachineController : MonoBehaviour
 
     //events
     private int interacted = 0; //increased when interactable (e.g. button and lever) used - triggers events
-    private int triggerEventAt = 0; //value at which event is triggered
+    private int triggerEventAt; //value at which event is triggered
 
     //warning lamp and materials
     [SerializeField] private GameObject warningLamp = null;
@@ -35,7 +35,7 @@ public class MachineController : MonoBehaviour
 
         lampRenderer = warningLamp.GetComponent<MeshRenderer>(); //set warning lamp renderer
 
-        triggerEventAt = Random.Range(1, 15); //initialize triggerEventAt value
+        triggerEventAt = Random.Range(5, 15); //initialize triggerEventAt value
     }
 
 
@@ -48,7 +48,7 @@ public class MachineController : MonoBehaviour
             interacted = 0; //reset
             warningLampEnabled = true;
             LampSwitchOn(); //switch lamp on
-            triggerEventAt = Random.Range(1, 15); //reset triggerEventAt value to random new value
+            triggerEventAt = Random.Range(5, 15); //reset triggerEventAt value to random new value
         }
     }
 

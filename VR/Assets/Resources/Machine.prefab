@@ -776,6 +776,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 618879009678170313}
     m_Modifications:
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3506841423143950994}
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4163998424501112251, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
       propertyPath: m_Name
       value: Button (1)
@@ -1093,6 +1101,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 618879009678170313}
     m_Modifications:
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3506841423143950994}
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LampSwitchOff
+      objectReference: {fileID: 0}
     - target: {fileID: 4163998424501112251, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
       propertyPath: m_Name
       value: StopButton
@@ -1172,6 +1188,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 618879009678170313}
     m_Modifications:
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3506841423143950994}
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4163998424501112251, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
       propertyPath: m_Name
       value: Button
@@ -1246,6 +1270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 618879009678170313}
     m_Modifications:
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3506841423143950994}
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4163998424501112251, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
       propertyPath: m_Name
       value: Button (3)
@@ -1320,6 +1352,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 618879009678170313}
     m_Modifications:
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3506841423143950994}
+    - target: {fileID: 4081482757410742795, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: InteractedWithButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4163998424501112251, guid: a0d4cace9f91dda4eb338400462ecb80, type: 3}
       propertyPath: m_Name
       value: Button (2)

@@ -10,6 +10,9 @@ public class Spawner : MonoBehaviour
     private GameObject spawnedObject = null; //the object instantiated
 
     //instantiate needed objects and set them for the master client (supervisor)
+    //Note: the ViewIDs to keep the right object and give it to the MasterClient have to match, what's not the case
+    //after a reset through the supervisor.
+    //TODO adjust ViewID values for multiple resets (+1000 per reset)
     private void Start()
     {
         //Map Arachnophobia
@@ -23,7 +26,10 @@ public class Spawner : MonoBehaviour
             if (spawnedObject != null)
             {
                 spawnedObject.GetComponent<SpiderController>().groundedPosition = spawnedObject.transform.position; //set grounded pos of object
-                spawnedObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
+                //if right ViewID - give object to Masterclient, else destroy object
+                if (spawnedObject.GetComponent<PhotonView>().ViewID == 2001)
+                    spawnedObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
+                else Destroy(spawnedObject);
 
                 spawnedObject.transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //set invisible until officially spawned
                 PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
@@ -38,7 +44,10 @@ public class Spawner : MonoBehaviour
 
             if (spawnedObject != null)
             {
-                spawnedObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
+                //if right ViewID - give object to Masterclient, else destroy object
+                if (spawnedObject.GetComponent<PhotonView>().ViewID == 2001)
+                    spawnedObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.MasterClient); //give object to MasterClient
+                else Destroy(spawnedObject);
 
                 PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable() { { "ObjectInstantiated", true } });
             }

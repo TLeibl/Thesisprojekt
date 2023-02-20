@@ -1312,6 +1312,17 @@ MonoBehaviour:
   infoLeft: "@Spawn \xB4spider onto person.\nIt spawns on the left arm of the VR
     avatar."
   infoRight: 
+--- !u!114 &383457492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5499622844135788350, guid: 8eb62d6f64a2c0d418e8d612e6d1e79b, type: 3}
+  m_PrefabInstance: {fileID: 383457487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383457489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &383977641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5164,6 +5175,10 @@ PrefabInstance:
       propertyPath: arachnophobiaButtons
       value: 
       objectReference: {fileID: 916200079}
+    - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
+      propertyPath: spawnOntoPersonButton
+      value: 
+      objectReference: {fileID: 383457492}
     - target: {fileID: 2884722176340821466, guid: 75b63c7a369bee944ae032e1f285b93a, type: 3}
       propertyPath: phobiaRoomViewComponents
       value: 

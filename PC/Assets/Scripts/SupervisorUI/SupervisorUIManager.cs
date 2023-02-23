@@ -340,7 +340,7 @@ public class SupervisorUIManager : MonoBehaviour
         if (!spiderController.Dead)
         {
             //change cursor
-            Vector2 cursorOffset = new Vector2(mouseCrosshair.width / 2, mouseCrosshair.height / 2); //set the cursor origin to its centre. (default is upper left corner)
+            Vector2 cursorOffset = new Vector2(mouseCrosshair.width / 2, mouseCrosshair.height / 2); //set the cursor origin to its center. (default is upper left corner)
             Cursor.SetCursor(mouseCrosshair, cursorOffset, CursorMode.Auto); //adapt mouse texture
 
             DisableObjectRelatedButtons(); //grey buttons out until position has been chosen

@@ -153,7 +153,9 @@ public class SupervisorUIManager : MonoBehaviour
                         //set components of spawned object
                         spiderController = spawnedObject.GetComponent<SpiderController>(); 
                         objectPV = spawnedObject.GetComponent<PhotonView>(); 
-                        spawnButton.interactable = true; //enable spawn button
+                        //enable spawn buttons
+                        spawnButton.interactable = true; 
+                        spawnOntoPersonButton.interactable = true;
                     }
                 }
                 //Machine Operating

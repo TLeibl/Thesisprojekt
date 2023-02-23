@@ -103,7 +103,6 @@ public class SpiderController : MonoBehaviour
             else
             {
                 spiderOntoPatientObject.SetActive(false); //disable spiderOntoPatientObject 
-                transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = true; //set normal spider object visible again
             }
         }
     }
@@ -114,8 +113,7 @@ public class SpiderController : MonoBehaviour
     protected void SpawnOntoPerson()
     {
         transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //make spider invisible
-        spiderOntoPatientObject.SetActive(true); //make spider object on VR avatar visible
-        
+        spiderOntoPatientObject.SetActive(true); //make spider object on VR avatar visible 
     }
 
 

@@ -103,7 +103,6 @@ public class SpiderController : MonoBehaviour
             else
             {
                 spiderOntoPatientObject.SetActive(false); //disable spiderOntoPatientObject 
-                transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = true; //set normal spider object visible again
             }
         }
     }

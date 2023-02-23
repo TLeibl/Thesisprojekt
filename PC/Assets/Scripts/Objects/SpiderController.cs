@@ -10,6 +10,7 @@ using Photon.Pun;
 public class SpiderController : MonoBehaviour
 {
     //references
+    [SerializeField] private GameObject spiderOntoPatientObject = null; //spider object on VR avatar arm
     public Vector3 groundedPosition; //position of the spider when sitting on the floor to return to 
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
@@ -91,10 +92,30 @@ public class SpiderController : MonoBehaviour
     {
         transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = spawn;
 
-        //if despawn - reset pos 
+        //if despawn - reset pos of spider OR make second spider object invisible
         if (!spawn)
-            Stop();
-            transform.position = groundedPosition;
+        {
+            if (!ontoPatient) //normal spider has been spawned
+            {
+                Stop();
+                transform.position = groundedPosition;
+            }
+            else
+            {
+                spiderOntoPatientObject.SetActive(false); //disable spiderOntoPatientObject 
+                transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = true; //set normal spider object visible again
+            }
+        }
+    }
+
+
+    //RPC called by SupervisorUIManager to let spider spawn onto VR avatar
+    [PunRPC]
+    protected void SpawnOntoPerson()
+    {
+        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //make spider invisible
+        spiderOntoPatientObject.SetActive(true); //make spider object on VR avatar visible
+
     }
 
 

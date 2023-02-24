@@ -51,7 +51,7 @@ public class EvaluationChartManager : MonoBehaviour
         LineDataSet feedbackLine = new LineDataSet();
 
         // Configure line 
-        feedbackLine.LineColor = new Color(168, 47, 62, 100); //red
+        feedbackLine.LineColor = Color.red; //red
         //feedbackLine.LineColor = Color.red;
         feedbackLine.LineThickness = 4;
         feedbackLine.UseBezier = true;
@@ -86,7 +86,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderSpawnedLine = new LineDataSet();
             // Configure line 
-            spiderSpawnedLine.LineColor = new Color(183, 183, 183); //light grey
+            spiderSpawnedLine.LineColor = Color.white; 
             spiderSpawnedLine.LineThickness = 4;
             spiderSpawnedLine.UseBezier = true;
             // Add entries to data set 
@@ -110,7 +110,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderLookingLine = new LineDataSet();
             // Configure line 
-            spiderLookingLine.LineColor = new Color(72, 72, 72); //medium grey
+            spiderLookingLine.LineColor = Color.grey; 
             spiderLookingLine.LineThickness = 4;
             spiderLookingLine.UseBezier = true;
             // Add entries to data set 
@@ -134,7 +134,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderMovingLine = new LineDataSet();
             // Configure line 
-            spiderMovingLine.LineColor = new Color(98, 202, 110); //green
+            spiderMovingLine.LineColor = Color.green;
             spiderMovingLine.LineThickness = 4;
             spiderMovingLine.UseBezier = true;
             // Add entries to data set 
@@ -158,7 +158,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderOntoPatientLine = new LineDataSet();
             // Configure line 
-            spiderOntoPatientLine.LineColor = new Color(64, 122, 248); //blue
+            spiderOntoPatientLine.LineColor = Color.blue;
             spiderOntoPatientLine.LineThickness = 4;
             spiderOntoPatientLine.UseBezier = true;
             // Add entries to data set 
@@ -183,7 +183,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderDeadLine = new LineDataSet();
             // Configure line 
-            spiderDeadLine.LineColor = new Color(58, 58, 58); //dark grey
+            spiderDeadLine.LineColor = Color.black;
             spiderDeadLine.LineThickness = 4;
             spiderDeadLine.UseBezier = true;
             // Add entries to data set 
@@ -206,7 +206,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet machineAlarmLine = new LineDataSet();
             // Configure line 
-            machineAlarmLine.LineColor = new Color(98, 202, 110); //green
+            machineAlarmLine.LineColor = Color.green;
             machineAlarmLine.LineThickness = 4;
             machineAlarmLine.UseBezier = true;
             // Add entries to data set 

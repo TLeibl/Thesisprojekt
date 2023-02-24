@@ -429,7 +429,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1041823237}
-  - component: {fileID: 1041823238}
   m_Layer: 5
   m_Name: EvaluationChart
   m_TagString: Untagged
@@ -461,19 +460,6 @@ RectTransform:
   m_AnchoredPosition: {x: 12, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1041823238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041823236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 283d91f753c91974a8d39f945d3e9243, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chart: {fileID: 1157433345}
 --- !u!1 &1133894550
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +515,7 @@ GameObject:
   - component: {fileID: 1157433344}
   - component: {fileID: 1157433346}
   - component: {fileID: 1157433345}
+  - component: {fileID: 1157433347}
   m_Layer: 0
   m_Name: LineChart
   m_TagString: Untagged
@@ -631,14 +618,7 @@ MonoBehaviour:
       drawEndValue: 1
       valueFormatterConfig:
         valueDecimalPlaces: 1
-        customValues:
-        - 7.2019
-        - 8.2019
-        - 9.2019
-        - 10.2019
-        - 11.2019
-        - 12.2019
-        - 1.2020
+        customValues: []
   config:
     valueIndicatorSize: 12
     showValueIndicators: 1
@@ -653,6 +633,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157433343}
   m_CullTransparentMesh: 0
+--- !u!114 &1157433347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157433343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283d91f753c91974a8d39f945d3e9243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1298117880
 GameObject:
   m_ObjectHideFlags: 0

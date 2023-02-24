@@ -8,8 +8,7 @@ using AwesomeCharts;
 //Manager script to build line chart with the evaluation values.
 public class EvaluationChartManager : MonoBehaviour
 {
-    [SerializeField] private LineChart chart = null; //the line chart
-
+    private LineChart chart = null; //the line chart
     private EvaluationValueManager valueManager = null; //value manager
 
     //Hashtable for individual event values used as Y value in the chart
@@ -26,12 +25,15 @@ public class EvaluationChartManager : MonoBehaviour
     // Find EvaluationValueManager and set up line chart
     private void Awake()
     {
-        //find EvaluationValueManager
+        //set components
+        chart = this.gameObject.GetComponent<LineChart>();
         valueManager = GameObject.Find("EvaluationManager").GetComponent<EvaluationValueManager>();
+    }
 
-        if(chart != null)
+    private void Start()
+    {
+        if (chart != null)
         {
-            chart.gameObject.SetActive(true); //make chart visible
             //Grid Config - set horizontal lines count to number of values in list so every value change is visible in the chart
             chart.GridConfig.HorizontalLinesCount = valueManager.feedbackValues.Count;
 
@@ -49,7 +51,8 @@ public class EvaluationChartManager : MonoBehaviour
         LineDataSet feedbackLine = new LineDataSet();
 
         // Configure line 
-        feedbackLine.LineColor = new Color(168, 47, 62); //red
+        feedbackLine.LineColor = new Color(168, 47, 62, 100); //red
+        //feedbackLine.LineColor = Color.red;
         feedbackLine.LineThickness = 4;
         feedbackLine.UseBezier = true;
 
@@ -62,6 +65,10 @@ public class EvaluationChartManager : MonoBehaviour
 
         // Add data set to chart data 
         chart.GetChartData().DataSets.Add(feedbackLine);
+
+        //update legend
+        LegendEntry entry = new LegendEntry("Feedback", feedbackLine.LineColor);
+        chart.legendView.Entries.Add(entry);
 
         // Refresh chart after data change 
         chart.SetDirty();
@@ -90,6 +97,11 @@ public class EvaluationChartManager : MonoBehaviour
             }
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderSpawnedLine);
+
+            //update legend
+            LegendEntry entrySpawned = new LegendEntry("Spawned", spiderSpawnedLine.LineColor);
+            chart.legendView.Entries.Add(entrySpawned);
+
             // Refresh chart after data change 
             chart.SetDirty();
 
@@ -109,6 +121,11 @@ public class EvaluationChartManager : MonoBehaviour
             }
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderLookingLine);
+
+            //update legend
+            LegendEntry entryLooking = new LegendEntry("LookAt", spiderLookingLine.LineColor);
+            chart.legendView.Entries.Add(entryLooking);
+
             // Refresh chart after data change 
             chart.SetDirty();
 
@@ -128,6 +145,11 @@ public class EvaluationChartManager : MonoBehaviour
             }
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderMovingLine);
+
+            //update legend
+            LegendEntry entryMoving = new LegendEntry("Moving", spiderMovingLine.LineColor);
+            chart.legendView.Entries.Add(entryMoving);
+
             // Refresh chart after data change 
             chart.SetDirty();
 
@@ -147,10 +169,16 @@ public class EvaluationChartManager : MonoBehaviour
             }
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderOntoPatientLine);
+
+            //update legend
+            LegendEntry entryOntoPatient = new LegendEntry("OntoPatient", spiderOntoPatientLine.LineColor);
+            chart.legendView.Entries.Add(entryOntoPatient);
+
             // Refresh chart after data change 
             chart.SetDirty();
 
-
+            //TODO add if needed
+            /*
             //SpiderDeadLine
             // Create data set for entries 
             LineDataSet spiderDeadLine = new LineDataSet();
@@ -168,6 +196,7 @@ public class EvaluationChartManager : MonoBehaviour
             chart.GetChartData().DataSets.Add(spiderDeadLine);
             // Refresh chart after data change 
             chart.SetDirty();
+            */
         }
 
         //----------------------------------------MACHINE LEARNING--------------------------------------------------
@@ -188,6 +217,11 @@ public class EvaluationChartManager : MonoBehaviour
             }
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(machineAlarmLine);
+
+            //update legend
+            LegendEntry entryMachine = new LegendEntry("Alarm active", machineAlarmLine.LineColor);
+            chart.legendView.Entries.Add(entryMachine);
+
             // Refresh chart after data change 
             chart.SetDirty();
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 //Manager that saves the current value of the feedback and occurring events for each time interval for
@@ -78,23 +79,26 @@ public class EvaluationValueManager : MonoBehaviour
 
     private void Update()
     {
-        //update lists in each time interval
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed >= timeInterval) 
+        if(SceneManager.GetActiveScene().name == "UISupervisor")
         {
-            //update lists
-            feedbackValues.Add((float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"]);
-            //update values for the current scenario
-            if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+            //update lists in each time interval
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed >= timeInterval)
             {
-                UpdateArachnophobiaValues();
-            }
-            else if((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
-            {
-                UpdateMachineOperatingValues();
-            }
+                //update lists
+                feedbackValues.Add((float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"]);
+                //update values for the current scenario
+                if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
+                {
+                    UpdateArachnophobiaValues();
+                }
+                else if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.MachineOperating)
+                {
+                    UpdateMachineOperatingValues();
+                }
 
-            timeElapsed = 0;
+                timeElapsed = 0;
+            }
         }
     }
 

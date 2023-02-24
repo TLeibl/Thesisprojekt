@@ -13,12 +13,12 @@ public class EvaluationChartManager : MonoBehaviour
 
     //Hashtable for individual event values used as Y value in the chart
     Hashtable individualYValues = new Hashtable(){
-        {"SpiderSpawned", "100"},
-        {"SpiderLooking", "20"},
-        {"SpiderMoving", "40"},
-        {"SpiderOntoPatient", "60"},
-        {"SpiderDead", "80"},
-        {"MachineAlarm", "40"}
+        {"SpiderSpawned", 100},
+        {"SpiderLooking", 20},
+        {"SpiderMoving", 40},
+        {"SpiderOntoPatient", 60},
+        {"SpiderDead", 80},
+        {"MachineAlarm", 40}
     };
 
 
@@ -52,7 +52,6 @@ public class EvaluationChartManager : MonoBehaviour
 
         // Configure line 
         feedbackLine.LineColor = Color.red; //red
-        //feedbackLine.LineColor = Color.red;
         feedbackLine.LineThickness = 4;
         feedbackLine.UseBezier = true;
 

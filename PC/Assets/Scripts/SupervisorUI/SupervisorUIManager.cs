@@ -237,7 +237,7 @@ public class SupervisorUIManager : MonoBehaviour
         if (spawnedObject != null) //if spider successfully set
         {
             //RPC call to make Game Object visible
-            objectPV.RPC("SpawnOntoPerson", RpcTarget.All, true);
+            objectPV.RPC("SpawnOntoPerson", RpcTarget.All);
 
             //update EvaluationValueManager value
             valueManager.SpiderSpawned = true;

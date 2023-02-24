@@ -112,9 +112,16 @@ public class SpiderController : MonoBehaviour
     [PunRPC]
     protected void SpawnOntoPerson()
     {
-        transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //make spider invisible
-        spiderOntoPatientObject.SetActive(true); //make spider object on VR avatar visible
+        try
+        {
+            transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //make spider invisible
+            spiderOntoPatientObject.SetActive(true); //make spider object on VR avatar visible
+        }
+        catch
+        {
 
+        }
+        
     }
 
 

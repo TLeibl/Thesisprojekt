@@ -10,12 +10,13 @@ using Photon.Pun;
 public class SpiderController : MonoBehaviour
 {
     //references
-    [SerializeField] private GameObject spiderOntoPatientObject = null; //spider object on VR avatar arm
     public Vector3 groundedPosition; //position of the spider when sitting on the floor to return to 
     private Animator animator = null; //the spider animator
     private NavMeshAgent agent = null; //NavMeshAgent of spider
     private Transform patient = null; //the patient transform (VR player object - OVRPlayerController)
     private GameObject patientArmSpawnPoint = null; //the spot on which the spider spawns when WalkOnto
+    private GameObject spiderOntoPatientObject = null; //spider object on VR avatar arm
+    private SkinnedMeshRenderer spiderOntoPatientRenderer = null; //renderer of the spider object on VR avatar arm
     private PhotonView roomViewPV = null; //the photon view of the supervisor photon view (to send RPCs)
 
     //distance to patient
@@ -50,6 +51,9 @@ public class SpiderController : MonoBehaviour
         {
             patient = GameObject.Find("OVRPlayerController").transform;
             patientArmSpawnPoint = GameObject.Find("SpiderSpawnPoint");
+            spiderOntoPatientObject = GameObject.Find("SpiderOntoPatient");
+            if (spiderOntoPatientObject != null)
+                spiderOntoPatientRenderer = spiderOntoPatientObject.GetComponentInChildren<SkinnedMeshRenderer>();
             //roomViewPV = PhotonView.Find(5); //Arachnophobia RoomView ID set to 5 in UISupervisor scene
         }
     }
@@ -115,7 +119,8 @@ public class SpiderController : MonoBehaviour
         try
         {
             transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //make spider invisible
-            spiderOntoPatientObject.SetActive(true); //make spider object on VR avatar visible
+            if (spiderOntoPatientObject != null)
+                spiderOntoPatientRenderer.enabled = true; //make spider object on VR avatar visible
         }
         catch
         {

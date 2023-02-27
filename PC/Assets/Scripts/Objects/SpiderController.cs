@@ -70,10 +70,11 @@ public class SpiderController : MonoBehaviour
             //UpdateRPCValues();
 
             //if still onto patient - update position in sync with patient's arm
-            if (ontoPatient)
-            {
-                transform.position = patientArmSpawnPoint.transform.position;
-            }
+            //TODO use only if spider always changes position and not spider object on VR avatar used
+            //if (OntoPatient)
+            //{
+            //    transform.position = patientArmSpawnPoint.transform.position;
+            //}
         }
     }
 
@@ -99,14 +100,16 @@ public class SpiderController : MonoBehaviour
         //if despawn - reset pos of spider OR make second spider object invisible
         if (!spawn)
         {
-            if (!ontoPatient) //normal spider has been spawned
+            if (!OntoPatient) //normal spider has been spawned
             {
                 Stop();
                 transform.position = groundedPosition;
             }
             else
             {
-                spiderOntoPatientObject.SetActive(false); //disable spiderOntoPatientObject 
+                if (spiderOntoPatientObject != null) { }
+                    spiderOntoPatientRenderer.enabled = false; //disable spiderOntoPatientObject
+                OntoPatient = false;
             }
         }
     }
@@ -120,7 +123,10 @@ public class SpiderController : MonoBehaviour
         {
             transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().enabled = false; //make spider invisible
             if (spiderOntoPatientObject != null)
+            {
                 spiderOntoPatientRenderer.enabled = true; //make spider object on VR avatar visible
+                OntoPatient = true;
+            }
         }
         catch
         {
@@ -138,7 +144,7 @@ public class SpiderController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, groundedPosition.y, transform.position.z); //change y axis value so spider is grounded
 
-            ontoPatient = false; //reset ontoPatient in case spider was onto patient
+            OntoPatient = false; //reset ontoPatient in case spider was onto patient
         }
     }
 
@@ -328,7 +334,7 @@ public class SpiderController : MonoBehaviour
         {
             try
             {
-                if (!ontoPatient)
+                if (!OntoPatient)
                 {
                     //look at patient
                     LookAt(patient.position);

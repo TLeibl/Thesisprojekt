@@ -51,6 +51,7 @@ public class EvaluationChartManager : MonoBehaviour
         LineDataSet feedbackLine = new LineDataSet();
 
         // Configure line 
+        feedbackLine.Title = "Feedback";
         feedbackLine.LineColor = Color.red; //red
         feedbackLine.LineThickness = 4;
         feedbackLine.UseBezier = true;
@@ -64,10 +65,6 @@ public class EvaluationChartManager : MonoBehaviour
 
         // Add data set to chart data 
         chart.GetChartData().DataSets.Add(feedbackLine);
-
-        //update legend
-        LegendEntry entry = new LegendEntry("Feedback", feedbackLine.LineColor);
-        chart.legendView.Entries.Add(entry);
 
         // Refresh chart after data change 
         chart.SetDirty();
@@ -85,6 +82,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderSpawnedLine = new LineDataSet();
             // Configure line 
+            spiderSpawnedLine.Title = "Spawned";
             spiderSpawnedLine.LineColor = Color.white; 
             spiderSpawnedLine.LineThickness = 4;
             spiderSpawnedLine.UseBezier = true;
@@ -97,10 +95,6 @@ public class EvaluationChartManager : MonoBehaviour
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderSpawnedLine);
 
-            //update legend
-            LegendEntry entrySpawned = new LegendEntry("Spawned", spiderSpawnedLine.LineColor);
-            chart.legendView.Entries.Add(entrySpawned);
-
             // Refresh chart after data change 
             chart.SetDirty();
 
@@ -109,6 +103,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderLookingLine = new LineDataSet();
             // Configure line 
+            spiderLookingLine.Title = "LookAt";
             spiderLookingLine.LineColor = Color.grey; 
             spiderLookingLine.LineThickness = 4;
             spiderLookingLine.UseBezier = true;
@@ -121,10 +116,6 @@ public class EvaluationChartManager : MonoBehaviour
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderLookingLine);
 
-            //update legend
-            LegendEntry entryLooking = new LegendEntry("LookAt", spiderLookingLine.LineColor);
-            chart.legendView.Entries.Add(entryLooking);
-
             // Refresh chart after data change 
             chart.SetDirty();
 
@@ -133,6 +124,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderMovingLine = new LineDataSet();
             // Configure line 
+            spiderMovingLine.Title = "Moving";
             spiderMovingLine.LineColor = Color.green;
             spiderMovingLine.LineThickness = 4;
             spiderMovingLine.UseBezier = true;
@@ -145,10 +137,6 @@ public class EvaluationChartManager : MonoBehaviour
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderMovingLine);
 
-            //update legend
-            LegendEntry entryMoving = new LegendEntry("Moving", spiderMovingLine.LineColor);
-            chart.legendView.Entries.Add(entryMoving);
-
             // Refresh chart after data change 
             chart.SetDirty();
 
@@ -157,6 +145,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet spiderOntoPatientLine = new LineDataSet();
             // Configure line 
+            spiderOntoPatientLine.Title = "OntoPatient";
             spiderOntoPatientLine.LineColor = Color.blue;
             spiderOntoPatientLine.LineThickness = 4;
             spiderOntoPatientLine.UseBezier = true;
@@ -168,10 +157,6 @@ public class EvaluationChartManager : MonoBehaviour
             }
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(spiderOntoPatientLine);
-
-            //update legend
-            LegendEntry entryOntoPatient = new LegendEntry("OntoPatient", spiderOntoPatientLine.LineColor);
-            chart.legendView.Entries.Add(entryOntoPatient);
 
             // Refresh chart after data change 
             chart.SetDirty();
@@ -205,6 +190,7 @@ public class EvaluationChartManager : MonoBehaviour
             // Create data set for entries 
             LineDataSet machineAlarmLine = new LineDataSet();
             // Configure line 
+            machineAlarmLine.Title = "Alarm active";
             machineAlarmLine.LineColor = Color.green;
             machineAlarmLine.LineThickness = 4;
             machineAlarmLine.UseBezier = true;
@@ -216,10 +202,6 @@ public class EvaluationChartManager : MonoBehaviour
             }
             // Add data set to chart data 
             chart.GetChartData().DataSets.Add(machineAlarmLine);
-
-            //update legend
-            LegendEntry entryMachine = new LegendEntry("Alarm active", machineAlarmLine.LineColor);
-            chart.legendView.Entries.Add(entryMachine);
 
             // Refresh chart after data change 
             chart.SetDirty();

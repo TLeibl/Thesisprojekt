@@ -71,7 +71,7 @@ public class SpiderController : MonoBehaviour
             //UpdateRPCValues();
 
             //if still onto patient - update position in sync with patient's arm
-            //TODO use only if spider always changes position and not spider object on VR avatar used
+            //note: use only if spider always changes position and not spider object on VR avatar used
             //if (OntoPatient)
             //{
             //    transform.position = patientArmSpawnPoint.transform.position;
@@ -234,7 +234,6 @@ public class SpiderController : MonoBehaviour
 
 
     //method called by supervisor to let spider walk towards patient and climb onto him or her
-    //TODO
     [PunRPC]
     protected void WalkOnto()
     {

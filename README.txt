@@ -18,7 +18,8 @@ LINK ZUM PROJEKT:
 https://github.com/TLeibl/Thesisprojekt/tree/develop
 
 BUILDS:
-
+Die Builds sind in den Ordnern VR/Builds und PC/Builds zu finden.
+Der Build für die Oculus/Meta Quest 2 (.apk-Datei) muss via z.B. Meta Quest Developer Hub auf der VR-Brille installiert werden.
 
 =======
 BESONDERHEITEN DES PROJEKTS:

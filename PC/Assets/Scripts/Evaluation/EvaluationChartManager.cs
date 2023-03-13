@@ -61,7 +61,6 @@ public class EvaluationChartManager : MonoBehaviour
         for (var i = 0; i < valueManager.feedbackValues.Count; i++)
         {
             feedbackLine.AddEntry(new LineEntry(i, valueManager.feedbackValues[i]));
-            Debug.Log("FEEDBACKVALUES VALUE: " + valueManager.feedbackValues[i]);
         }
 
         // Add data set to chart data 

@@ -68,6 +68,7 @@ public class EvaluationValueManager : MonoBehaviour
     //save a value for each time interval
     private float timeElapsed = 0f; 
     private float timeInterval = 1f; //every time interval a value is saved
+    private float currentFeedbackValue = 0f; 
 
 
     private void Awake()
@@ -86,7 +87,12 @@ public class EvaluationValueManager : MonoBehaviour
             if (timeElapsed >= timeInterval)
             {
                 //update lists
-                feedbackValues.Add((float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"]);
+                //feedback - has to be multiplied with 100 because the Property is a value between 0 and 1.
+                currentFeedbackValue = (float)PhotonNetwork.CurrentRoom.CustomProperties["FeedbackValue"] * 100f;
+                if (currentFeedbackValue > 100)
+                    currentFeedbackValue = 100;
+                feedbackValues.Add(currentFeedbackValue); //add determined value to list
+
                 //update values for the current scenario
                 if ((NetworkingManager.Scenario)PhotonNetwork.CurrentRoom.CustomProperties["ChosenScenario"] == NetworkingManager.Scenario.Arachnophobia)
                 {

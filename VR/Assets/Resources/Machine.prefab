@@ -702,6 +702,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 618879009678170313}
     m_Modifications:
+    - target: {fileID: 1814398407253428746, guid: 8344093d6adf161449b0257c00f54d9a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1814398407615062857, guid: 8344093d6adf161449b0257c00f54d9a, type: 3}
       propertyPath: m_Name
       value: Lever
@@ -960,6 +964,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 618879009678170313}
     m_Modifications:
+    - target: {fileID: 1814398407253428746, guid: 8344093d6adf161449b0257c00f54d9a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1814398407615062857, guid: 8344093d6adf161449b0257c00f54d9a, type: 3}
       propertyPath: m_Name
       value: Lever (1)
